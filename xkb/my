@@ -1,0 +1,36 @@
+xkb_keymap {
+    xkb_keycodes "my" {
+        include "evdev+aliases(qwerty)"
+        <HYPR> =  65;
+        <SPCE> = 207;
+    };
+    xkb_types     { include "complete"	};
+    xkb_compat  {
+    include "complete"
+        interpret ISO_Level2_Latch+AnyOf(all) {
+            useModMapMods=level1;
+            action= LatchMods(modifiers=Shift,clearLocks,latchToLock);
+        };
+        interpret ISO_Level2_Latch+AnyOfOrNone(all) {
+            action= LatchMods(modifiers=Shift,clearLocks,latchToLock);
+        };
+
+
+    };
+    xkb_geometry  { include "pc(pc105)"	};
+
+    xkb_symbols "my" {
+        include "pc+us+ru:2+inet(evdev)+group(ctrl_alt_toggle)+capslock(swapescape)"
+
+        //Don't even remember why it is here
+        key <HYPR>  { [ Hyper_R ] };
+        modifier_map Control { <HYPR> };
+
+        // Remap ~ and `
+        key <TLDE> { [ asciitilde, grave ] };
+
+        key <LFSH> { [ ISO_Level2_Latch ] };
+        key <RTSH> { [ ISO_Level2_Latch ] };
+
+    };
+};
