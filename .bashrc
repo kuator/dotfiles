@@ -164,10 +164,10 @@ export WORKON_HOME=/opt/.venvs
 export CDPATH=$HOME/Documents/Unity/shit:$HOME/Documents/Dar:$HOME
 
 #z.sh
-# . /opt/z/z.sh
+. /opt/z/z.sh
 
 #https://github.com/skywind3000/z.lua
-eval "$(lua /opt/z.lua/z.lua --init bash)"
+# eval "$(lua /opt/z.lua/z.lua --init bash)"
 
 #set editor of choice
 export VISUAL=nvim
@@ -188,3 +188,6 @@ PS1='\[\033[01;32m\]\[\033[0m\033[01;32m\]\u\[\033[01;36m\]@[\w]\[\033[01;32m\][
 #https://eshlox.net/2017/08/01/bash-increase-command-history-size
 HISTSIZE=20000
 HISTFILESIZE=20000
+
+#https://github.com/leafo/gifine
+export PATH=$PATH:$HOME/.luarocks/bin
