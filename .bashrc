@@ -164,10 +164,11 @@ export WORKON_HOME=/opt/.venvs
 export CDPATH=$HOME/Documents/Unity/shit:$HOME/Documents/Dar:$HOME
 
 #z.sh
-. /opt/z/z.sh
+# . /opt/z/z.sh
 
 #https://github.com/skywind3000/z.lua
-# eval "$(lua /opt/z.lua/z.lua --init bash)"
+eval "$(lua /opt/z.lua/z.lua --init bash)"
+export _ZL_HYPHEN=1
 
 #set editor of choice
 export VISUAL=nvim

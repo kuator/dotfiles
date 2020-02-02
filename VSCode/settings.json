@@ -25,5 +25,26 @@
   //   "<C-f>": false
   // },
   "editor.occurrencesHighlight": false,
-  "vscode-neovim.neovimPath": "/usr/bin/nvim"
+  "vscode-neovim.neovimPath": "/usr/bin/nvim",
+  "editor.minimap.enabled": false,
+  "editor.scrollbar.horizontal": "hidden",
+  "editor.scrollbar.vertical": "hidden",
+  "editor.overviewRulerBorder": false,
+  "editor.lineNumbers": "relative",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.colorTheme": "Gruvbox Dark Hard",
+  "workbench.colorCustomizations":{
+    "editor.background": "#040404",
+    "sideBar.background": "#0f0f0f",
+    "sideBarSectionHeader.background": "#0f0f0f",
+    "editorGroupHeader.tabsBackground": "#0f0f0f",
+    "activityBar.background": "#0f0f0f",
+    "tab.activeBackground": "#222222",
+    "tab.inactiveBackground": "#0f0f0f",
+    "editorLineNumber.foreground": "#cccccc",
+  },
+  "workbench.activityBar.visible": true,
+  "editor.renderLineHighlight": "none",
+  "editor.fontFamily": "Fira Code",
+  "editor.fontLigatures": false
 }

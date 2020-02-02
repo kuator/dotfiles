@@ -221,7 +221,8 @@ for_window [class="plasmashell" window_type="notification"] floating enable, bor
 for_window [title="Desktop — Plasma"] kill; floating enable; border none
 
 #random wallpaper
-exec --no-startup-id feh --randomize --bg-scale /home/evakuator/Pictures/Wallpapers/*
+# exec --no-startup-id feh --randomize --bg-scale /home/evakuator/Pictures/Wallpapers/*
+exec --no-startup-id ~/.bin/wallpaper
 #run compositor at the startup
 exec_always --no-startup-id picom
 

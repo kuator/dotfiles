@@ -1,0 +1,6 @@
+#!/bin/bash
+while true
+do
+    feh --randomize --bg-max /home/evakuator/Pictures/Wallpapers/*
+    sleep 600
+done
