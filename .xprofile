@@ -1,0 +1,3 @@
+xkbcomp $HOME/.config/xkb/my $DISPLAY 2> /dev/null
+xcape -t 1000 -e "Hyper_R=space"
+xset r rate 220 40
