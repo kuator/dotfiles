@@ -32,7 +32,7 @@
   "editor.overviewRulerBorder": false,
   "editor.lineNumbers": "relative",
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.colorTheme": "Gruvbox Dark Hard",
+  "workbench.colorTheme": "Gruvbox Dark Medium",
   "workbench.colorCustomizations":{
     "editor.background": "#040404",
     "sideBar.background": "#0f0f0f",
@@ -43,7 +43,7 @@
     "tab.inactiveBackground": "#0f0f0f",
     "editorLineNumber.foreground": "#cccccc",
   },
-  "workbench.activityBar.visible": true,
+  "workbench.activityBar.visible": false,
   "editor.renderLineHighlight": "none",
   "editor.fontFamily": "Fira Code",
   "editor.fontLigatures": false

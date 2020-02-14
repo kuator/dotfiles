@@ -144,7 +144,7 @@ export NVM_DIR="/opt/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 #
-export PATH=$PATH:$HOME/.bin
+# export PATH=$PATH:$HOME/.bin
 
 #fzf
 source /usr/share/fzf/completion.bash && source /usr/share/fzf/key-bindings.bash
@@ -161,7 +161,7 @@ stty -ixon
 
 #pipenv: change virtualenvs location 
 export WORKON_HOME=/opt/.venvs
-export CDPATH=$HOME/Documents/Unity/shit:$HOME/Documents/Dar:$HOME
+export CDPATH=".:~/Documents/Unity/shit:~/Documents/Dar:~"
 
 #z.sh
 # . /opt/z/z.sh
@@ -190,5 +190,5 @@ PS1='\[\033[01;32m\]\[\033[0m\033[01;32m\]\u\[\033[01;36m\]@[\w]\[\033[01;32m\][
 HISTSIZE=20000
 HISTFILESIZE=20000
 
-#https://github.com/leafo/gifine
-export PATH=$PATH:$HOME/.luarocks/bin
+#https://stackoverflow.com/a/15232634
+shopt -s extglob
