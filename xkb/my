@@ -20,7 +20,7 @@ xkb_keymap {
     xkb_geometry  { include "pc(pc105)"	};
 
     xkb_symbols "my" {
-        include "pc+us+ru:2+inet(evdev)+group(ctrl_alt_toggle)+capslock(swapescape)"
+        include "pc+us+ru:2+inet(evdev)+group(alt_shift_toggle)+capslock(swapescape)"
 
         //Don't even remember why it is here
         key <HYPR>  { [ Hyper_R ] };

@@ -183,7 +183,8 @@ alias bd=". bd -si"
 
 #https://gist.github.com/justintv/168835
 source /usr/share/git/completion/git-prompt.sh
-PS1='\[\033[01;32m\]\[\033[0m\033[01;32m\]\u\[\033[01;36m\]@[\w]\[\033[01;32m\][$(git branch 2>/dev/null | grep "^*" | colrm 1 2)\[\033[01;32m\]]\[\033[0m\033[01;32m\]\$\[\033[0m\033[01;32m\]\[\033[0m\] '
+# PS1='\[\033[01;32m\]\[\033[0m\033[01;32m\]\u\[\033[01;36m\]@[\w]\[\033[01;32m\][$(git branch 2>/dev/null | grep "^*" | colrm 1 2)\[\033[01;32m\]]\[\033[0m\033[01;32m\]\$\[\033[0m\033[01;32m\]\[\033[0m\] '
+PS1='\[\033[01;32m\]\[\033[0m\033[01;32m\]\u\[\033[01;36m\]@[\w]\[\033[01;32m\][$(git branch 2>/dev/null | grep "^*" | colrm 1 2)\[\033[01;32m\]]\[\033[0m\033[01;32m\]\n\$\[\033[0m\033[01;32m\]\[\033[0m\] '
 # export PS1="\\w:\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)\$ "
 
 #https://eshlox.net/2017/08/01/bash-increase-command-history-size
@@ -192,3 +193,9 @@ HISTFILESIZE=20000
 
 #https://stackoverflow.com/a/15232634
 shopt -s extglob
+
+#https://unix.stackexchange.com/questions/1288/preserve-bash-history-in-multiple-terminal-windows
+# Avoid duplicates
+HISTCONTROL=ignoredups:erasedups  
+# When the shell exits, append to the history file instead of overwriting it
+shopt -s histappend
