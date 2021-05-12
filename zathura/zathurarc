@@ -1,0 +1,7 @@
+map <A-c> focus_inputbar :
+set selection-clipboard clipboard
+# https://unix.stackexchange.com/a/586262
+set recolor   
+set recolor-lightcolor \#222222
+set recolor-keephue
+set default-bg \#222230
