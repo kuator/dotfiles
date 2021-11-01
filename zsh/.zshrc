@@ -44,9 +44,9 @@ alias ...='cd ../..'
 alias q='exit'
 
 #https://gist.github.com/matthewmccullough/787142
-HISTSIZE=5000               	#How many lines of history to keep in memory
+HISTSIZE=999999999              #How many lines of history to keep in memory
 HISTFILE=$ZDOTDIR/.zsh_history  #Where to save history to disk
-SAVEHIST=5000               	#Number of history entries to save to disk
+SAVEHIST=999999999              #Number of history entries to save to disk
 HISTDUP=erase              	#Erase duplicates in the history file
 setopt    appendhistory     	#Append history to the history file (no overwriting)
 setopt    sharehistory      	#Share history across terminals
@@ -94,7 +94,7 @@ then
 fi 
 
 
-source /opt/venvwrapper.sh
+#source /opt/venvwrapper.sh
 
 # fpath=($ZDOTDIR/functions $fpath)
 # source /opt/zsh-autocomplete/zsh-autocomplete.plugin.zsh
@@ -119,3 +119,5 @@ setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history 
 setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
 setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
 setopt HIST_BEEP                 # Beep when accessing nonexistent history.
+
+source ~/bin/countdown
