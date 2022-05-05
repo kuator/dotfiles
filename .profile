@@ -31,3 +31,12 @@ export NPM_CONFIG_CACHE=$XDG_CACHE_HOME/npm
 export N_PREFIX="/opt/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
 
 export SUDO_ASKPASS=/usr/bin/ssh-askpass
+
+# export RUSTUP_HOME=/opt/rust/rustup
+# export CARGO_HOME=/opt/rust/cargo
+# . "/opt/rust/cargo/env"
+
+
+# export GOPATH="~/golib"
+# export PATH="$PATH:$GOPATH/bin"
+# export GOPATH="$GOPATH:~/gofolder"
