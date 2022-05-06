@@ -15,20 +15,12 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export ZDOTDIR="$HOME/.config/zsh"
 export BROWSER=firefox
 export EDITOR=nvim
-
-export PYENV_ROOT="/opt/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
-
-# pipenv: change virtualenvs location 
-export WORKON_HOME=/opt/.venvs
+export OPT="$HOME/opt"
+mkdir -p $OPT
 
 # https://github.com/npm/npm/issues/6675#issuecomment-251049832
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/config
 export NPM_CONFIG_CACHE=$XDG_CACHE_HOME/npm
-
-# https://github.com/tj/n
-export N_PREFIX="/opt/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
 
 export SUDO_ASKPASS=/usr/bin/ssh-askpass
 
@@ -36,7 +28,14 @@ export SUDO_ASKPASS=/usr/bin/ssh-askpass
 # export CARGO_HOME=/opt/rust/cargo
 # . "/opt/rust/cargo/env"
 
-
 # export GOPATH="~/golib"
 # export PATH="$PATH:$GOPATH/bin"
 # export GOPATH="$GOPATH:~/gofolder"
+
+# https://asdf-vm.com/guide/getting-started.html#_3-install-asdf
+. $OPT/asdf/asdf.sh
+export ASDF_CONFIG_DIR="$XDG_CONFIG_HOME/asdf"
+export ASDF_DIR="$OPT/asdf"
+export ASDF_CONFIG_FILE="$ASDF_CONFIG_DIR/asdfrc"
+export ASDF_DEFAULT_TOOL_VERSIONS_FILENAME="$ASDF_CONFIG_DIR/tool-versions"
+export ASDF_DATA_DIR="$XDG_DATA_HOME/asdf"
