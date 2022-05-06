@@ -1,20 +1,30 @@
 git clone https://github.com/kuator/dotfiles.git $HOME/dotfiles
 
+. ~/dotfiles/.profile
+
 if [ -f ~/.profile ]; then
   mv ~/.profile ~/.profile-old
 fi
 
-ln -sv ~/dotfiles/.profile $XDG_CONFIG_HOME/.profile
-ln -sv ~/dotfiles/asdf $XDG_CONFIG_HOME/.config/asdf
-ln -sv ~/dotfiles/.ignore $XDG_CONFIG_HOME/.config/.ignore
-ln -sv ~/dotfiles/xkb $XDG_CONFIG_HOME/xkb
-ln -sv ~/dotfiles/.xprofile $HOME/.xprofile
-ln -sv ~/dotfiles/zsh $XDG_CONFIG_HOME/zsh
-ln -sv ~/dotfiles/git $XDG_CONFIG_HOME/git
-ln -sv ~/dotfiles/redshift.conf $XDG_CONFIG_HOME/redshift.conf
-ln -sv ~/dotfiles/zathura $XDG_CONFIG_HOME/zathura
+declare -a symlink_commands=(
+  "ln -sv ~/dotfiles/.profile $HOME/.profile"
+  "ln -sv ~/dotfiles/asdf $XDG_CONFIG_HOME/asdf"
+  "ln -sv ~/dotfiles/.ignore $XDG_CONFIG_HOME/.ignore"
+  "ln -sv ~/dotfiles/xkb $XDG_CONFIG_HOME/xkb"
+  "ln -sv ~/dotfiles/.xprofile $HOME/.xprofile"
+  "ln -sv ~/dotfiles/zsh $XDG_CONFIG_HOME/zsh"
+  "ln -sv ~/dotfiles/git $XDG_CONFIG_HOME/git"
+  "ln -sv ~/dotfiles/redshift.conf $XDG_CONFIG_HOME/redshift.conf"
+  "ln -sv ~/dotfiles/zathura $XDG_CONFIG_HOME/zathura"
+  "ln -sv ~/dotfiles/asdf $XDG_CONFIG_HOME/asdf"
+)
 
-. ~/.profile
+for val in "${symlink_commands[@]}"; do
+  arg=$(echo "$val" | awk {'print $NF'})
+  if [ -e $arg ]; then
+    eval $val
+  fi
+done
 
 sudo apt install zsh
 chsh -s $(which zsh) 

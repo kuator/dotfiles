@@ -33,9 +33,12 @@ export SUDO_ASKPASS=/usr/bin/ssh-askpass
 # export GOPATH="$GOPATH:~/gofolder"
 
 # https://asdf-vm.com/guide/getting-started.html#_3-install-asdf
-. $OPT/asdf/asdf.sh
 export ASDF_CONFIG_DIR="$XDG_CONFIG_HOME/asdf"
 export ASDF_DIR="$OPT/asdf"
 export ASDF_CONFIG_FILE="$ASDF_CONFIG_DIR/asdfrc"
 export ASDF_DEFAULT_TOOL_VERSIONS_FILENAME="$ASDF_CONFIG_DIR/tool-versions"
 export ASDF_DATA_DIR="$XDG_DATA_HOME/asdf"
+
+if [ -f $OPT/asdf/asdf.sh ]; then
+  . $OPT/asdf/asdf.sh
+fi
