@@ -12,9 +12,9 @@ znap source zsh-users/zsh-autosuggestions
 znap source Tarrasch/zsh-bd
 #https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
 #source /usr/share/git/completion/git-prompt.sh
-znap eval git-prompt 'https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh'
-znap eval fzf-completion.zsh 'https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh'
-znap eval fzf-key-bindings-zsh 'https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.zsh'
+znap eval git-prompt 'curl -fsSL https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh'
+znap eval fzf-completion.zsh 'curl -fsSL https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh'
+znap eval fzf-key-bindings-zsh 'curl -fsSL https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.zsh'
 
 # direnv hooked into asdf
 # znap eval asdf-community/asdf-direnv "asdf exec $(asdf which direnv) hook zsh"

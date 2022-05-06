@@ -1,8 +1,7 @@
-#files: 961	version: 5.8
+#files: 967	version: 5.8.1
 
 _comps=(
 '-' '_precommand'
-'-*-' '_bootctl'
 '.' '_source'
 '5g' '_go'
 '5l' '_go'
@@ -140,6 +139,7 @@ _comps=(
 'bunzip2' '_bzip2'
 'burst' '_mh'
 'busctl' '_busctl'
+'bwrap' '_bwrap'
 'bzcat' '_bzip2'
 'bzegrep' '_grep'
 'bzfgrep' '_grep'
@@ -217,7 +217,6 @@ _comps=(
 'configure' '_configure'
 'convert' '_imagemagick'
 'coreadm' '_coreadm'
-'coredumpctl' '_coredumpctl'
 'cowsay' '_cowsay'
 'cowthink' '_cowsay'
 'cp' '_cp'
@@ -273,6 +272,7 @@ _comps=(
 'debfoster' '_debfoster'
 'deborphan' '_deborphan'
 'debsign' '_debsign'
+'debsnap' '_debsnap'
 'debuild' '_debuild'
 'declare' '_typeset'
 '-default-' '_default'
@@ -317,6 +317,7 @@ _comps=(
 'dpkg-buildpackage' '_dpkg-buildpackage'
 'dpkg-cross' '_dpkg-cross'
 'dpkg-deb' '_dpkg'
+'dpkg-parsechangelog' '_dpkg-parsechangelog'
 'dpkg-query' '_dpkg'
 'dpkg-reconfigure' '_dpkg'
 'dpkg-repack' '_dpkg-repack'
@@ -325,6 +326,7 @@ _comps=(
 'drill' '_drill'
 'dropdb' '_postgresql'
 'dropuser' '_postgresql'
+'dscverify' '_dscverify'
 'dsh' '_dsh'
 'dtrace' '_dtrace'
 'dtruss' '_dtruss'
@@ -413,7 +415,6 @@ _comps=(
 'fixwpps' '_psutils'
 'fixwwps' '_psutils'
 'flac' '_flac'
-'flatpak' '_flatpak'
 'flex' '_flex'
 'flex++' '_flex'
 'flipdiff' '_patchutils'
@@ -790,7 +791,6 @@ _comps=(
 'lsattr' '_lsattr'
 'lsblk' '_lsblk'
 'lscfg' '_lscfg'
-'lsd' '_lsd'
 'lsdev' '_lsdev'
 'lsdiff' '_patchutils'
 'lslv' '_lslv'
@@ -945,7 +945,6 @@ _comps=(
 'nginx' '_nginx'
 'ngrep' '_ngrep'
 'nice' '_nice'
-'ninja' '_ninja'
 'nkf' '_nkf'
 'nl' '_nl'
 'nm' '_nm'
@@ -1277,7 +1276,6 @@ _comps=(
 'sha512sum' '_md5sum'
 'sha512t256' '_cksum'
 'shasum' '_shasum'
-'shell-script' '_bootctl'
 'shift' '_arrays'
 'show' '_mh'
 'showchar' '_psutils'
@@ -1379,6 +1377,7 @@ _comps=(
 'systemd-inhibit' '_systemd-inhibit'
 'systemd-machine-id-setup' '_systemd'
 'systemd-notify' '_systemd'
+'systemd-path' '_systemd-path'
 'systemd-resolve' '_resolvectl'
 'systemd-run' '_systemd-run'
 'systemd-tmpfiles' '_systemd-tmpfiles'
@@ -1457,6 +1456,7 @@ _comps=(
 'txt' '_hosts'
 'type' '_which'
 'typeset' '_typeset'
+'ubuntu-report' '_ubuntu-report'
 'udevadm' '_udevadm'
 'ulimit' '_ulimit'
 'uml_mconsole' '_uml'
@@ -1603,6 +1603,8 @@ _comps=(
 'whom' '_mh'
 'wiggle' '_wiggle'
 'wipefs' '_wipefs'
+'wl-copy' '_wl-copy'
+'wl-paste' '_wl-paste'
 'wodim' '_cdrecord'
 'wpa_cli' '_wpa_cli'
 'write' '_users_on'
@@ -1664,6 +1666,7 @@ _comps=(
 'yash' '_sh'
 'yast' '_yast'
 'yast2' '_yast'
+'youtube-dl' '_youtube-dl'
 'ypbind' '_yp'
 'ypcat' '_yp'
 'ypmatch' '_yp'
@@ -1711,6 +1714,7 @@ _comps=(
 'zmail' '_mail'
 'zmodload' '_zmodload'
 'zmv' '_zmv'
+'znap' '_znap'
 'zone' '_hosts'
 'zoneadm' '_zoneadm'
 'zparseopts' '_zparseopts'
@@ -1822,67 +1826,53 @@ zle -C _list_expansions .list-choices _expand_word
 zle -C _most_recent_file .complete-word _most_recent_file
 zle -C _next_tags .list-choices _next_tags
 zle -C _read_comp .complete-word _read_comp
-bindkey '^X^R' _read_comp
-bindkey '^X?' _complete_debug
-bindkey '^XC' _correct_filename
-bindkey '^Xa' _expand_alias
-bindkey '^Xc' _correct_word
-bindkey '^Xd' _list_expansions
-bindkey '^Xe' _expand_word
-bindkey '^Xh' _complete_help
-bindkey '^Xm' _most_recent_file
-bindkey '^Xn' _next_tags
-bindkey '^Xt' _complete_tag
-bindkey '^X~' _bash_list-choices
-bindkey '^[,' _history-complete-newer
-bindkey '^[/' _history-complete-older
-bindkey '^[~' _bash_complete-word
 
-autoload -Uz _bootctl _busctl _coredumpctl _curl _fd \
-            _fdfind _flatpak _hostnamectl _journalctl _kernel-install \
-            _localectl _loginctl _lsd _mpv _networkctl \
-            _ninja _pulseaudio _resolvectl _rg _sd_hosts_or_user_at_host \
-            _sd_outputmodes _sd_unit_files _systemctl _systemd _systemd-analyze \
-            _systemd-delta _systemd-inhibit _systemd-run _systemd-tmpfiles _timedatectl \
-            _udevadm _zathura _cdr _floppy _logical_volumes \
-            _lscfg _lsdev _lslv _lspv _lsvg \
-            _object_classes _physical_volumes _smit _volume_groups _bsdconfig \
-            _bsd_disks _bsdinstall _bsd_pkg _chflags _csup \
-            _cu _cvsup _fbsd_architectures _fbsd_device_types _fetch \
-            _file_flags _freebsd-update _fstat _fw_update _gstat \
-            _jail _jails _jexec _jls _jot \
-            _kld _ldap _mixerctl _nbsd_architectures _obsd_architectures \
-            _pfctl _pkgin _portaudit _portlint _portmaster \
-            _portsnap _powerd _procstat _rcctl _signify \
-            _sockstat _sysrc _systat _vmctl _watch-snoop \
-            _all_labels _all_matches _alternative _approximate _arg_compile \
-            _arguments _bash_completions _cache_invalid _call_function _combination \
-            _complete _complete_debug _complete_help _complete_help_generic _complete_tag \
-            _comp_locale _correct _correct_filename _correct_word _describe \
-            _description _dispatch _expand _expand_alias _expand_word \
-            _extensions _external_pwds _generic _guard _history \
-            _history_complete_word _ignored _list _main_complete _match \
-            _menu _message _most_recent_file _multi_parts _next_label \
-            _next_tags _normal _nothing _oldlist _pick_variant \
-            _prefix _read_comp _regex_arguments _regex_words _requested \
-            _retrieve_cache _sep_parts _sequence _set_command _setup \
-            _store_cache _sub_commands _tags _user_expand _values \
-            _wanted _cygcheck _cygpath _cygrunsrv _cygserver \
-            _cygstart _dumper _getclip _mkshortcut _mkzsh \
-            _pscp _putclip _readshortcut _caffeinate _defaults \
-            _fink _fs_usage _hdiutil _mac_applications _mac_files_for_application \
-            _mdfind _mdls _mdutil _networksetup _nvram \
-            _open _osascript _otool _pbcopy _plutil \
-            _qtplay _retrieve_mac_apps _say _scselect _sc_usage \
-            _scutil _softwareupdate _sw_vers _system_profiler _trash \
-            _xcode-select _a2utils _apt _apt-file _aptitude \
-            _apt-move _apt-show-versions _auto-apt _axi-cache _bts \
-            _bug _cdbs-edit-patch _dak _dchroot _dchroot-dsa \
-            _dcut _deb_architectures _debbugs_bugnumber _debchange _debcheckout \
-            _deb_codenames _debdiff _deb_files _debfoster _deborphan \
-            _deb_packages _debsign _debuild _dlocate _dpatch-edit-patch \
-            _dpkg _dpkg-buildpackage _dpkg-cross _dpkg-repack _dpkg_source \
-            _dput _dupload _git-buildpackage _grep-excuses _invoke-rc.d \
+autoload -Uz _bootctl _busctl _bwrap _curl _dpkg-parsechangelog \
+            _fd _fdfind _hostnamectl _journalctl _kernel-install \
+            _localectl _loginctl _mpv _networkctl _pulseaudio \
+            _resolvectl _rg _sd_hosts_or_user_at_host _sd_outputmodes _sd_unit_files \
+            _systemctl _systemd _systemd-analyze _systemd-delta _systemd-inhibit \
+            _systemd-path _systemd-run _systemd-tmpfiles _timedatectl _ubuntu-report \
+            _udevadm _wl-copy _wl-paste _youtube-dl _zathura \
+            _cdr _floppy _logical_volumes _lscfg _lsdev \
+            _lslv _lspv _lsvg _object_classes _physical_volumes \
+            _smit _volume_groups _bsdconfig _bsd_disks _bsdinstall \
+            _bsd_pkg _chflags _csup _cu _cvsup \
+            _fbsd_architectures _fbsd_device_types _fetch _file_flags _freebsd-update \
+            _fstat _fw_update _gstat _jail _jails \
+            _jexec _jls _jot _kld _ldap \
+            _mixerctl _nbsd_architectures _obsd_architectures _pfctl _pkgin \
+            _portaudit _portlint _portmaster _portsnap _powerd \
+            _procstat _rcctl _signify _sockstat _sysrc \
+            _systat _vmctl _watch-snoop _all_labels _all_matches \
+            _alternative _approximate _arg_compile _arguments _bash_completions \
+            _cache_invalid _call_function _combination _complete _complete_debug \
+            _complete_help _complete_help_generic _complete_tag _comp_locale _correct \
+            _correct_filename _correct_word _describe _description _dispatch \
+            _expand _expand_alias _expand_word _extensions _external_pwds \
+            _generic _guard _history _history_complete_word _ignored \
+            _list _main_complete _match _menu _message \
+            _most_recent_file _multi_parts _next_label _next_tags _normal \
+            _nothing _oldlist _pick_variant _prefix _read_comp \
+            _regex_arguments _regex_words _requested _retrieve_cache _sep_parts \
+            _sequence _set_command _setup _store_cache _sub_commands \
+            _tags _user_expand _values _wanted _cygcheck \
+            _cygpath _cygrunsrv _cygserver _cygstart _dumper \
+            _getclip _mkshortcut _mkzsh _pscp _putclip \
+            _readshortcut _caffeinate _defaults _fink _fs_usage \
+            _hdiutil _mac_applications _mac_files_for_application _mdfind _mdls \
+            _mdutil _networksetup _nvram _open _osascript \
+            _otool _pbcopy _plutil _qtplay _retrieve_mac_apps \
+            _say _scselect _sc_usage _scutil _softwareupdate \
+            _sw_vers _system_profiler _trash _xcode-select _a2utils \
+            _apt _apt-file _aptitude _apt-move _apt-show-versions \
+            _auto-apt _axi-cache _bts _bug _cdbs-edit-patch \
+            _dak _dchroot _dchroot-dsa _dcut _deb_architectures \
+            _debbugs_bugnumber _debchange _debcheckout _deb_codenames _debdiff \
+            _deb_files _debfoster _deborphan _deb_packages _debsign \
+            _debsnap _debuild _dlocate _dpatch-edit-patch _dpkg \
+            _dpkg-buildpackage _dpkg-cross _dpkg-repack _dpkg_source _dput \
+            _dscverify _dupload _git-buildpackage _grep-excuses _invoke-rc.d \
             _lighttpd _lintian _madison _make-kpkg _members \
             _mergechanges _module-assistant _pbuilder _piuparts _reprepro \
             _sbuild _schroot _svn-buildpackage _toolchain-source _update-alternatives \
@@ -2029,7 +2019,8 @@ autoload -Uz _bootctl _busctl _coredumpctl _curl _fd \
             _zattr _zcalc _zcalc_line _zcompile _zed \
             _zftp _zle _zmodload _zmv _zparseopts \
             _zpty _zsh-mime-handler _zsocket _zstyle _ztodo \
-            _hwinfo _osc _SUSEconfig _yast _zypper
+            _hwinfo _osc _SUSEconfig _yast _zypper \
+            _znap
 autoload -Uz +X _call_program
 
 typeset -gUa _comp_assocs
