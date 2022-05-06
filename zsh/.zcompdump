@@ -1,4 +1,4 @@
-#files: 967	version: 5.8.1
+#files: 966	version: 5.8.1
 
 _comps=(
 '-' '_precommand'
@@ -1714,7 +1714,6 @@ _comps=(
 'zmail' '_mail'
 'zmodload' '_zmodload'
 'zmv' '_zmv'
-'znap' '_znap'
 'zone' '_hosts'
 'zoneadm' '_zoneadm'
 'zparseopts' '_zparseopts'
@@ -1826,6 +1825,21 @@ zle -C _list_expansions .list-choices _expand_word
 zle -C _most_recent_file .complete-word _most_recent_file
 zle -C _next_tags .list-choices _next_tags
 zle -C _read_comp .complete-word _read_comp
+bindkey '^X^R' _read_comp
+bindkey '^X?' _complete_debug
+bindkey '^XC' _correct_filename
+bindkey '^Xa' _expand_alias
+bindkey '^Xc' _correct_word
+bindkey '^Xd' _list_expansions
+bindkey '^Xe' _expand_word
+bindkey '^Xh' _complete_help
+bindkey '^Xm' _most_recent_file
+bindkey '^Xn' _next_tags
+bindkey '^Xt' _complete_tag
+bindkey '^X~' _bash_list-choices
+bindkey '^[,' _history-complete-newer
+bindkey '^[/' _history-complete-older
+bindkey '^[~' _bash_complete-word
 
 autoload -Uz _bootctl _busctl _bwrap _curl _dpkg-parsechangelog \
             _fd _fdfind _hostnamectl _journalctl _kernel-install \
@@ -2019,8 +2033,7 @@ autoload -Uz _bootctl _busctl _bwrap _curl _dpkg-parsechangelog \
             _zattr _zcalc _zcalc_line _zcompile _zed \
             _zftp _zle _zmodload _zmv _zparseopts \
             _zpty _zsh-mime-handler _zsocket _zstyle _ztodo \
-            _hwinfo _osc _SUSEconfig _yast _zypper \
-            _znap
+            _hwinfo _osc _SUSEconfig _yast _zypper
 autoload -Uz +X _call_program
 
 typeset -gUa _comp_assocs

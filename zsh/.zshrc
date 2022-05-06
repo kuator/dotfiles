@@ -9,6 +9,7 @@ source $XDG_DATA_HOME/zsh/zsh-snap/znap.zsh
 # Better cding like z.lua but faster
 znap eval zoxide 'zoxide init zsh'
 znap source zsh-users/zsh-autosuggestions
+znap source zsh-users/zsh-syntax-highlighting
 znap source Tarrasch/zsh-bd
 #https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
 #source /usr/share/git/completion/git-prompt.sh
