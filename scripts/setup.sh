@@ -1,4 +1,6 @@
-git clone https://github.com/kuator/dotfiles.git $HOME/dotfiles
+if [ ! -d $HOME/dotfiles ]; then
+  git clone https://github.com/kuator/dotfiles.git $HOME/dotfiles
+fi
 
 . ~/dotfiles/.profile
 
