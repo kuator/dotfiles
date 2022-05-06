@@ -1,6 +1,24 @@
+ZSH_DATA=$XDG_DATA_HOME/zsh
+
+[[ -f $XDG_DATA_HOME/zsh/zsh-snap/znap.zsh ]] ||
+    git clone --depth 1 -- \
+        https://github.com/marlonrichert/zsh-snap.git $XDG_DATA_HOME/zsh/zsh-snap
+
+source $XDG_DATA_HOME/zsh/zsh-snap/znap.zsh
+
+# Better cding like z.lua but faster
+znap eval zoxide 'zoxide init zsh'
+znap source zsh-users/zsh-autosuggestions
+znap source Tarrasch/zsh-bd
 #https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
 #source /usr/share/git/completion/git-prompt.sh
-source /usr/lib/git-core/git-sh-prompt
+znap eval git-prompt 'https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh'
+znap eval fzf-completion.zsh 'https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh'
+znap eval fzf-key-bindings-zsh 'https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.zsh'
+
+# direnv hooked into asdf
+# znap eval asdf-community/asdf-direnv "asdf exec $(asdf which direnv) hook zsh"
+
 autoload -U colors && colors
 NEWLINE=$'\n'
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[magenta]%}%M %{$fg[blue]%}%~%{$fg[red]%}]"
@@ -58,28 +76,10 @@ setopt auto_cd
 # https://serverfault.com/questions/35312/unable-to-understand-the-benefit-of-zshs-autopushd
 setopt autopushd
 
-# fzf keybindings
-# source /usr/share/fzf/completion.zsh && source /usr/share/fzf/key-bindings.zsh
-source /usr/share/doc/fzf/examples/completion.zsh && source /usr/share/doc/fzf/examples/key-bindings.zsh
-
-
-#z.lua
-eval "$(lua /opt/z.lua/z.lua --init zsh)"
-export _ZL_HYPHEN=1
-export _ZL_DATA=$XDG_CONFIG_HOME/zlua/zlua
-
-#https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md
-source /opt/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-# https://github.com/Tarrasch/zsh-bd
-source /opt/zsh-bd/bd.zsh
-
-# https://github.com/zsh-users/zsh-syntax-highlighting
-source /opt/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 # http://info2html.sourceforge.net/cgi-bin/info2html-demo/info2html?(zsh)Movement
 # bindkey '[' vi-rev-repeat-find
 # bindkey ']' vi-repeat-find
+
 # 10ms for key sequences
 KEYTIMEOUT=1
 

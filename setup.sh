@@ -1,13 +1,29 @@
 git clone https://github.com/kuator/dotfiles.git $HOME/dotfiles
-. ~/dotfiles/.profile
+
+ln -sv ~/dotfiles/xkb $XDG_CONFIG_HOME/xkb
+ln -sv ~/dotfiles/.xprofile $HOME/.xprofile
+ln -sv ~/dotfiles/zsh $XDG_CONFIG_HOME/zsh
+ln -sv ~/dotfiles/git $XDG_CONFIG_HOME/git
+ln -sv ~/dotfiles/redshift.conf $XDG_CONFIG_HOME/redshift.conf
+ln -sv ~/dotfiles/zathura $XDG_CONFIG_HOME/zathura
+ln -sv ~/dotfiles/.profile $XDG_CONFIG_HOME/.profile
+ln -sv ~/dotfiles/asdf $XDG_CONFIG_HOME/.config/asdf
+
+. ~/.profile
+
+# sudo apt install zsh
+# chsh -s $(which zsh) 
+# zsh
+sudo apt install fzf zoxide
 
 sudo apt update
-sudo apt install git xcape xclip curl dirmngr gpg curl gawk
+sudo apt install git xcape xclip curl dirmngr gpg curl gawk 
 sudo apt-get install python3-dev python3-pip
 
 sudo add-apt-repository ppa:neovim-ppa/unstable
 sudo apt-get update
 sudo apt-get install neovim
+sudo apt install zathura
 
 # https://github.com/chrisbra/SudoEdit.vim/issues/48
 sudo apt install ssh-askpass
@@ -33,12 +49,3 @@ asdf install nodejs 16.15.0
 asdf global python 16.15.0
 asdf plugin-add direnv
 asdf direnv setup --shell zsh --version latest
-
-# git clone https://github.com/kuator/nvim $HOME/nvim
-
-ln -sv ~/dotfiles/xkb $XDG_CONFIG_HOME/xkb
-ln -sv ~/dotfiles/.xprofile $HOME/.xprofile
-ln -sv ~/dotfiles/zsh $XDG_CONFIG_HOME/zsh
-ln -sv ~/dotfiles/git $XDG_CONFIG_HOME/git
-ln -sv ~/dotfiles/redshift.conf $XDG_CONFIG_HOME/redshift.conf
-ln -sv ~/dotfiles/zathura/ $XDG_CONFIG_HOME/zathura
