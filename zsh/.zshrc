@@ -13,9 +13,11 @@ znap source zsh-users/zsh-syntax-highlighting
 znap source Tarrasch/zsh-bd
 #https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
 #source /usr/share/git/completion/git-prompt.sh
-znap eval git-prompt 'curl -fsSL https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh'
-znap eval fzf-completion.zsh 'curl -fsSL https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh'
-znap eval fzf-key-bindings-zsh 'curl -fsSL https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.zsh'
+znap source git contrib/completion/git-prompt.sh
+# znap eval git-prompt 'curl -fsSL https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh'
+# znap eval fzf-completion.zsh 'curl -fsSL https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh'
+# znap eval fzf-key-bindings-zsh 'curl -fsSL https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.zsh'
+znap source junegunn/fzf shell/{completion,key-bindings}.zsh
 
 # direnv hooked into asdf
 # znap eval asdf-community/asdf-direnv "asdf exec $(asdf which direnv) hook zsh"
@@ -56,7 +58,6 @@ bindkey "^X^E" edit-command-line
 # Include hidden files in autocomplete:
 _comp_options+=(globdots)
 
-
 alias ls='ls --color=auto'
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -94,12 +95,10 @@ then
     stty -ixon
 fi 
 
-
 #source /opt/venvwrapper.sh
 
 # fpath=($ZDOTDIR/functions $fpath)
 # source /opt/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-
 
 # https://github.com/momo-lab/zsh-abbrev-alias
 
@@ -121,4 +120,4 @@ setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording en
 setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
 setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 
-source ~/bin/countdown
+countdown

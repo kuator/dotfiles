@@ -2,53 +2,98 @@ if [ ! -d $HOME/dotfiles ]; then
   git clone https://github.com/kuator/dotfiles.git $HOME/dotfiles
 fi
 
-. ~/dotfiles/.profile
+export DOTFILES=$HOME/dotfiles
+export OPT=$HOME/opt
+mkdir -p $OPT
 
-if [ -f ~/.profile ]; then
-  mv ~/.profile ~/.profile-old
-fi
+. $DOTFILES/.profile
 
-declare -a symlink_commands=(
-  "ln -sv ~/dotfiles/.profile $HOME/.profile"
-  "ln -sv ~/dotfiles/asdf $XDG_CONFIG_HOME/asdf"
-  "ln -sv ~/dotfiles/.ignore $XDG_CONFIG_HOME/.ignore"
-  "ln -sv ~/dotfiles/xkb $XDG_CONFIG_HOME/xkb"
-  "ln -sv ~/dotfiles/.xprofile $HOME/.xprofile"
-  "ln -sv ~/dotfiles/zsh $XDG_CONFIG_HOME/zsh"
-  "ln -sv ~/dotfiles/git $XDG_CONFIG_HOME/git"
-  "ln -sv ~/dotfiles/redshift.conf $XDG_CONFIG_HOME/redshift.conf"
-  "ln -sv ~/dotfiles/zathura $XDG_CONFIG_HOME/zathura"
-  "ln -sv ~/dotfiles/asdf $XDG_CONFIG_HOME/asdf"
+apt_install_if_not_installed() {
+  # https://stackoverflow.com/questions/1298066/how-can-i-check-if-a-package-is-installed-and-install-it-if-not#comment80142067_22592801
+  if ! dpkg-query -W -f='${Status}' "$1"  | grep "ok installed"; then apt install "$1"; fi
+  echo ""$1" installed"
+}
+
+# https://askubuntu.com/a/749379
+add_ppa() {
+  for i in "$@"; do
+    if ! grep -q "^deb .*"$i"" /etc/apt/sources.list /etc/apt/sources.list.d/*; then
+      echo "Adding ppa:$i"
+      sudo add-apt-repository -y ppa:$i
+    else
+      echo "ppa:$i already exists"
+    fi
+  done
+}
+
+add_ppa neovim-ppa/unstable
+
+sudo apt update
+
+declare -a packages=(
+  zsh
+  fzf zoxide
+  git xcape xclip curl dirmngr gpg curl gawk 
+  make build-essential libssl-dev zlib1g-dev 
+  # https://github.com/pyenv/pyenv/wiki#suggested-build-environment
+  libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm 
+  libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+  zathura
+  # https://github.com/chrisbra/SudoEdit.vim/issues/48
+  ssh-askpass
+  # for telescope
+  ripgrep fd-find
+  neovim
 )
 
-for val in "${symlink_commands[@]}"; do
-  arg=$(echo "$val" | awk {'print $NF'})
-  if [ -e $arg ]; then
-    eval $val
+for package in "${packages[@]}"; do
+  apt_install_if_not_installed "$package"
+done
+
+declare -a home_configs=(
+  ".xprofile" ".profile"
+)
+
+declare -a xdg_configs=(
+ "asdf" "zathura" "redshift.conf"
+ "git" "asdf" "xkb" "zsh" ".ignore"
+)
+
+for config in "${home_configs[@]}"; do
+  if [ -f $HOME/$config ]; then
+    mv "$HOME/$config" "$HOME/${config}-old"
+  fi
+
+  if [ ! -e $HOME/$config ]; then
+    ln -sv $DOTFILES/$config $HOME/$config
   fi
 done
 
-sudo apt install zsh
-chsh -s $(which zsh) 
+for config in "${xdg_configs[@]}"; do
+  if [ ! -e $config ]; then
+    ln -sv "$DOTFILES/$config" "$XDG_CONFIG_HOME/$config"
+  fi
+done
 
-# zsh
-sudo apt install fzf zoxide
+#zsh
+check_default_shell() {
+  if [ -z "${SHELL##*zsh*}" ] ;then
+    echo "Default shell is zsh."
+  else
+    echo -n "Default shell is not zsh. Do you want to chsh -s \$(which zsh)? (y/n)"
+    old_stty_cfg=$(stty -g)
+    stty raw -echo
+    answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
+    stty $old_stty_cfg && echo
+    if echo "$answer" | grep -iq "^y" ;then
+      chsh -s $(which zsh)
+    else
+      echo "Warning: Your configuration won't work properly. If you exec zsh, it'll exec tmux which will exec your default shell which isn't zsh."
+    fi
+  fi
+}
 
-sudo apt update
-sudo apt install git xcape xclip curl dirmngr gpg curl gawk 
-sudo apt-get install python3-dev python3-pip
-
-sudo add-apt-repository ppa:neovim-ppa/unstable
-sudo apt-get update
-sudo apt-get install neovim
-
-# for telescope
-sudo apt install ripgrep fd-find
-
-sudo apt install zathura
-
-# https://github.com/chrisbra/SudoEdit.vim/issues/48
-sudo apt install ssh-askpass
+check_default_shell
 
 # asdf
 if [ ! -d "$OPT/asdf" ]; then
@@ -65,8 +110,10 @@ if [ ! -d "$OPT/asdf" ]; then
   asdf direnv setup --shell zsh --version latest
 fi
 
-# https://github.com/pyenv/pyenv/wiki#suggested-build-environment
-sudo apt-get update;
-sudo apt-get install make build-essential libssl-dev zlib1g-dev \
-libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
-libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+if [ -d "$HOME/bin" ]; then
+  mv $HOME/bin $HOME/bin-old
+fi
+
+if [ ! -e "$HOME/bin" ]; then
+  ln -sv $DOTFILES/bin $HOME/bin
+fi
