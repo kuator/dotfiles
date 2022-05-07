@@ -16,7 +16,7 @@ export ZDOTDIR="$HOME/.config/zsh"
 export BROWSER=firefox
 export EDITOR=nvim
 export OPT="$HOME/opt"
-mkdir -p $OPT
+export DOTFILES=$HOME/dotfiles
 
 # https://github.com/npm/npm/issues/6675#issuecomment-251049832
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/config
