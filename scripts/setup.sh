@@ -4,6 +4,7 @@ fi
 
 export DOTFILES=$HOME/dotfiles
 export OPT=$HOME/opt
+export ASDF_DIR=$HOME/opt/asdf
 mkdir -p $OPT
 
 . $DOTFILES/.profile
@@ -96,8 +97,8 @@ check_default_shell() {
 check_default_shell
 
 # asdf
-if [ ! -d "$OPT/asdf" ]; then
-  git clone https://github.com/asdf-vm/asdf.git $OPT/asdf
+if [ ! -d "$ASDF_DIR" ]; then
+  git clone https://github.com/asdf-vm/asdf.git "$ASDF_DIR"
   # https://asdf-vm.com/guide/getting-started.html#_3-install-asdf
   . $OPT/asdf/asdf.sh
   asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git

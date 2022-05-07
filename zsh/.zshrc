@@ -19,6 +19,18 @@ znap source git contrib/completion/git-prompt.sh
 # znap eval fzf-key-bindings-zsh 'curl -fsSL https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.zsh'
 znap source junegunn/fzf shell/{completion,key-bindings}.zsh
 
+znap source asdf-vm/asdf asdf.sh
+
+##
+# Use ~[dynamically-named dirs] to add repos to your $path or $fpath.
+# Znap will download them automatically.
+#
+fpath+=(
+    ~[asdf-vm/asdf]/completions
+    ~[asdf-community/asdf-direnv]/completions
+    ~[zsh-users/zsh-completions]/src
+)
+
 # direnv hooked into asdf
 # znap eval asdf-community/asdf-direnv "asdf exec $(asdf which direnv) hook zsh"
 
@@ -42,6 +54,12 @@ zstyle ':completion:*' matcher-list '' \
   'm:{a-z\-}={A-Z\_}' \
   'r:[^[:alpha:]]||[[:alpha:]]=** r:|=* m:{a-z\-}={A-Z\_}' \
   'r:|?=** m:{a-z\-}={A-Z\_}'
+
+
+# asdf
+# https://asdf-vm.com/guide/getting-started.html#_3-install-asdf
+# fpath=(${ASDF_DIR}/completions $fpath)
+
 
 zmodload zsh/complist
 compinit
