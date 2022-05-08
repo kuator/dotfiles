@@ -77,6 +77,7 @@ for config in "${xdg_configs[@]}"; do
 done
 
 #zsh
+# https://github.com/lkhphuc/dotfiles/blob/master/deploy.sh
 check_default_shell() {
   if [ -z "${SHELL##*zsh*}" ] ;then
     echo "Default shell is zsh."
