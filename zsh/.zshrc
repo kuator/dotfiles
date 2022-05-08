@@ -1,3 +1,4 @@
+zmodload zsh/zprof
 ZSH_DATA=$XDG_DATA_HOME/zsh
 
 [[ -f $XDG_DATA_HOME/zsh/zsh-snap/znap.zsh ]] ||
@@ -6,42 +7,39 @@ ZSH_DATA=$XDG_DATA_HOME/zsh
 
 source $XDG_DATA_HOME/zsh/zsh-snap/znap.zsh
 
-# Better cding like z.lua but faster
-znap eval zoxide 'zoxide init zsh'
 znap source zsh-users/zsh-autosuggestions
 znap source zsh-users/zsh-syntax-highlighting
 znap source Tarrasch/zsh-bd
-#https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
-#source /usr/share/git/completion/git-prompt.sh
-znap source git contrib/completion/git-prompt.sh
-# znap eval git-prompt 'curl -fsSL https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh'
-# znap eval fzf-completion.zsh 'curl -fsSL https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh'
-# znap eval fzf-key-bindings-zsh 'curl -fsSL https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.zsh'
+# https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
+znap source git/git contrib/completion/git-prompt.sh
 znap source junegunn/fzf shell/{completion,key-bindings}.zsh
+# direnv hooked into asdf
+# znap eval asdf-community/asdf-direnv "asdf exec $(asdf which direnv) hook zsh"
+# Better cding like z.lua but faster
+znap eval zoxide 'zoxide init zsh'
+# source /opt/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+# https://github.com/momo-lab/zsh-abbrev-alias
 
-znap source asdf-vm/asdf asdf.sh
+# install fzf dynamically, maybe?
+# (( ${+commands[fzf]} )) || ~[fzf]/install --bin
 
-##
 # Use ~[dynamically-named dirs] to add repos to your $path or $fpath.
 # Znap will download them automatically.
-#
 fpath+=(
     ~[asdf-vm/asdf]/completions
     ~[asdf-community/asdf-direnv]/completions
-    ~[zsh-users/zsh-completions]/src
 )
 
-# direnv hooked into asdf
-# znap eval asdf-community/asdf-direnv "asdf exec $(asdf which direnv) hook zsh"
-
 autoload -U colors && colors
+
 NEWLINE=$'\n'
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[magenta]%}%M %{$fg[blue]%}%~%{$fg[red]%}]"
 setopt PROMPT_SUBST
 PS1+='%{$fg[green]%}[$(__git_ps1 "%s")]'
 PS1+="${NEWLINE}%{$fg[green]%}$%b%{$reset_color%} "
 
-autoload -U compinit
+# autoload -U compinit
+
 # zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' menu select
 
@@ -55,14 +53,8 @@ zstyle ':completion:*' matcher-list '' \
   'r:[^[:alpha:]]||[[:alpha:]]=** r:|=* m:{a-z\-}={A-Z\_}' \
   'r:|?=** m:{a-z\-}={A-Z\_}'
 
-
-# asdf
-# https://asdf-vm.com/guide/getting-started.html#_3-install-asdf
-# fpath=(${ASDF_DIR}/completions $fpath)
-
-
-zmodload zsh/complist
-compinit
+# zmodload zsh/complist
+# compinit
 
 #emacs style keybindings
 bindkey -e
@@ -83,22 +75,13 @@ alias q='exit'
 
 #https://gist.github.com/matthewmccullough/787142
 HISTSIZE=999999999              #How many lines of history to keep in memory
-HISTFILE=$ZDOTDIR/.zsh_history  #Where to save history to disk
 SAVEHIST=999999999              #Number of history entries to save to disk
-HISTDUP=erase              	#Erase duplicates in the history file
-setopt    appendhistory     	#Append history to the history file (no overwriting)
-setopt    sharehistory      	#Share history across terminals
-setopt    incappendhistory  	#Immediately append to the history file, not just when a term is killed
 
 # https://blog.confirm.ch/zsh-tips-changing-directories/
 setopt auto_cd
 
 # https://serverfault.com/questions/35312/unable-to-understand-the-benefit-of-zshs-autopushd
 setopt autopushd
-
-# http://info2html.sourceforge.net/cgi-bin/info2html-demo/info2html?(zsh)Movement
-# bindkey '[' vi-rev-repeat-find
-# bindkey ']' vi-repeat-find
 
 # 10ms for key sequences
 KEYTIMEOUT=1
@@ -113,17 +96,12 @@ then
     stty -ixon
 fi 
 
-#source /opt/venvwrapper.sh
-
-# fpath=($ZDOTDIR/functions $fpath)
-# source /opt/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-
-# https://github.com/momo-lab/zsh-abbrev-alias
 
 # https://unix.stackexchange.com/questions/273861/unlimited-history-in-zsh
 # HISTFILE="$HOME/.zsh_history"
 HISTSIZE=10000000
 SAVEHIST=10000000
+HISTFILE=$ZDOTDIR/.zsh_history   #Where to save history to disk
 setopt BANG_HIST                 # Treat the '!' character specially during expansion.
 setopt EXTENDED_HISTORY          # Write the history file in the ":start:elapsed;command" format.
 setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
@@ -139,3 +117,5 @@ setopt HIST_VERIFY               # Don't execute immediately upon history expans
 setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 
 countdown
+
+zprof
