@@ -45,6 +45,7 @@ declare -a packages=(
   # for telescope
   ripgrep fd-find
   neovim
+  fonts-noto-cjk
 )
 
 for package in "${packages[@]}"; do
