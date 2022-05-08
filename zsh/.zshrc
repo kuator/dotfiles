@@ -37,8 +37,6 @@ setopt PROMPT_SUBST
 PS1+='%{$fg[green]%}[$(__git_ps1 "%s")]'
 PS1+="${NEWLINE}%{$fg[green]%}$%b%{$reset_color%} "
 
-# autoload -U compinit
-
 # zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' menu select
 
@@ -51,9 +49,6 @@ zstyle ':completion:*' matcher-list '' \
   'm:{a-z\-}={A-Z\_}' \
   'r:[^[:alpha:]]||[[:alpha:]]=** r:|=* m:{a-z\-}={A-Z\_}' \
   'r:|?=** m:{a-z\-}={A-Z\_}'
-
-# zmodload zsh/complist
-# compinit
 
 #emacs style keybindings
 bindkey -e
@@ -72,10 +67,6 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias q='exit'
 
-#https://gist.github.com/matthewmccullough/787142
-HISTSIZE=999999999              #How many lines of history to keep in memory
-SAVEHIST=999999999              #Number of history entries to save to disk
-
 # https://blog.confirm.ch/zsh-tips-changing-directories/
 setopt auto_cd
 
@@ -89,17 +80,16 @@ KEYTIMEOUT=1
 export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 export WORDCHARS='*?_[]~=&;!#$%^(){}<>'
 
-
 if [[ -t 0 && $- = *i* ]]
 then
     stty -ixon
 fi 
 
-
+# https://gist.github.com/matthewmccullough/787142
 # https://unix.stackexchange.com/questions/273861/unlimited-history-in-zsh
 # HISTFILE="$HOME/.zsh_history"
-HISTSIZE=10000000
-SAVEHIST=10000000
+HISTSIZE=999999999              #How many lines of history to keep in memory
+SAVEHIST=999999999              #Number of history entries to save to disk
 HISTFILE=$ZDOTDIR/.zsh_history   #Where to save history to disk
 setopt BANG_HIST                 # Treat the '!' character specially during expansion.
 setopt EXTENDED_HISTORY          # Write the history file in the ":start:elapsed;command" format.

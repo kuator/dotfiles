@@ -9,6 +9,8 @@ mkdir -p $OPT
 
 . $DOTFILES/.profile
 
+dconf load /org/gnome/terminal/legacy/profiles:/ < $DOTFILES/gnome-terminal-profiles.dconf
+
 apt_install_if_not_installed() {
   # https://stackoverflow.com/questions/1298066/how-can-i-check-if-a-package-is-installed-and-install-it-if-not#comment80142067_22592801
   if ! dpkg-query -W -f='${Status}' "$1"  | grep "ok installed"; then apt install "$1"; fi
@@ -120,3 +122,4 @@ fi
 if [ ! -e "$HOME/bin" ]; then
   ln -sv $DOTFILES/bin $HOME/bin
 fi
+
