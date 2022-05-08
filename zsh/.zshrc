@@ -1,4 +1,3 @@
-zmodload zsh/zprof
 ZSH_DATA=$XDG_DATA_HOME/zsh
 
 [[ -f $XDG_DATA_HOME/zsh/zsh-snap/znap.zsh ]] ||
@@ -117,5 +116,3 @@ setopt HIST_VERIFY               # Don't execute immediately upon history expans
 setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 
 countdown
-
-zprof
