@@ -10,3 +10,5 @@ mkdir -p ~/.local/share/Anki2/addons21/
 git clone 'https://github.com/Ajatt-Tools/PitchAccent.git' ~/.local/share/Anki2/addons21/pitch_accent
 git clone 'https://github.com/Ajatt-Tools/Furigana.git' ~/.local/share/Anki2/addons21/ajt_furigana
 cp -r $DOTFILES/anki/addons21/*  ~/.local/share/Anki2/addons21
+
+git clone https://github.com/Ajatt-Tools/mpvacious ~/.config/mpv/scripts/mpvacious

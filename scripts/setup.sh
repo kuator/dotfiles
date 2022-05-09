@@ -48,6 +48,7 @@ declare -a packages=(
   ripgrep fd-find
   neovim
   fonts-noto-cjk
+  mpv ffmpeg
 )
 
 for package in "${packages[@]}"; do
