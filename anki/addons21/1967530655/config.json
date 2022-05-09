@@ -1,0 +1,45 @@
+{
+    "card_export__columns": [
+        "question",
+        "answer",
+        "card_export_column__field_a",
+        "card_export_column__field_b",
+        "card_export_column__field_c",
+        "tags",
+        "c_Added",
+        "c_LatestReview",
+        "c_Due",
+        "c_Interval_in_Days",
+        "c_Ease",
+        "c_Reviews",
+        "c_Lapses",
+        "c_CardType",
+        "c_NoteType",
+        "c_Deck",
+        "c_NoteID",
+        "c_CardID",
+        "allrevs"
+    ],
+    "card_export_column__field_a": {
+        "Basic": "Front",
+        "Cloze": "Text",
+        "Cloze (overlapping)": "Original"
+    },
+    "card_export_column__field_b": {
+        "Basic": "Back",
+        "Cloze": "Extra",
+        "Cloze (overlapping)": "Remarks"
+    },
+    "card_export_column__field_c": {
+        "Cloze (overlapping)": "Sources"
+    },
+    "card_export_maxLength": 400,
+    "format_csv_dialect": "excel",
+    "format_csv_delimiter": "\t",
+    "format_csv_quotechar": "",
+    "format_csv_quoting": "",
+    "note_export_include_note_id": true,
+    "note_export_include_modification_time": true,
+    "note_export_include_tags": true,
+    "row_on_top_has_column_names": true
+}

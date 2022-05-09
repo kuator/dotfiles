@@ -1,0 +1,1 @@
+from . import Kanji_grid

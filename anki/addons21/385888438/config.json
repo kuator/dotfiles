@@ -1,0 +1,131 @@
+{
+  "ctrl_click": true,
+  "outline": true,
+  "process_paste": true,
+  "remove_span": false,
+  "tag": "div",
+  "resize_image_default_state": true,
+  "resize_image_preserve_ratio": 2,
+  "shortcuts" : {
+    "cloze": "Ctrl + Shift + C",
+    "cloze-alt": "Ctrl + Shift + Alt + C",
+    "image-resize": "Alt + S"
+  },
+  "special_formatting": {
+    "fontcolor": {
+      "enabled": true,
+      "command": "foreColor",
+      "shortcut": "F7",
+      "arg": {
+        "type": "color",
+        "value": "#00f"
+      }
+    },
+    "formatblock": {
+      "enabled": false,
+      "command": "formatBlock",
+      "shortcut": "Ctrl + .",
+      "arg": {
+        "type": "text",
+        "value": "pre"
+      }
+    },
+    "highlight": {
+      "enabled": false,
+      "command": "hiliteColor",
+      "shortcut": "Ctrl + Shift + B",
+      "arg": {
+        "type": "color",
+        "value": "#00f"
+      }
+    },
+    "hyperlink": {
+      "enabled": false,
+      "command": "createLink",
+      "shortcut": "Ctrl + Shift + H",
+      "arg": null
+    },
+    "indent": {
+      "enabled": false,
+      "command": "indent",
+      "shortcut": "Ctrl + Shift + ]",
+      "arg": null
+    },
+    "justifyCenter": {
+      "enabled": false,
+      "command": "justifyCenter",
+      "shortcut": "Ctrl + Shift + Alt + S",
+      "arg": null
+    },
+    "justifyFull": {
+      "enabled": false,
+      "command": "justifyFull",
+      "shortcut": "Ctrl + Shift + Alt + B",
+      "arg": null
+    },
+    "justifyLeft": {
+      "enabled": false,
+      "command": "justifyLeft",
+      "shortcut": "Ctrl + Shift + Alt + L",
+      "arg": null
+    },
+    "justifyRight": {
+      "enabled": false,
+      "command": "justifyRight",
+      "shortcut": "Ctrl + Shift + Alt + R",
+      "arg": null
+    },
+    "orderedlist": {
+      "enabled": false,
+      "command": "insertOrderedList",
+      "shortcut": "Ctrl + ]",
+      "arg": null
+    },
+    "outdent": {
+      "enabled": false,
+      "command": "outdent",
+      "shortcut": "Ctrl + Shift + [",
+      "arg": null
+    },
+    "removeformat": {
+      "enabled": true,
+      "command": "removeFormat",
+      "shortcut": "Ctrl + R",
+      "arg": null
+    },
+    "strikethrough": {
+      "enabled": false,
+      "command": "strikeThrough",
+      "shortcut": "Ctrl + Shift + Alt + 5",
+      "arg": null
+    },
+    "subscript": {
+      "enabled": false,
+      "command": "subscript",
+      "shortcut": "Ctrl + =",
+      "arg": null
+    },
+    "superscript": {
+      "enabled": false,
+      "command": "superscript",
+      "shortcut": "Ctrl + Shift + =",
+      "arg": null
+    },
+    "unhyperlink": {
+      "enabled": false,
+      "command": "createLink",
+      "shortcut": "Ctrl + Shift + Alt + H",
+      "arg": null
+    },
+    "unorderedlist": {
+      "enabled": false,
+      "command": "insertUnorderedList",
+      "shortcut": "Ctrl + [",
+      "arg": null
+    }
+  },
+  "version": {
+    "major": -1,
+    "minor": -1
+  }
+}

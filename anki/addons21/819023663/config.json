@@ -1,0 +1,11 @@
+{
+  "new_starting_ease_percent": 131,
+  "update_options_groups": true,
+  "sync_before_reset": false,
+  "sync_after_reset": false,
+  "force_sync_in_one_direction": false,
+  "show_reset_notification": true,
+  "modify_db_directly": false,
+  "adjust_ease_when_reviewing": false,
+  "advanced_options": false
+}

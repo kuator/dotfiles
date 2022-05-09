@@ -74,6 +74,9 @@ setopt auto_cd
 # https://serverfault.com/questions/35312/unable-to-understand-the-benefit-of-zshs-autopushd
 setopt autopushd
 
+# https://unix.stackexchange.com/questions/331850/zsh-selects-a-pasted-text
+unset zle_bracketed_paste
+
 # 10ms for key sequences
 KEYTIMEOUT=1
 

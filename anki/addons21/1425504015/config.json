@@ -1,0 +1,15 @@
+{
+  "field_separator": "<br>",
+  "merge_notes_shortcut": "Ctrl+Alt+M",
+  "duplicate_notes_shortcut": "Ctrl+Alt+D",
+  "ordering": "Due",
+  "show_duplicate_notes_button": true,
+  "delete_original_notes": true,
+  "merge_tags": true,
+  "reverse_order": false,
+  "only_empty": false,
+  "html_agnostic_comparison": false,
+  "strip_punctuation_before_comparison": true,
+  "avoid_content_loss": true,
+  "punctuation_characters": " .,。、「」[]+"
+}
