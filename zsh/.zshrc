@@ -7,7 +7,8 @@ ZSH_DATA=$XDG_DATA_HOME/zsh
 source $XDG_DATA_HOME/zsh/zsh-snap/znap.zsh
 
 znap source zsh-users/zsh-autosuggestions
-znap source zsh-users/zsh-syntax-highlighting
+# znap source zsh-users/zsh-syntax-highlighting
+znap source zdharma-continuum/fast-syntax-highlighting
 znap source Tarrasch/zsh-bd
 # https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
 znap source git/git contrib/completion/git-prompt.sh
@@ -106,3 +107,5 @@ setopt HIST_VERIFY               # Don't execute immediately upon history expans
 setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 
 countdown
+
+# https://github.com/zdharma-continuum/zinit#quick-start maybe?
