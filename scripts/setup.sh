@@ -76,7 +76,7 @@ symlink_config(){
     if [ -e "$destination" ]; then
       echo "symbolic link $destination exists"
     else
-      echo "Broken link :("
+      echo "$destination Broken link :("
     fi
   elif [ -e "$destination" ] ; then
      mv "$destination" "$HOME/${config}-old"
