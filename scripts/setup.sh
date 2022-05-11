@@ -1,33 +1,4 @@
-if [ ! -d $HOME/dotfiles ]; then
-  git clone https://github.com/kuator/dotfiles.git $HOME/dotfiles
-fi
-
-if [ ! -d $XDG_CONFIG_HOME/nvim ]; then
-  git clone https://github.com/kuator/nvim.git $XDG_CONFIG_HOME/nvim
-fi
-
-# export XDG_CACHE_HOME="$HOME/.cache"
-# export XDG_CONFIG_HOME="$HOME/.config"
-# export XDG_DATA_HOME="$HOME/.local/share"
-# export OPT="$HOME/opt"
-# export ASDF_CONFIG_DIR="$XDG_CONFIG_HOME/asdf"
-# export ASDF_CONFIG_FILE="$ASDF_CONFIG_DIR/asdfrc"
-# export ASDF_DATA_DIR="$XDG_DATA_HOME/asdf"
-# export ASDF_DEFAULT_TOOL_VERSIONS_FILENAME="$ASDF_CONFIG_DIR/tool-versions"
-# export ASDF_DIR="$OPT/asdf"
-# export DOTFILES=$HOME/dotfiles
-# export ZDOTDIR="$HOME/.config/zsh"
-
-
-. $DOTFILES/.profile
-
-mkdir -p $OPT
-
-apt_install_if_not_installed() {
-  # https://stackoverflow.com/questions/1298066/how-can-i-check-if-a-package-is-installed-and-install-it-if-not#comment80142067_22592801
-  if ! dpkg-query -W -f='${Status}' "$1"  | grep "ok installed"; then sudo apt install -y "$1"; fi
-  echo ""$1" installed"
-}
+#!/bin/bash
 
 # https://askubuntu.com/a/749379
 add_ppa() {
@@ -48,10 +19,10 @@ sudo apt update
 declare -a packages=(
   zsh
   fzf zoxide
-  git xcape xclip curl dirmngr gpg curl gawk 
+  git xcape xclip curl dirmngr gpg gawk 
   make build-essential libssl-dev zlib1g-dev 
   # https://github.com/pyenv/pyenv/wiki#suggested-build-environment
-  libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm 
+  libbz2-dev libreadline-dev libsqlite3-dev wget llvm 
   libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
   zathura
   # https://github.com/chrisbra/SudoEdit.vim/issues/48
@@ -63,34 +34,65 @@ declare -a packages=(
   mpv ffmpeg
 )
 
+apt_install_if_not_installed() {
+  # https://stackoverflow.com/questions/1298066/how-can-i-check-if-a-package-is-installed-and-install-it-if-not#comment80142067_22592801
+  if ! dpkg-query -W -f='${Status}' "$1"  | grep "ok installed"; then sudo apt install -y "$1"; fi
+  echo ""$1" installed"
+}
+
 for package in "${packages[@]}"; do
   apt_install_if_not_installed "$package"
 done
 
+export DOTFILES=$HOME/dotfiles
+export XDG_CONFIG_HOME=$HOME/config
+
+if [ ! -d $DOTFILES ]; then
+  git clone https://github.com/kuator/dotfiles.git $DOTFILES
+fi
+
+if [ ! -d $XDG_CONFIG_HOME/nvim ]; then
+  git clone https://github.com/kuator/nvim.git $XDG_CONFIG_HOME/nvim
+fi
+
+. $DOTFILES/.profile
+
+mkdir -p $OPT
+
 declare -a home_configs=(
-  ".xprofile" ".profile"
+  ".xprofile" ".profile" "bin"
 )
 
 declare -a xdg_configs=(
  "asdf" "zathura" "redshift.conf"
- "git" "asdf" "xkb" "zsh" ".ignore"
+ "git" "xkb" "zsh" ".ignore"
  "direnv"
 )
 
-for config in "${home_configs[@]}"; do
-  if [ -f $HOME/$config ]; then
-    mv "$HOME/$config" "$HOME/${config}-old"
+symlink_config(){
+  source="$1"
+  destination="$2"
+  if [ -L "$destination" ] ; then
+    if [ -e "$destination" ]; then
+      echo "symbolic link $destination exists"
+    else
+      echo "Broken link :("
+    fi
+  elif [ -e "$destination" ] ; then
+     mv "$destination" "$HOME/${config}-old"
+     ln -sv "$source" "$destination"
+  else
+    echo "Missing, linking..."
+    ln -sv "$source" "$destination"
   fi
+}
 
-  if [ ! -e $HOME/$config ]; then
-    ln -sv $DOTFILES/$config $HOME/$config
-  fi
+for config in "${home_configs[@]}"; do
+  symlink_config "$DOTFILES/$config" "$HOME/$config"
 done
 
 for config in "${xdg_configs[@]}"; do
-  if [ ! -e "$XDG_CONFIG_HOME/$config" ]; then
-    ln -sv "$DOTFILES/$config" "$XDG_CONFIG_HOME/$config"
-  fi
+  symlink_config "$DOTFILES/$config" "$XDG_CONFIG_HOME/$config"
 done
 
 #zsh
@@ -129,14 +131,6 @@ if [ ! -d "$ASDF_DIR" ]; then
   asdf plugin-add direnv
   asdf install direnv latest
   asdf global direnv latest
-fi
-
-if [ -d "$HOME/bin" ]; then
-  mv $HOME/bin $HOME/bin-old
-fi
-
-if [ ! -e "$HOME/bin" ]; then
-  ln -sv $DOTFILES/bin $HOME/bin
 fi
 
 cd /tmp
