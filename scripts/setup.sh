@@ -2,18 +2,30 @@ if [ ! -d $HOME/dotfiles ]; then
   git clone https://github.com/kuator/dotfiles.git $HOME/dotfiles
 fi
 
-export DOTFILES=$HOME/dotfiles
-export OPT=$HOME/opt
-export ASDF_DIR=$HOME/opt/asdf
-mkdir -p $OPT
+if [ ! -d $XDG_CONFIG_HOME/nvim ]; then
+  git clone https://github.com/kuator/nvim.git $XDG_CONFIG_HOME/nvim
+fi
+
+# export XDG_CACHE_HOME="$HOME/.cache"
+# export XDG_CONFIG_HOME="$HOME/.config"
+# export XDG_DATA_HOME="$HOME/.local/share"
+# export OPT="$HOME/opt"
+# export ASDF_CONFIG_DIR="$XDG_CONFIG_HOME/asdf"
+# export ASDF_CONFIG_FILE="$ASDF_CONFIG_DIR/asdfrc"
+# export ASDF_DATA_DIR="$XDG_DATA_HOME/asdf"
+# export ASDF_DEFAULT_TOOL_VERSIONS_FILENAME="$ASDF_CONFIG_DIR/tool-versions"
+# export ASDF_DIR="$OPT/asdf"
+# export DOTFILES=$HOME/dotfiles
+# export ZDOTDIR="$HOME/.config/zsh"
+
 
 . $DOTFILES/.profile
 
-dconf load /org/gnome/terminal/legacy/profiles:/ < $DOTFILES/gnome-terminal-profiles.dconf
+mkdir -p $OPT
 
 apt_install_if_not_installed() {
   # https://stackoverflow.com/questions/1298066/how-can-i-check-if-a-package-is-installed-and-install-it-if-not#comment80142067_22592801
-  if ! dpkg-query -W -f='${Status}' "$1"  | grep "ok installed"; then apt install "$1"; fi
+  if ! dpkg-query -W -f='${Status}' "$1"  | grep "ok installed"; then sudo apt install -y "$1"; fi
   echo ""$1" installed"
 }
 
@@ -62,6 +74,7 @@ declare -a home_configs=(
 declare -a xdg_configs=(
  "asdf" "zathura" "redshift.conf"
  "git" "asdf" "xkb" "zsh" ".ignore"
+ "direnv"
 )
 
 for config in "${home_configs[@]}"; do
@@ -75,7 +88,7 @@ for config in "${home_configs[@]}"; do
 done
 
 for config in "${xdg_configs[@]}"; do
-  if [ ! -e $config ]; then
+  if [ ! -e "$XDG_CONFIG_HOME/$config" ]; then
     ln -sv "$DOTFILES/$config" "$XDG_CONFIG_HOME/$config"
   fi
 done
@@ -102,6 +115,7 @@ check_default_shell() {
 check_default_shell
 
 # asdf
+# https://rgoswami.me/snippets/prog-lang-man/
 if [ ! -d "$ASDF_DIR" ]; then
   git clone https://github.com/asdf-vm/asdf.git "$ASDF_DIR"
   # https://asdf-vm.com/guide/getting-started.html#_3-install-asdf
@@ -113,7 +127,8 @@ if [ ! -d "$ASDF_DIR" ]; then
   asdf install nodejs 16.15.0
   asdf global python 16.15.0
   asdf plugin-add direnv
-  asdf direnv setup --shell zsh --version latest
+  asdf install direnv latest
+  asdf global direnv latest
 fi
 
 if [ -d "$HOME/bin" ]; then
@@ -124,3 +139,11 @@ if [ ! -e "$HOME/bin" ]; then
   ln -sv $DOTFILES/bin $HOME/bin
 fi
 
+cd /tmp
+if [ ! -f UbuntuMono.zip ]
+  wget 'https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/UbuntuMono.zip'
+  unzip UbuntuMono.zip -d $XDG_DATA_HOME/fonts
+  fc-cache -fv
+fi
+
+dconf load /org/gnome/terminal/legacy/profiles:/ < $DOTFILES/gnome-terminal-profiles.dconf
