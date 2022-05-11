@@ -8,6 +8,7 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
