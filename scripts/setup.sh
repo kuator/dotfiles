@@ -153,7 +153,7 @@ if [ ! -f $file ]; then
   wget https://github.com/ankitects/anki/releases/download/2.1.49/anki-2.1.49-linux.tar.bz2
   tar xaf anki-2.1.49-linux.tar.bz2
   cd anki-2.1.49-linux/
-  sudo ./install.sh
+  sudo PREFIX="/usr" ./install.sh
   mkdir -p ~/.local/share/Anki2/addons21/
   cp -r $DOTFILES/anki/addons21/*  ~/.local/share/Anki2/addons21
 
