@@ -37,6 +37,8 @@ declare -a packages=(
   mpv ffmpeg
   #anki 2.49
   libxcb-xinerama0 zstd
+  #telegram
+  telegram-desktop
 )
 
 apt_install_if_not_installed() {
