@@ -50,7 +50,7 @@ for package in "${packages[@]}"; do
 done
 
 export DOTFILES=$HOME/dotfiles
-export XDG_CONFIG_HOME=$HOME/config
+export XDG_CONFIG_HOME=$HOME/.config
 
 if [ ! -d $DOTFILES ]; then
   git clone https://github.com/kuator/dotfiles.git $DOTFILES
@@ -132,7 +132,7 @@ if [ ! -d "$ASDF_DIR" ]; then
   asdf install python 3.7.9
   asdf global python 3.7.9
   asdf install nodejs 16.15.0
-  asdf global python 16.15.0
+  asdf global nodejs 16.15.0
   asdf plugin-add direnv
   asdf install direnv latest
   asdf global direnv latest
