@@ -39,6 +39,7 @@ declare -a packages=(
   libxcb-xinerama0 zstd
   #telegram
   telegram-desktop
+  jq jsbeautifier
 )
 
 apt_install_if_not_installed() {
@@ -188,4 +189,8 @@ if ! dpkg-query -W -f='${Status}' firefox  | grep "ok installed"; then
   . $SCRIPTS/script.sh/patch-the-fox.sh
 else
   echo "firefox installed"
+fi
+
+if [ ! -d $OPT/pkg ]; then
+  . $SCRIPTS/install-python-lsp.sh
 fi
