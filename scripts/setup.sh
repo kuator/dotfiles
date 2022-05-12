@@ -145,23 +145,35 @@ if [ ! -f UbuntuMono.zip ]; then
   fc-cache -fv
 fi
 
+OPT=~/opt
 ANKI=$OPT/anki
-file=anki-2.1.49-linux.tar.bz2
-mkdir -p $ANKI
-cd $ANKI
-if [ ! -f $file ]; then
-  wget https://github.com/ankitects/anki/releases/download/2.1.49/anki-2.1.49-linux.tar.bz2
-  tar xaf anki-2.1.49-linux.tar.bz2
-  cd anki-2.1.49-linux/
-  sudo PREFIX="/usr" ./install.sh
-  mkdir -p ~/.local/share/Anki2/addons21/
-  cp -r $DOTFILES/anki/addons21/*  ~/.local/share/Anki2/addons21
+PREFIX="/usr"
+version=2.1.49
+anki_version="anki-$version-linux"
+anki_archive="$anki_version.tar.bz2"
+cd $OPT
 
-  # git clone https://github.com/Ajatt-Tools/PitchAccent.git ~/.local/share/Anki2/addons21/1225470483
-  # git clone https://github.com/Ajatt-Tools/Furigana.git ~/.local/share/Anki2/addons21/1344485230
-  # git clone https://github.com/Ajatt-Tools/PasteImagesAsWebP ~/.local/share/Anki2/addons21/1151815987
+if [ ! -d $ANKI ]; then
+  if [ ! -f $anki_archive ]; then
+    wget https://github.com/ankitects/anki/releases/download/$version/$anki_archive
+  fi
+  tar xaf $anki_archive && mv $anki_version $ANKI
+  echo 'anki downloaded'
+fi
 
-  git clone https://github.com/Ajatt-Tools/mpvacious ~/.config/mpv/scripts/mpvacious
+if [ -d $ANKI ]; then
+  echo 'anki existsts'
+  if [ ! -e "$PREFIX"/share/anki/ ]; then
+    echo 'anki is not installed'
+    cd $ANKI
+    sudo PREFIX="/usr" ./install.sh
+    mkdir -p ~/.local/share/Anki2/addons21/
+    cp -r $DOTFILES/anki/addons21/*  ~/.local/share/Anki2/addons21
+    git clone https://github.com/Ajatt-Tools/mpvacious ~/.config/mpv/scripts/mpvacious
+    # git clone https://github.com/Ajatt-Tools/PitchAccent.git ~/.local/share/Anki2/addons21/1225470483
+    # git clone https://github.com/Ajatt-Tools/Furigana.git ~/.local/share/Anki2/addons21/1344485230
+    # git clone https://github.com/Ajatt-Tools/PasteImagesAsWebP ~/.local/share/Anki2/addons21/1151815987
+  fi
 fi
 
 dconf load /org/gnome/terminal/legacy/profiles:/ < $DOTFILES/gnome-terminal-profiles.dconf
