@@ -186,8 +186,8 @@ dconf load /org/gnome/terminal/legacy/profiles:/ < $DOTFILES/gnome-terminal-prof
 SCRIPTS=$DOTFILES/scripts
 . $SCRIPTS/disable-snap-ubuntu-22.04.sh
 . $SCRIPTS/install-firefox.sh
-. $SCRIPTS/move-xsession-errors.sh
 . $SCRIPTS/change-xauthority-location.sh
+# . $SCRIPTS/move-xsession-errors.sh
 
 if [ ! -d $OPT/pkg ]; then
   . $SCRIPTS/install-python-lsp.sh
