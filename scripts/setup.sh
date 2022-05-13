@@ -173,9 +173,10 @@ if [ -d $ANKI ]; then
     mkdir -p ~/.local/share/Anki2/addons21/
     cp -r $DOTFILES/anki/addons21/*  ~/.local/share/Anki2/addons21
     git clone https://github.com/Ajatt-Tools/mpvacious ~/.config/mpv/scripts/mpvacious
-    git clone https://github.com/Ajatt-Tools/PitchAccent.git --recurse-submodules -j8 ~/.local/share/Anki2/addons21/1225470483
-    git clone https://github.com/Ajatt-Tools/Furigana.git --recurse-submodules -j8 ~/.local/share/Anki2/addons21/1344485230
-    git clone https://github.com/Ajatt-Tools/PasteImagesAsWebP --recurse-submodules -j8 ~/.local/share/Anki2/addons21/1151815987
+    # need ssh
+    # git clone https://github.com/Ajatt-Tools/PitchAccent.git --recurse-submodules -j8 ~/.local/share/Anki2/addons21/1225470483
+    # git clone https://github.com/Ajatt-Tools/Furigana.git --recurse-submodules -j8 ~/.local/share/Anki2/addons21/1344485230
+    # git clone https://github.com/Ajatt-Tools/PasteImagesAsWebP --recurse-submodules -j8 ~/.local/share/Anki2/addons21/1151815987
   fi
 fi
 
