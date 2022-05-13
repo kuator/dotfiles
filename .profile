@@ -48,9 +48,9 @@ fi
 # https://superuser.com/a/874924
 if [ -s "${XDG_CONFIG_HOME}/ssh/config" ]
 then
-    SSH_CONFIG="-F ${XDG_CONFIG_HOME}/ssh/config"
+    export SSH_CONFIG="-F ${XDG_CONFIG_HOME}/ssh/config"
 fi
 if [ -s "${XDG_CONFIG_HOME}/ssh/id_dsa" ]
 then
-    SSH_ID="-i ${XDG_CONFIG_HOME}/ssh/id_dsa"
+    export SSH_ID="-i ${XDG_CONFIG_HOME}/ssh/id_dsa"
 fi
