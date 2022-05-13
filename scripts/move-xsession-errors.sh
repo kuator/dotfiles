@@ -11,7 +11,7 @@ ALTUSERXSESSION="\$XDG_CACHE_HOME/X11/Xsession"
 ERRFILE="\$XDG_CACHE_HOME/X11/xsession-errors"
 HEREDOC
 
-sed '/^ERRFILE=.*/ {
+sudo sed -i '/^ERRFILE=.*/ {
    r /tmp/HereFile
    d
    }' $Xsession
