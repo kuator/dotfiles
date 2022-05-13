@@ -112,3 +112,6 @@ setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 countdown
 
 # https://github.com/zdharma-continuum/zinit#quick-start maybe?
+# SSH
+alias ssh="ssh $SSH_CONFIG $SSH_ID "
+alias ssh-copy-id="ssh-copy-id $SSH_ID"

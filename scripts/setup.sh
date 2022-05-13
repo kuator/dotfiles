@@ -40,6 +40,7 @@ declare -a packages=(
   #telegram
   telegram-desktop
   jq jsbeautifier
+  redshift-gtk
 )
 
 apt_install_if_not_installed() {
