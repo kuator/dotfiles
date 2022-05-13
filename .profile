@@ -43,3 +43,17 @@ export ASDF_DATA_DIR="$XDG_DATA_HOME/asdf"
 if [ -f $OPT/asdf/asdf.sh ]; then
   . $OPT/asdf/asdf.sh
 fi
+
+# ssh
+# https://superuser.com/a/874924
+if [ -s "${XDG_CONFIG_HOME}/ssh/config" ]
+then
+    SSH_CONFIG="-F ${XDG_CONFIG_HOME}/ssh/config"
+fi
+if [ -s "${XDG_CONFIG_HOME}/ssh/id_dsa" ]
+then
+    SSH_ID="-i ${XDG_CONFIG_HOME}/ssh/id_dsa"
+fi
+
+alias ssh="ssh $SSH_CONFIG $SSH_ID "
+alias ssh-copy-id="ssh-copy-id $SSH_ID"

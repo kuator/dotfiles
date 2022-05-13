@@ -74,7 +74,7 @@ declare -a home_configs=(
 declare -a xdg_configs=(
  "asdf" "zathura" "redshift.conf"
  "git" "xkb" "zsh" ".ignore"
- "direnv"
+ "direnv" "ssh"
 )
 
 symlink_config(){

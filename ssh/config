@@ -1,0 +1,3 @@
+Host *
+    IdentityFile ~/.config/ssh/id_dsa
+    UserKnownHostsFile ~/.config/ssh/known_hosts
