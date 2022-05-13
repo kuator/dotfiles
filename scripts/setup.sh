@@ -32,7 +32,7 @@ declare -a packages=(
   neovim
   fonts-noto-cjk
   # anki paste images as webp
-  libwebp-dev
+  webp
   #mpvacious
   mpv ffmpeg
   #anki 2.49
