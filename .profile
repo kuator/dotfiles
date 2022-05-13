@@ -9,6 +9,7 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -18,6 +19,8 @@ export BROWSER=firefox
 export EDITOR=nvim
 export OPT="$HOME/opt"
 export DOTFILES=$HOME/dotfiles
+
+# export MOZILLA_XDG_HOME=$XDG_CONFIG_HOME/mozilla
 
 # https://github.com/npm/npm/issues/6675#issuecomment-251049832
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/config

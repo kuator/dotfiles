@@ -185,13 +185,7 @@ dconf load /org/gnome/terminal/legacy/profiles:/ < $DOTFILES/gnome-terminal-prof
 
 SCRIPTS=$DOTFILES/scripts
 . $SCRIPTS/disable-snap-ubuntu-22.04.sh
-
-if ! dpkg-query -W -f='${Status}' firefox  | grep "ok installed"; then
-  sudo apt install -y firefox
-  . $SCRIPTS/script.sh/patch-the-fox.sh
-else
-  echo "firefox installed"
-fi
+. $SCRIPTS/install-firefox.sh
 
 if [ ! -d $OPT/pkg ]; then
   . $SCRIPTS/install-python-lsp.sh
