@@ -140,6 +140,13 @@ if [ ! -d "$ASDF_DIR" ]; then
   git clone https://github.com/asdf-vm/asdf.git "$ASDF_DIR"
   # https://asdf-vm.com/guide/getting-started.html#_3-install-asdf
   . $OPT/asdf/asdf.sh
+  ## Install golang plugin
+  asdf plugin-add golang
+  # Install global version golang
+  asdf install golang 1.17.7
+  # Setup global golang version
+  asdf global golang 1.17.7
+
   asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
   asdf plugin-add python
   asdf install python 3.7.9
@@ -196,8 +203,11 @@ SCRIPTS=$DOTFILES/scripts
 . $SCRIPTS/disable-snap-ubuntu-22.04.sh
 SCRIPTS=$SCRIPTS . $SCRIPTS/install-firefox.sh
 . $SCRIPTS/change-xauthority-location.sh
+. $SCRIPTS/disable-sudo-admin-successful.sh
 # . $SCRIPTS/move-xsession-errors.sh
 
 if [ ! -d $OPT/pkg ]; then
   . $SCRIPTS/install-python-lsp.sh
 fi
+
+# https://hiphish.github.io/blog/2020/12/27/making-bash-xdg-compliant/
