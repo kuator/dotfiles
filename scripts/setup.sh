@@ -41,6 +41,7 @@ declare -a packages=(
   telegram-desktop
   jq jsbeautifier
   redshift-gtk
+  trash-cli
 )
 
 apt_install_if_not_installed() {
