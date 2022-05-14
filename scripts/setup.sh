@@ -73,7 +73,7 @@ declare -a home_configs=(
 )
 
 declare -a xdg_configs=(
- "asdf" "zathura" "redshift.conf"
+ "asdf" "zathura"
  "git" "xkb" "zsh" ".ignore"
  "direnv" "ssh"
 )
@@ -103,6 +103,15 @@ done
 for config in "${xdg_configs[@]}"; do
   symlink_config "$DOTFILES/$config" "$XDG_CONFIG_HOME/$config"
 done
+
+if [ ! -f $WGETRC ]; then
+  cp /etc/wgetrc $WGETRC
+fi
+
+REDSHIFTRC=$XDG_CONFIG_HOME/redshift.conf
+if [ ! -f $REDSHIFTRC ]; then
+  cp ~/dotfiles/redshift.conf ~/.config
+fi
 
 #zsh
 # https://github.com/lkhphuc/dotfiles/blob/master/deploy.sh
@@ -185,7 +194,7 @@ dconf load /org/gnome/terminal/legacy/profiles:/ < $DOTFILES/gnome-terminal-prof
 
 SCRIPTS=$DOTFILES/scripts
 . $SCRIPTS/disable-snap-ubuntu-22.04.sh
-. $SCRIPTS/install-firefox.sh
+SCRIPTS=$SCRIPTS . $SCRIPTS/install-firefox.sh
 . $SCRIPTS/change-xauthority-location.sh
 # . $SCRIPTS/move-xsession-errors.sh
 

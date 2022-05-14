@@ -1,7 +1,8 @@
+#!/bin/bash
 # https://haydenjames.io/remove-snap-ubuntu-22-04-lts/
 # https://gist.github.com/allisson/7ff8487b696fd30c4767341d3d797595
 if ! command -v snap &> /dev/null; then
-    echo "snap is already disabled!"
+  echo "snap is already disabled!"
 else
   sudo systemctl disable snapd.service
   sudo systemctl disable snapd.socket
@@ -21,13 +22,4 @@ else
   sudo rm -rf /var/cache/snapd/
 
   rm -rf ~/snap
-
-  sudo add-apt-repository -y ppa:mozillateam/ppa
-  echo '
-  Package: *
-  Pin: release o=LP-PPA-mozillateam
-  Pin-Priority: 1001
-  ' | sudo tee /etc/apt/preferences.d/mozilla-firefox
-
-  sudp apt update
 fi
