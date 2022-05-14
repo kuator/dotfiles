@@ -73,7 +73,7 @@ declare -a home_configs=(
 )
 
 declare -a xdg_configs=(
- "asdf" "zathura"
+ "asdf" "zathura" "bash"
  "git" "xkb" "zsh" ".ignore"
  "direnv" "ssh"
 )
@@ -204,10 +204,9 @@ SCRIPTS=$DOTFILES/scripts
 SCRIPTS=$SCRIPTS . $SCRIPTS/install-firefox.sh
 . $SCRIPTS/change-xauthority-location.sh
 . $SCRIPTS/disable-sudo-admin-successful.sh
+. $SCRIPTS/xdg-bash.sh
 # . $SCRIPTS/move-xsession-errors.sh
 
 if [ ! -d $OPT/pkg ]; then
   . $SCRIPTS/install-python-lsp.sh
 fi
-
-# https://hiphish.github.io/blog/2020/12/27/making-bash-xdg-compliant/
