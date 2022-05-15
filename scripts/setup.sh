@@ -42,6 +42,7 @@ declare -a packages=(
   jq jsbeautifier
   redshift-gtk
   trash-cli
+  unzip
 )
 
 apt_install_if_not_installed() {
@@ -148,6 +149,13 @@ if [ ! -d "$ASDF_DIR" ]; then
   # Setup global golang version
   asdf global golang 1.17.7
 
+  ## Install rust plugin
+  asdf plugin-add rust https://github.com/asdf-community/asdf-rust.git
+  # Install global version rust
+  asdf install rust 1.60.0
+  # Setup global rust version
+  asdf global rust 1.60.0
+
   asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
   asdf plugin-add python
   asdf install python 3.7.9
@@ -183,7 +191,7 @@ if [ ! -d $ANKI ]; then
 fi
 
 if [ -d $ANKI ]; then
-  echo 'anki existsts'
+  echo 'anki install folder exists'
   if [ ! -e "$PREFIX"/share/anki/ ]; then
     echo 'anki is not installed'
     cd $ANKI

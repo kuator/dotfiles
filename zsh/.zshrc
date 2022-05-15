@@ -111,6 +111,8 @@ setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 
 countdown
 
+compinit -d $XDG_CACHE_HOME/zsh/zcompdump-${ZSH_VERSION}
+
 # https://github.com/zdharma-continuum/zinit#quick-start maybe?
 # SSH
 alias ssh="ssh $SSH_CONFIG $SSH_ID "

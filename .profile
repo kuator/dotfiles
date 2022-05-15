@@ -8,9 +8,6 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-export GNUPGHOME="$XDG_DATA_HOME/gnupg"
-export WGETRC="$XDG_CONFIG_HOME/wgetrc"
-export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
@@ -19,6 +16,9 @@ export BROWSER=firefox
 export EDITOR=nvim
 export OPT="$HOME/opt"
 export DOTFILES=$HOME/dotfiles
+export WGETRC="$XDG_CONFIG_HOME/wgetrc"
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
 
 # export MOZILLA_XDG_HOME=$XDG_CONFIG_HOME/mozilla
 
@@ -32,9 +32,15 @@ export SUDO_ASKPASS=/usr/bin/ssh-askpass
 # export CARGO_HOME=/opt/rust/cargo
 # . "/opt/rust/cargo/env"
 
-# export GOPATH="~/golib"
-# export PATH="$PATH:$GOPATH/bin"
-# export GOPATH="$GOPATH:~/gofolder"
+# ASDF
+# --------------------------------------------
+# RUST
+# https://github.com/rememberYou/dotfiles/blob/master/sh/.config/sh/xdg#L23
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+
+export GOPATH="$HOME/dev/go/libs"
+export PATH="$PATH:$GOPATH/bin"
+export GOPATH="$GOPATH:$HOME/dev/go/code"
 
 # https://asdf-vm.com/guide/getting-started.html#_3-install-asdf
 export ASDF_CONFIG_DIR="$XDG_CONFIG_HOME/asdf"
@@ -46,6 +52,7 @@ export ASDF_DATA_DIR="$XDG_DATA_HOME/asdf"
 if [ -f $OPT/asdf/asdf.sh ]; then
   . $OPT/asdf/asdf.sh
 fi
+# ----------------------------------------------
 
 # ssh
 # https://superuser.com/a/874924

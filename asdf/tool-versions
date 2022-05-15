@@ -2,3 +2,4 @@ python 3.7.9
 nodejs 16.15.0
 direnv 2.31.0
 golang 1.17.7
+rust 1.60.0
