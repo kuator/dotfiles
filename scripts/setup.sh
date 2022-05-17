@@ -43,6 +43,8 @@ declare -a packages=(
   redshift-gtk
   trash-cli
   unzip
+  universal-ctags
+  cscope
 )
 
 apt_install_if_not_installed() {
