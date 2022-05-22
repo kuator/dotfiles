@@ -3,3 +3,4 @@ nodejs 16.15.0
 direnv 2.31.0
 golang 1.17.7
 rust 1.60.0
+deno 1.22.0
