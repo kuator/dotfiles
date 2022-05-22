@@ -30,6 +30,17 @@ set -euox pipefail
 
 cd pylance/dist
 
+#pylance=~/.local/bin/pylance.sh
+
+#cat  <<EOF > $pylance
+##!/usr/bin/env bash
+#set -euo pipefail
+
+#node $PWD/server.bundle.js --stdio
+#EOF
+
+#chmod u+x $pylance
+
 js-beautify -r server.bundle.js
 
 vi -E -s server.bundle.js << EOF
@@ -38,3 +49,4 @@ vi -E -s server.bundle.js << EOF
 :update
 :quit
 EOF
+

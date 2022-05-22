@@ -35,6 +35,7 @@ export SUDO_ASKPASS=/usr/bin/ssh-askpass
 # RUST
 # https://github.com/rememberYou/dotfiles/blob/master/sh/.config/sh/xdg#L23
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export PATH=$PATH:${CARGO_HOME:-~/.cargo}/bin
 
 # DENO
 # https://deno.land/manual/getting_started/setup_your_environment
