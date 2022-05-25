@@ -11,3 +11,4 @@ __pycache__
 db.sqlite3
 static_root
 *.pyc 
+pyrightconfig.json
