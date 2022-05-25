@@ -20,8 +20,6 @@ export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
 
-# export MOZILLA_XDG_HOME=$XDG_CONFIG_HOME/mozilla
-
 # https://github.com/npm/npm/issues/6675#issuecomment-251049832
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/config
 export NPM_CONFIG_CACHE=$XDG_CACHE_HOME/npm
@@ -39,6 +37,11 @@ export SUDO_ASKPASS=/usr/bin/ssh-askpass
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export PATH=$PATH:${CARGO_HOME:-~/.cargo}/bin
 
+# DENO
+# https://deno.land/manual/getting_started/setup_your_environment
+export DENO_INSTALL_ROOT=$XDG_DATA_HOME/bin
+
+# DENO
 export GOPATH="$HOME/dev/go/libs"
 export PATH="$PATH:$GOPATH/bin"
 export GOPATH="$GOPATH:$HOME/dev/go/code"

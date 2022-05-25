@@ -43,8 +43,8 @@ declare -a packages=(
   redshift-gtk
   trash-cli
   unzip
-  universal-ctags
-  cscope
+  universal-ctags cscope
+  skkdic skkdic-extra
 )
 
 apt_install_if_not_installed() {
@@ -157,6 +157,11 @@ if [ ! -d "$ASDF_DIR" ]; then
   asdf install rust 1.60.0
   # Setup global rust version
   asdf global rust 1.60.0
+
+  ## Install rust plugin
+  asdf plugin-add deno https://github.com/asdf-community/asdf-deno.git
+  asdf install deno 1.22.0
+  asdf global deno 1.22.0
 
   asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
   asdf plugin-add python
