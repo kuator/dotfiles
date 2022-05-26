@@ -14,6 +14,8 @@ add_ppa() {
 
 add_ppa neovim-ppa/unstable
 
+# https://github.com/MrGlockenspiel/activate-linux
+
 sudo apt update
 
 declare -a packages=(

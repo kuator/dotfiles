@@ -2,7 +2,7 @@
 set -euox pipefail
 
 if [ "$OPT" = "" ]; then
-  $OPT=~/opt
+  $OPT=$HOME/opt
   mkdir -p $OPT
 fi
 
