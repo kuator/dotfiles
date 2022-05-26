@@ -26,7 +26,7 @@ for file in $WORKON_HOME/*; do
   if [ -d "$file" ]; then 
     folder=$(basename "$file")
     if [[ "$folder" == "$pwd_hash" ]]; then
-      source "$WORKON_HOME"/"$pwd_hash"/bin/activate
+      . "$WORKON_HOME"/"$pwd_hash"/bin/activate
       echo "$WORKON_HOME"/"$pwd_hash"/bin/activate
     fi 
   fi
