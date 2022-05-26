@@ -119,4 +119,7 @@ alias ssh="ssh $SSH_CONFIG $SSH_ID "
 alias ssh-copy-id="ssh-copy-id $SSH_ID"
 alias wget="wget --hsts-file="$XDG_CACHE_HOME/wget-hsts""
 
-alias workon=". =workon"
+
+if [ -x "$(command -v workon)" ]; then
+  alias workon=". =workon"
+fi

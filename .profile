@@ -68,6 +68,3 @@ if [ -s "${XDG_CONFIG_HOME}/ssh/id_dsa" ]
 then
     export SSH_ID="-i ${XDG_CONFIG_HOME}/ssh/id_dsa"
 fi
-
-# chattr +i file.desktop
-# https://unix.stackexchange.com/a/20107
