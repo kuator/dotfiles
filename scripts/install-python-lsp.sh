@@ -3,17 +3,20 @@ set -euox pipefail
 
 if [ "$OPT" = "" ]; then
   $OPT=~/opt
-  mkdir -p ~/opt
+  mkdir -p $OPT
 fi
 
-cd ~/opt
+cd $OPT
 
-rm -rf pkg || true
+# rm -rf pkg || true
+
+mkdir -p pylance && cd pylance
 
 version=$(curl -s 'https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance' | grep '<script class="jiContent" defer="defer" type="application/json">' |  sed 's/<[^>]*>//g' | jq -r .Resources.Version)
 
-mkdir pkg || true
-cd pkg
+if [ -d $version ]; then
+  exit
+fi
 
 curl -c cookie-jar.txt "https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance"
 
@@ -24,22 +27,21 @@ curl -s "https://marketplace.visualstudio.com/_apis/public/gallery/publishers/ms
   -H 'Referer: https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance' \
   -j -b cookie-jar.txt --compressed --output ms-python.vscode-pylance-$version
 
-unzip ms-python.vscode-pylance-$version && mv extension pylance
+unzip ms-python.vscode-pylance-$version && mv extension $version
 
 set -euox pipefail
 
-cd pylance/dist
+cd $version/dist
 
-#pylance=~/.local/bin/pylance.sh
+pylance=$HOME/bin/pylance
 
-#cat  <<EOF > $pylance
-##!/usr/bin/env bash
-#set -euo pipefail
+cat  <<EOF > $pylance
+#!/usr/bin/env bash
+set -euo pipefail
+node $PWD/server.bundle.js --stdio
+EOF
 
-#node $PWD/server.bundle.js --stdio
-#EOF
-
-#chmod u+x $pylance
+chmod u+x $pylance
 
 js-beautify -r server.bundle.js
 
@@ -49,4 +51,3 @@ vi -E -s server.bundle.js << EOF
 :update
 :quit
 EOF
-

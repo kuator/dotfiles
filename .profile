@@ -69,40 +69,5 @@ then
     export SSH_ID="-i ${XDG_CONFIG_HOME}/ssh/id_dsa"
 fi
 
-# export WORKON_HOME=$XDG_DATA_HOME/virtualenvs
-# mkdir -p $WORKON_HOME
-
-# workon(){
-#   pwd_hash="$(echo -n "$PWD" | shasum | cut -d ' ' -f 1)"
-#   project="$(basename $(pwd))"
-
-#   if [ ! -d "$WORKON_HOME"/"$pwd_hash" ]; then
-#     if [ -z "$1" ]; then
-#       read -r "Provide a version or empty for default" response
-#       if [[ -z "$response" ]]; then
-#         version=$(python -V 2>&1 | grep -Po '(?<=Python )(.+)')
-#       else
-#         version=$response
-#       fi
-#     fi
-#     echo $version
-#     # $(asdf where python $version)/bin/python -m venv "$WORKON_HOME"/"$pwd_hash"
-#     # cd -
-#     # echo "python $version" >> .tool-versions
-#   fi
-
-#   for file in *; do 
-#     if [ -d "$file" ]; then 
-#       if [ "$file"=="$pwd_hash" ]; then
-#         echo "$file" 
-#       fi 
-#     fi
-#   done
-#   # source "$WORKON_HOME"/"$project"/bin/activate
-# }
-
-
-# Ryssya
-
 # chattr +i file.desktop
 # https://unix.stackexchange.com/a/20107
