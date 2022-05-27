@@ -11,6 +11,7 @@ fi
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_STATE_HOME="$HOME/.local/state"
 export ZDOTDIR="$HOME/.config/zsh"
 export BROWSER=firefox
 export EDITOR=nvim
@@ -68,3 +69,12 @@ if [ -s "${XDG_CONFIG_HOME}/ssh/id_dsa" ]
 then
     export SSH_ID="-i ${XDG_CONFIG_HOME}/ssh/id_dsa"
 fi
+
+export PYTHONSTARTUP="${XDG_CONFIG_HOME:-$HOME/.config}/pythonstartup.py"
+
+export PSQLRC="$XDG_CONFIG_HOME/pg/psqlrc"
+export PSQL_HISTORY="$XDG_STATE_HOME/psql_history"
+export PGPASSFILE="$XDG_CONFIG_HOME/pg/pgpass"
+export PGSERVICEFILE="$XDG_CONFIG_HOME/pg/pg_service.conf"
+
+mkdir -p "$XDG_CONFIG_HOME/pg" && mkdir -p "$XDG_STATE_HOME"

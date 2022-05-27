@@ -41,7 +41,7 @@ declare -a home_configs=(
 declare -a xdg_configs=(
  "asdf" "zathura" "bash"
  "git" "xkb" "zsh" ".ignore"
- "direnv" "ssh"
+ "direnv" "ssh" "pythonstartup.py"
 )
 
 for config in "${home_configs[@]}"; do

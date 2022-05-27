@@ -47,6 +47,7 @@ declare -a packages=(
   unzip
   universal-ctags cscope
   skkdic skkdic-extra
+  bbe
 )
 
 apt_install_if_not_installed() {
