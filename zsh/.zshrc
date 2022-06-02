@@ -1,45 +1,104 @@
-ZSH_DATA=$XDG_DATA_HOME/zsh
+### Added by Zinit's installer
+ZINIT_DIR="$HOME/.local/share/zinit"
+ZINIT_HOME="$ZINIT_DIR/zinit.git"
+if [[ ! -f $ZINIT_HOME/zinit.zsh ]]; then
+    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+    command mkdir -p "$ZINIT_DIR" && command chmod g-rwX "$ZINIT_DIR"
+    command git clone https://github.com/zdharma-continuum/zinit "$ZINIT_HOME" && \
+        print -P "%F{33} %F{34}Installation successful.%f%b" || \
+        print -P "%F{160} The clone has failed.%f%b"
+fi
 
-[[ -f $XDG_DATA_HOME/zsh/zsh-snap/znap.zsh ]] ||
-    git clone --depth 1 -- \
-        https://github.com/marlonrichert/zsh-snap.git $XDG_DATA_HOME/zsh/zsh-snap
+source "$ZINIT_HOME/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+### End of Zinit's installer chunk
 
-source $XDG_DATA_HOME/zsh/zsh-snap/znap.zsh
 
-znap source zsh-users/zsh-autosuggestions
-# znap source zsh-users/zsh-syntax-highlighting
-znap source zdharma-continuum/fast-syntax-highlighting
-znap source Tarrasch/zsh-bd
-# https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
-znap source git/git contrib/completion/git-prompt.sh
-znap source junegunn/fzf shell/{completion,key-bindings}.zsh
-# direnv hooked into asdf
-# znap eval asdf-community/asdf-direnv "asdf exec $(asdf which direnv) hook zsh"
-# Better cding like z.lua but faster
-znap eval zoxide 'zoxide init zsh'
-# source /opt/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-# https://github.com/momo-lab/zsh-abbrev-alias
+# Autosuggestions & fast-syntax-highlighting
+zinit ice wait lucid atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay"
+zinit light zdharma-continuum/fast-syntax-highlighting
 
-# install fzf dynamically, maybe?
-# (( ${+commands[fzf]} )) || ~[fzf]/install --bin
+# zsh-autosuggestions
+zinit ice wait lucid atload"!_zsh_autosuggest_start"
+zinit load zsh-users/zsh-autosuggestions
 
-# Use ~[dynamically-named dirs] to add repos to your $path or $fpath.
-# Znap will download them automatically.
-fpath+=(
-    ~[asdf-vm/asdf]/completions
-    ~[asdf-community/asdf-direnv]/completions
-)
+# zsh-bd - https://github.com/Tarrasch/zsh-bd
+zinit ice wait lucid
+zinit light tarrasch/zsh-bd
+
+
+zinit ice wait'0a' lucid id-as"junegunn/fzf_completions" pick"/dev/null" \
+  multisrc"shell/{completion,key-bindings}.zsh"
+zinit light junegunn/fzf
+
+# FZF
+zinit ice from="gh-r" as="command" bpick="*linux_amd64*"
+zinit light junegunn/fzf
+
+# BurntSushi/ripgrep
+zinit ice as"command" from"gh-r" mv"ripgrep* -> rg" pick"rg/rg"
+zinit light BurntSushi/ripgrep
+
+# fdfind
+zinit ice as"command" from"gh-r" mv"fd* -> fd" pick"fd/fd"
+zinit light sharkdp/fd
+
+#stylua
+zinit wait'1b' lucid light-mode from'gh-r' as'command' bpick'*linux*.tar.gz' for \
+    bpick'*linux.zip' JohnnyMorganz/StyLua \
+
+# shfmt
+zinit ice from"gh-r" as"program" mv"shfmt* -> shfmt" fbin"shfmt"
+zinit light mvdan/sh
+
+zinit ice wait"2" as"command" from"gh-r" lucid \
+  mv"zoxide*/zoxide -> zoxide" \
+  atclone"./zoxide init zsh > init.zsh" \
+  atpull"%atclone" src"init.zsh" nocompile'!'
+zinit light ajeetdsouza/zoxide
+
+# zinit ice wait'0' lucid
+# zinit snippet 'https://github.com/git/git/contrib/completion/git-prompt.sh'
+
+### asdf-vm
+zinit wait lucid as"null" \
+    from"github" src"asdf.sh" as"program" for \
+    @asdf-vm/asdf
+
+zinit ice lucid wait'1' from"gh-r" as"program" mv"direnv* -> direnv" \
+    atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' \
+    pick"direnv" src="zhook.zsh" for \
+        direnv/direnv
+
+# it also works with turbo mode:
+zinit ice wait lucid
+zinit load redxtech/zsh-asdf-direnv
+
+zinit ice wait lucid as"completion"
+zinit snippet https://github.com/asdf-vm/asdf/blob/master/completions/_asdf
+
+########## PROMPT
+# Load version control information
+autoload -Uz vcs_info
+precmd() { vcs_info }
+
+# Format the vcs_info_msg_0_ variable
+zstyle ':vcs_info:git:*' formats '%b'
 
 autoload -U colors && colors
 
 NEWLINE=$'\n'
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[magenta]%}%M %{$fg[blue]%}%~%{$fg[red]%}]"
 setopt PROMPT_SUBST
-PS1+='%{$fg[green]%}[$(__git_ps1 "%s")]'
+PS1+='%{$fg[green]%}[${vcs_info_msg_0_}]'
 PS1+="${NEWLINE}%{$fg[green]%}$%b%{$reset_color%} "
+
+########## PROMPT
 
 # zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' menu select
+
 
 # https://superuser.com/questions/415650/does-a-fuzzy-matching-mode-exist-for-the-zsh-shell
 # 0 -- vanilla completion (abc => abc)
@@ -109,19 +168,17 @@ setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording en
 setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
 setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 
+countdown
 
 compinit -d $XDG_CACHE_HOME/zsh/zcompdump-${ZSH_VERSION}
 
-# TODO: investigate
-# https://github.com/zdharma-continuum/zinit#quick-start
-
+# https://github.com/zdharma-continuum/zinit#quick-start maybe?
 # SSH
 alias ssh="ssh $SSH_CONFIG $SSH_ID "
 alias ssh-copy-id="ssh-copy-id $SSH_ID"
 alias wget="wget --hsts-file="$XDG_CACHE_HOME/wget-hsts""
 
+
 if [ -x "$(command -v workon)" ]; then
   alias workon=". =workon"
 fi
-
-countdown
