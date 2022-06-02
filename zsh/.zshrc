@@ -109,17 +109,19 @@ setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording en
 setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
 setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 
-countdown
 
 compinit -d $XDG_CACHE_HOME/zsh/zcompdump-${ZSH_VERSION}
 
-# https://github.com/zdharma-continuum/zinit#quick-start maybe?
+# TODO: investigate
+# https://github.com/zdharma-continuum/zinit#quick-start
+
 # SSH
 alias ssh="ssh $SSH_CONFIG $SSH_ID "
 alias ssh-copy-id="ssh-copy-id $SSH_ID"
 alias wget="wget --hsts-file="$XDG_CACHE_HOME/wget-hsts""
 
-
 if [ -x "$(command -v workon)" ]; then
   alias workon=". =workon"
 fi
+
+countdown
