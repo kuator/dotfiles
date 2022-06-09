@@ -4,3 +4,4 @@ direnv 2.31.0
 golang 1.17.7
 rust 1.60.0
 deno 1.22.0
+coursier 2.1.0-M6

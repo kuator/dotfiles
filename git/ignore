@@ -13,3 +13,4 @@ static_root
 startup.log
 *.pyc 
 pyrightconfig.json
+kuat.sql

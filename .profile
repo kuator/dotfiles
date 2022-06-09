@@ -78,3 +78,7 @@ export PGPASSFILE="$XDG_CONFIG_HOME/pg/pgpass"
 export PGSERVICEFILE="$XDG_CONFIG_HOME/pg/pg_service.conf"
 
 mkdir -p "$XDG_CONFIG_HOME/pg" && mkdir -p "$XDG_STATE_HOME"
+
+# >>> coursier install directory >>>
+export PATH="$PATH:$XDG_DATA_HOME/coursier/bin"
+# <<< coursier install directory <<<
