@@ -7,12 +7,28 @@ pwd_hash="$(echo -n "$PWD" | shasum | cut -d ' ' -f 1)"
 
 if [ ! -d "$WORKON_HOME"/"$pwd_hash" ]; then
   if [ -z "$1" ]; then
-    echo -n "Provide python version or the default one will be set: `echo $'\n> '`" 
-    read response
-    if [[ -z "$response" ]]; then
+    if ! command -v asdf &> /dev/null; then
+      echo "Install asdf!"
+    else
+      PS3="Please enter your choice"$'\n'"> "
+      # options=("Option 1" "Option 2" "Option 3" "Quit")
+      my_array=($(asdf list python))
+      my_array+=('Quit')
+      select opt in "${my_array[@]}"
+      do
+        echo $opt
+        if [[ " ${my_array[*]} " =~ " ${opt} " ]]; then
+          if [[ "${opt}" == 'Quit' ]]; then
+            echo "Good Bye!" ; exit 1
+          fi
+          echo "python $opt will be used" ; break;
+        fi
+      done
+    fi
+    if [[ -z "$opt" ]]; then
       version=$(python -V 2>&1 | grep -Po '(?<=Python )(.+)')
     else
-      version=$response
+      version=$opt
     fi
   fi
   echo $version
