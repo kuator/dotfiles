@@ -82,3 +82,5 @@ mkdir -p "$XDG_CONFIG_HOME/pg" && mkdir -p "$XDG_STATE_HOME"
 # >>> coursier install directory >>>
 export PATH="$PATH:$XDG_DATA_HOME/coursier/bin"
 # <<< coursier install directory <<<
+
+export VIMINIT="if has('nvim') | so ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/init.lua | else | set nocp | so ${XDG_CONFIG_HOME:-$HOME/.config}/vim/vimrc | endif"

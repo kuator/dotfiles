@@ -48,6 +48,7 @@ declare -a packages=(
   universal-ctags cscope
   skkdic skkdic-extra
   bbe
+  vim-gtk
 )
 
 apt_install_if_not_installed() {

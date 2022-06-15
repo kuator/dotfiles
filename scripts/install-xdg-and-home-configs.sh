@@ -42,6 +42,7 @@ declare -a xdg_configs=(
  "asdf" "zathura" "bash"
  "git" "xkb" "zsh" ".ignore"
  "direnv" "ssh" "pythonstartup.py"
+ "vim"
 )
 
 for config in "${home_configs[@]}"; do
