@@ -25,3 +25,13 @@ set viewdir=$XDG_STATE_HOME/vim/view     | call mkdir(&viewdir,   'p', 0700)
 if !has('nvim') " Neovim has its own special location
   set viminfofile=$XDG_STATE_HOME/vim/viminfo
 endif
+
+let data_dir = has('nvim') ? stdpath('data') . '/site' : $XDG_CONFIG_HOME."/vim"
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin($XDG_CACHE_HOME."/vim/plugged")
+  Plug 'vim/colorschemes'
+call plug#end()

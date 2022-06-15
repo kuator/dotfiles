@@ -14,3 +14,4 @@ startup.log
 *.pyc 
 pyrightconfig.json
 kuat.sql
+plug.vim
