@@ -84,3 +84,6 @@ export PATH="$PATH:$XDG_DATA_HOME/coursier/bin"
 # <<< coursier install directory <<<
 
 export VIMINIT="if has('nvim') | so ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/init.lua | else | set nocp | so ${XDG_CONFIG_HOME:-$HOME/.config}/vim/vimrc | endif"
+
+export GEM_HOME="$XDG_CACHE_HOME/gems"
+export PATH="$GEM_HOME/bin:$PATH"

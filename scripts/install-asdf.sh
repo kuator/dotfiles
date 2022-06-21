@@ -38,4 +38,6 @@ if [ ! -d "$ASDF_DIR" ]; then
   asdf global direnv latest
 
   asdf plugin add coursier
+
+  # asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
 fi

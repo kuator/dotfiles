@@ -1,5 +1,8 @@
 #!/usr/bin/bash
 
+# It is necessary to put the following alias in `(.z|.ba|.fi)shrc` due to the nature of sourcing virtual environments.
+# alias workon=". =workon"
+
 export WORKON_HOME=$XDG_DATA_HOME/virtualenvs
 mkdir -p $WORKON_HOME
 

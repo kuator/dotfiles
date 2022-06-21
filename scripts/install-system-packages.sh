@@ -49,6 +49,8 @@ declare -a packages=(
   skkdic skkdic-extra
   bbe
   vim-gtk
+  # ruby
+  # autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm6 libgdbm-dev libdb-dev
 )
 
 apt_install_if_not_installed() {
