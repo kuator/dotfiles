@@ -28,7 +28,7 @@ zinit ice wait lucid
 zinit light tarrasch/zsh-bd
 
 
-zinit ice wait'0a' lucid id-as"junegunn/fzf_completions" pick"/dev/null" \
+zinit ice wait'0b' lucid id-as"junegunn/fzf_completions" pick"/dev/null" \
   multisrc"shell/{completion,key-bindings}.zsh"
 zinit light junegunn/fzf
 
@@ -52,7 +52,7 @@ zinit wait'1b' lucid light-mode from'gh-r' as'command' bpick'*linux*.tar.gz' for
 zinit ice from"gh-r" as"program" mv"shfmt* -> shfmt" fbin"shfmt"
 zinit light mvdan/sh
 
-zinit ice wait"2" as"command" from"gh-r" lucid \
+zinit ice wait"0a" as"command" from"gh-r" lucid \
   mv"zoxide*/zoxide -> zoxide" \
   atclone"./zoxide init zsh > init.zsh" \
   atpull"%atclone" src"init.zsh" nocompile'!'

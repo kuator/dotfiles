@@ -2,7 +2,7 @@
 
 # echo -n "Enter target date (e.g., Mar 18 2021)> "
 # read target_date
-target_date="Jul 3 2022"
+target_date="Dec 4 2022"
 today=`echo $(($(date --utc --date "$1" +%s)/86400))`
 target=`echo $(($(date --utc --date "$target_date" +%s)/86400))`
 days=`expr $target - $today`
