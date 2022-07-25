@@ -1,6 +1,7 @@
 cscope
 cscope.out
 kuat
+kuat.json
 kuat.py
 .netrwhist
 tags
