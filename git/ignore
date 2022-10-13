@@ -16,3 +16,6 @@ startup.log
 pyrightconfig.json
 kuat.sql
 plug.vim
+prod_test.sql
+*alembic*
+migrations

@@ -16,7 +16,8 @@ if [ ! -d "$ASDF_DIR" ]; then
   asdf global golang 1.17.7
 
   ## Install rust plugin
-  asdf plugin-add rust https://github.com/asdf-community/asdf-rust.git
+  # asdf plugin-add rust https://github.com/asdf-community/asdf-rust.git
+  asdf plugin-add rust https://github.com/code-lever/asdf-rust.git
   # Install global version rust
   asdf install rust 1.60.0
   # Setup global rust version
