@@ -80,15 +80,57 @@ colorscheme codedark
 " NOTE: You can use other key to expand snippet.
 
 " Expand
-imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
-smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
+" imap <expr> <C-k>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-k>'
+" smap <expr> <C-k>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-k>'
 
 " Expand or jump
-imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
-smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+" imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+" smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
 
 " Jump forward or backward
-imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
-smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
-imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
-smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+imap <expr> <c-k>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<c-k>'
+smap <expr> <c-k>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<c-k>'
+imap <expr> <c-j> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<c-j>'
+smap <expr> <c-j> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<c-j>'
+
+
+inoremap kj <esc>
+set hlsearch
+set incsearch
+
+let mapleader = ' '
+
+nnoremap q; q:
+nnoremap <a-c> :
+vnoremap <a-c> :
+inoremap kj <esc>
+nnoremap <silent> <c-l> <c-l>:silent nohls<cr>
+
+nnoremap <leader>ec  :edit <c-r>=fnameescape(expand('%:p:h')).'/*'<cr>
+nnoremap <leader>en  :edit <c-r>=stdpath('config').'/**/*'<cr>
+
+nnoremap <silent> <leader>lg :silent lgrep<space>)
+nnoremap <leader>lf :lexpr system('fdfind --hidden --no-ignore-vcs --ignore-file ~/.config/.ignore -g "*"')<left><left><left><left>
+nnoremap <leader>lt :ltag <space>/)
+nnoremap <leader>cc :silent cclose<bar>lclose<cr>
+nnoremap cd :silent lcd %:p:h<bar>pwd<cr>
+nnoremap cu :silent lcd ..<bar>pwd<cr>
+
+nnoremap <a-j> :m .+1<CR>==
+nnoremap <a-k> :m .-2<CR>==
+inoremap <a-j> <Esc>:m .+1<CR>==gi
+inoremap <a-k> <Esc>:m .-2<CR>==gi
+xnoremap <a-j> :m '>+1<CR>gv=gv
+xnoremap <a-k> :m '<-2<CR>gv=gv
+
+tnoremap <esc> <C-\><C-n>
+tnoremap <c-q> <C-\><C-n>
+
+nnoremap s <nop>
+
+snoremap <c-h> <c-h>
+
+set number
+set relativenumber
+
+set clipboard=unnamedplus
