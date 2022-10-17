@@ -101,8 +101,9 @@ set incsearch
 let mapleader = ' '
 
 nnoremap q; q:
-nnoremap <a-c> :
-vnoremap <a-c> :
+" nnoremap <a-c> :
+nnoremap <esc>c :
+vnoremap <esc>c :
 inoremap kj <esc>
 nnoremap <silent> <c-l> <c-l>:silent nohls<cr>
 
