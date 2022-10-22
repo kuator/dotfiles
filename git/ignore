@@ -19,3 +19,4 @@ plug.vim
 prod_test.sql
 *alembic*
 migrations
+tmp.sql
