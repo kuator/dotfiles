@@ -19,9 +19,9 @@ if [ ! -d "$ASDF_DIR" ]; then
   # asdf plugin-add rust https://github.com/asdf-community/asdf-rust.git
   asdf plugin-add rust https://github.com/code-lever/asdf-rust.git
   # Install global version rust
-  asdf install rust 1.60.0
+  asdf install rust 1.63.0
   # Setup global rust version
-  asdf global rust 1.60.0
+  asdf global rust 1.63.0
 
   ## Install rust plugin
   asdf plugin-add deno https://github.com/asdf-community/asdf-deno.git
