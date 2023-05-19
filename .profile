@@ -88,3 +88,5 @@ export VIMINIT="if has('nvim') | so ${XDG_CONFIG_HOME:-$HOME/.config}/$NVIM_APPN
 
 export GEM_HOME="$XDG_CACHE_HOME/gems"
 export PATH="$GEM_HOME/bin:$PATH"
+
+export RUFF_CACHE_DIR="$XDG_CACHE_HOME/ruff"

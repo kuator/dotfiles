@@ -1,4 +1,5 @@
-cscope
+cscope.*
+cscope.files
 cscope.out
 kuat
 kuat.json

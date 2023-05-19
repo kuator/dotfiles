@@ -113,9 +113,9 @@ nnoremap <silent> <c-l> <c-l>:silent nohls<cr>
 nnoremap <leader>ec  :edit <c-r>=fnameescape(expand('%:p:h')).'/*'<cr>
 nnoremap <leader>en  :edit <c-r>=stdpath('config').'/**/*'<cr>
 
-nnoremap <silent> <leader>lg :silent lgrep<space>)
+nnoremap <silent> <leader>lg :silent lgrep<space>
 nnoremap <leader>lf :lexpr system('fdfind --hidden --no-ignore-vcs --ignore-file ~/.config/.ignore -g "*"')<left><left><left><left>
-nnoremap <leader>lt :ltag <space>/)
+nnoremap <leader>lt :ltag <space>/
 nnoremap <leader>cc :silent cclose<bar>lclose<cr>
 nnoremap cd :silent lcd %:p:h<bar>pwd<cr>
 nnoremap cu :silent lcd ..<bar>pwd<cr>
