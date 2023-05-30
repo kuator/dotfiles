@@ -12,6 +12,8 @@ cd $PROFPATH
 cat  <<'EOF' > user.js
 user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 user_pref("webchannel.allowObject.urlWhitelist", "https://content.cdn.mozilla.net https://support.mozilla.org https://install.mozilla.org https://accounts.firefox.com");
+user_pref("extensions.webextensions.restrictedDomains", "");
+user_pref("privacy.resistFingerprinting.block_mozAddonManager", true);
 EOF
 
 mkdir -p chrome && cd chrome

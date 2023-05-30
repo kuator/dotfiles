@@ -86,7 +86,12 @@ export PATH="$PATH:$XDG_DATA_HOME/coursier/bin"
 export NVIM_APPNAME="nvim"
 export VIMINIT="if has('nvim') | so ${XDG_CONFIG_HOME:-$HOME/.config}/$NVIM_APPNAME/init.lua | else | set nocp | so ${XDG_CONFIG_HOME:-$HOME/.config}/vim/vimrc | endif"
 
+# RUBY
 export GEM_HOME="$XDG_CACHE_HOME/gems"
 export PATH="$GEM_HOME/bin:$PATH"
 
+# RUFF
 export RUFF_CACHE_DIR="$XDG_CACHE_HOME/ruff"
+
+# JAVA CLASSPATH
+export CLASSPATH=.

@@ -13,6 +13,13 @@ unzip /usr/lib/firefox/browser/omni.ja
 #   exit 1
 # fi
 
+cat << EOF > './chrome/browser/content/browser/blanktab.html'
+<!DOCTYPE html>
+<meta charset="utf-8"/>
+<meta name="color-scheme" content="light dark"/>
+<meta http-equiv="refresh" content="0;url=about:blank"/>
+EOF
+
 set -e
 patch -p1 <<EOF
 --- ./chrome/browser/content/browser/browser.xhtml	2010-01-01 00:00:00.000000000 +0100
