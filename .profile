@@ -95,3 +95,6 @@ export RUFF_CACHE_DIR="$XDG_CACHE_HOME/ruff"
 
 # JAVA CLASSPATH
 export CLASSPATH=.
+
+# Docker
+export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker 

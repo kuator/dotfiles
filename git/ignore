@@ -1,4 +1,3 @@
-cscope.*
 cscope.files
 cscope.out
 kuat
@@ -25,3 +24,5 @@ tmp.sh
 tmp.py
 tmp.json
 tmp.xml
+.classpath
+.project
