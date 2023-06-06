@@ -42,7 +42,7 @@ export PATH=$PATH:${CARGO_HOME:-~/.cargo}/bin
 # https://deno.land/manual/getting_started/setup_your_environment
 export DENO_INSTALL_ROOT=$XDG_DATA_HOME/bin
 
-# DENO
+# GOLANG
 export GOPATH="$HOME/dev/go/libs"
 export PATH="$PATH:$GOPATH/bin"
 export GOPATH="$GOPATH:$HOME/dev/go/code"
@@ -98,3 +98,6 @@ export CLASSPATH=.
 
 # Docker
 export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker 
+
+#zettelkasten
+$ZK_NOTEBOOK_DIR="~/zettelkasten"
