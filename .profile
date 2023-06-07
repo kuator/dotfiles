@@ -100,4 +100,4 @@ export CLASSPATH=.
 export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker 
 
 #zettelkasten
-$ZK_NOTEBOOK_DIR="~/zettelkasten"
+export ZK_NOTEBOOK_DIR="~/zettelkasten"
