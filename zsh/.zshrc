@@ -182,3 +182,4 @@ alias wget="wget --hsts-file="$XDG_CACHE_HOME/wget-hsts""
 if [ -x "$(command -v workon)" ]; then
   alias workon=". =workon"
 fi
+source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
