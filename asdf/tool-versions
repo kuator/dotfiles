@@ -1,7 +1,8 @@
 python 3.10.0
 nodejs 16.15.0
-direnv 2.31.0
+direnv 2.32.3
 golang 1.17.7
-rust 1.63.0
+rust 1.68.2
 deno 1.22.0
 coursier 2.1.0-M6
+kotlin 1.8.20

@@ -1,4 +1,4 @@
-cscope
+cscope.files
 cscope.out
 kuat
 kuat.json
@@ -20,3 +20,9 @@ prod_test.sql
 *alembic*
 migrations
 tmp.sql
+tmp.sh
+tmp.py
+tmp.json
+tmp.xml
+.classpath
+.project

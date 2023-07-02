@@ -42,7 +42,7 @@ export PATH=$PATH:${CARGO_HOME:-~/.cargo}/bin
 # https://deno.land/manual/getting_started/setup_your_environment
 export DENO_INSTALL_ROOT=$XDG_DATA_HOME/bin
 
-# DENO
+# GOLANG
 export GOPATH="$HOME/dev/go/libs"
 export PATH="$PATH:$GOPATH/bin"
 export GOPATH="$GOPATH:$HOME/dev/go/code"
@@ -83,7 +83,21 @@ mkdir -p "$XDG_CONFIG_HOME/pg" && mkdir -p "$XDG_STATE_HOME"
 export PATH="$PATH:$XDG_DATA_HOME/coursier/bin"
 # <<< coursier install directory <<<
 
-export VIMINIT="if has('nvim') | so ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/init.lua | else | set nocp | so ${XDG_CONFIG_HOME:-$HOME/.config}/vim/vimrc | endif"
+export NVIM_APPNAME="nvim"
+export VIMINIT="if has('nvim') | so ${XDG_CONFIG_HOME:-$HOME/.config}/$NVIM_APPNAME/init.lua | else | set nocp | so ${XDG_CONFIG_HOME:-$HOME/.config}/vim/vimrc | endif"
 
+# RUBY
 export GEM_HOME="$XDG_CACHE_HOME/gems"
 export PATH="$GEM_HOME/bin:$PATH"
+
+# RUFF
+export RUFF_CACHE_DIR="$XDG_CACHE_HOME/ruff"
+
+# JAVA CLASSPATH
+export CLASSPATH=.
+
+# Docker
+export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker 
+
+#zettelkasten
+export ZK_NOTEBOOK_DIR="~/zettelkasten"

@@ -182,4 +182,9 @@ alias wget="wget --hsts-file="$XDG_CACHE_HOME/wget-hsts""
 if [ -x "$(command -v workon)" ]; then
   alias workon=". =workon"
 fi
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+# export SDKMAN_DIR="$HOME/.sdkman"
+# [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
 source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
