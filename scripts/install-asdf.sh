@@ -6,7 +6,13 @@ export ASDF_DIR="$OPT/asdf"
 # https://rgoswami.me/snippets/prog-lang-man/
 if [ ! -d "$ASDF_DIR" ]; then
   # https://asdf-vm.com/guide/getting-started.html#_3-install-asdf
+
   git clone https://github.com/asdf-vm/asdf.git "$ASDF_DIR"
+
+  wget https://github.com/asdf-vm/asdf/archive/refs/tags/v0.10.0.zip 
+  unzip v0.10.0.zip 
+  mv asdf-0.10.0 asdf 
+
   . $OPT/asdf/asdf.sh
 
   # ## Install golang plugin

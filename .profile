@@ -51,6 +51,7 @@ export GOPATH="$GOPATH:$HOME/dev/go/code"
 export ASDF_CONFIG_DIR="$XDG_CONFIG_HOME/asdf"
 export ASDF_DIR="$OPT/asdf"
 export ASDF_CONFIG_FILE="$ASDF_CONFIG_DIR/asdfrc"
+# export ASDF_DEFAULT_TOOL_VERSIONS_FILENAME="$ASDF_CONFIG_DIR/tool-versions"
 export ASDF_DEFAULT_TOOL_VERSIONS_FILENAME="$ASDF_CONFIG_DIR/tool-versions"
 export ASDF_DATA_DIR="$XDG_DATA_HOME/asdf"
 

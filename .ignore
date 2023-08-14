@@ -108,3 +108,6 @@ media/
 *.pyc
 *.db
 *.pid
+*.jpeg
+*.pdf
+*.PDF
