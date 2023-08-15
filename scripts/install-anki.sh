@@ -2,16 +2,31 @@
 
 ANKI=$OPT/anki
 PREFIX="/usr"
-version=2.1.49
+# version=2.1.49
 anki_version="anki-$version-linux"
-anki_archive="$anki_version.tar.bz2"
+# anki_archive="$anki_version.tar.bz2"
+
+version=2.1.65
+anki_version="anki-$version-linux-qt5"
+anki_archive_zst="$anki_version.tar.zst "
+anki_archive_tar="$anki_version.tar"
 cd $OPT
 
+# if [ ! -d $ANKI ]; then
+#   if [ ! -f $anki_archive ]; then
+#     wget https://github.com/ankitects/anki/releases/download/$version/$anki_archive
+#   fi
+#   tar xaf $anki_archive && mv $anki_version $ANKI
+#   echo 'anki downloaded'
+# fi
+
 if [ ! -d $ANKI ]; then
-  if [ ! -f $anki_archive ]; then
-    wget https://github.com/ankitects/anki/releases/download/$version/$anki_archive
+  if [ ! -f $anki_archive_zst ]; then
+    echo https://github.com/ankitects/anki/releases/download/$version/$anki_archive_zst
+    wget https://github.com/ankitects/anki/releases/download/$version/$anki_archive_zst
   fi
-  tar xaf $anki_archive && mv $anki_version $ANKI
+  unzstd $anki_archive_zst
+  tar -xvf $anki_archive_tar && mv $anki_version $ANKI
   echo 'anki downloaded'
 fi
 
@@ -22,15 +37,15 @@ if [ -d $ANKI ]; then
     cd $ANKI
     sudo PREFIX="/usr" ./install.sh
     mkdir -p $XDG_DATA_HOME/Anki2/addons21/
+    if [ ! -d $XDG_CONFIG_HOME/mpv ]; then
+      ln -sv $DOTFILES/mpv $XDG_CONFIG_HOME/mpv
+    fi
     if [ ! -d $XDG_CONFIG_HOME/mpv/scripts/mpvacious ]; then
-      mkdir -p $XDG_CONFIG_HOME/mpv/scripts
-      mkdir -p $XDG_CONFIG_HOME/mpv/script-opts
-      cp $DOTFILES/mpvacious/subs2srs.conf $XDG_CONFIG_HOME/mpv/script-opts/subs2srs.conf
       git clone https://github.com/Ajatt-Tools/mpvacious $XDG_CONFIG_HOME/mpv/scripts/mpvacious
     fi
-    cp -r $DOTFILES/anki/addons21/*  ~/.local/share/Anki2/addons21
-    git clone https://github.com/Ajatt-Tools/PitchAccent.git --recurse-submodules -j8 ~/.local/share/Anki2/addons21/1225470483
-    git clone https://github.com/Ajatt-Tools/Furigana.git --recurse-submodules -j8 ~/.local/share/Anki2/addons21/1344485230
+    cp -r $DOTFILES/anki/addons21/*  $XDG_DATA_HOME/Anki2/addons21
+    git clone https://github.com/Ajatt-Tools/PitchAccent.git --recurse-submodules -j8 $XDG_DATA_HOME/Anki2/addons21/1225470483
+    git clone https://github.com/Ajatt-Tools/Furigana.git --recurse-submodules -j8 $XDG_DATA_HOME/Anki2/addons21/1344485230
     # need ssh
     # git clone https://github.com/Ajatt-Tools/PasteImagesAsWebP --recurse-submodules -j8 ~/.local/share/Anki2/addons21/1151815987
   fi
