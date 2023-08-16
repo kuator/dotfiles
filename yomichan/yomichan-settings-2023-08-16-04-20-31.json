@@ -1,7 +1,7 @@
 {
     "version": 0,
-    "date": "2023-08-15 15:56:56",
-    "url": "moz-extension://9d1f9547-3f00-4825-82ff-054ef8fe57ab/",
+    "date": "2023-08-16 04:20:31",
+    "url": "moz-extension://d6599029-7818-4091-9847-f9ea544abd1b/",
     "manifest": {
         "applications": {
             "gecko": {
@@ -9,7 +9,8 @@
                 "strict_max_version": null,
                 "strict_min_version": "57.0",
                 "update_url": null
-            }
+            },
+            "gecko_android": null
         },
         "author": "Alex Yatskov",
         "browser_specific_settings": {
@@ -18,7 +19,8 @@
                 "strict_max_version": null,
                 "strict_min_version": "57.0",
                 "update_url": null
-            }
+            },
+            "gecko_android": null
         },
         "description": "Japanese dictionary with Anki integration",
         "developer": null,
@@ -29,7 +31,7 @@
         "short_name": null,
         "version": "22.10.23.0",
         "background": {
-            "page": "moz-extension://9d1f9547-3f00-4825-82ff-054ef8fe57ab/background.html",
+            "page": "moz-extension://d6599029-7818-4091-9847-f9ea544abd1b/background.html",
             "persistent": true
         },
         "content_scripts": [
@@ -40,28 +42,28 @@
                 "exclude_matches": null,
                 "include_globs": null,
                 "js": [
-                    "moz-extension://9d1f9547-3f00-4825-82ff-054ef8fe57ab/js/core.js",
-                    "moz-extension://9d1f9547-3f00-4825-82ff-054ef8fe57ab/js/yomichan.js",
-                    "moz-extension://9d1f9547-3f00-4825-82ff-054ef8fe57ab/js/app/frontend.js",
-                    "moz-extension://9d1f9547-3f00-4825-82ff-054ef8fe57ab/js/app/popup.js",
-                    "moz-extension://9d1f9547-3f00-4825-82ff-054ef8fe57ab/js/app/popup-factory.js",
-                    "moz-extension://9d1f9547-3f00-4825-82ff-054ef8fe57ab/js/app/popup-proxy.js",
-                    "moz-extension://9d1f9547-3f00-4825-82ff-054ef8fe57ab/js/app/popup-window.js",
-                    "moz-extension://9d1f9547-3f00-4825-82ff-054ef8fe57ab/js/app/theme-controller.js",
-                    "moz-extension://9d1f9547-3f00-4825-82ff-054ef8fe57ab/js/comm/api.js",
-                    "moz-extension://9d1f9547-3f00-4825-82ff-054ef8fe57ab/js/comm/cross-frame-api.js",
-                    "moz-extension://9d1f9547-3f00-4825-82ff-054ef8fe57ab/js/comm/frame-ancestry-handler.js",
-                    "moz-extension://9d1f9547-3f00-4825-82ff-054ef8fe57ab/js/comm/frame-client.js",
-                    "moz-extension://9d1f9547-3f00-4825-82ff-054ef8fe57ab/js/comm/frame-offset-forwarder.js",
-                    "moz-extension://9d1f9547-3f00-4825-82ff-054ef8fe57ab/js/data/sandbox/string-util.js",
-                    "moz-extension://9d1f9547-3f00-4825-82ff-054ef8fe57ab/js/dom/dom-text-scanner.js",
-                    "moz-extension://9d1f9547-3f00-4825-82ff-054ef8fe57ab/js/dom/document-util.js",
-                    "moz-extension://9d1f9547-3f00-4825-82ff-054ef8fe57ab/js/dom/text-source-element.js",
-                    "moz-extension://9d1f9547-3f00-4825-82ff-054ef8fe57ab/js/dom/text-source-range.js",
-                    "moz-extension://9d1f9547-3f00-4825-82ff-054ef8fe57ab/js/input/hotkey-handler.js",
-                    "moz-extension://9d1f9547-3f00-4825-82ff-054ef8fe57ab/js/language/text-scanner.js",
-                    "moz-extension://9d1f9547-3f00-4825-82ff-054ef8fe57ab/js/script/dynamic-loader.js",
-                    "moz-extension://9d1f9547-3f00-4825-82ff-054ef8fe57ab/js/app/content-script-main.js"
+                    "moz-extension://d6599029-7818-4091-9847-f9ea544abd1b/js/core.js",
+                    "moz-extension://d6599029-7818-4091-9847-f9ea544abd1b/js/yomichan.js",
+                    "moz-extension://d6599029-7818-4091-9847-f9ea544abd1b/js/app/frontend.js",
+                    "moz-extension://d6599029-7818-4091-9847-f9ea544abd1b/js/app/popup.js",
+                    "moz-extension://d6599029-7818-4091-9847-f9ea544abd1b/js/app/popup-factory.js",
+                    "moz-extension://d6599029-7818-4091-9847-f9ea544abd1b/js/app/popup-proxy.js",
+                    "moz-extension://d6599029-7818-4091-9847-f9ea544abd1b/js/app/popup-window.js",
+                    "moz-extension://d6599029-7818-4091-9847-f9ea544abd1b/js/app/theme-controller.js",
+                    "moz-extension://d6599029-7818-4091-9847-f9ea544abd1b/js/comm/api.js",
+                    "moz-extension://d6599029-7818-4091-9847-f9ea544abd1b/js/comm/cross-frame-api.js",
+                    "moz-extension://d6599029-7818-4091-9847-f9ea544abd1b/js/comm/frame-ancestry-handler.js",
+                    "moz-extension://d6599029-7818-4091-9847-f9ea544abd1b/js/comm/frame-client.js",
+                    "moz-extension://d6599029-7818-4091-9847-f9ea544abd1b/js/comm/frame-offset-forwarder.js",
+                    "moz-extension://d6599029-7818-4091-9847-f9ea544abd1b/js/data/sandbox/string-util.js",
+                    "moz-extension://d6599029-7818-4091-9847-f9ea544abd1b/js/dom/dom-text-scanner.js",
+                    "moz-extension://d6599029-7818-4091-9847-f9ea544abd1b/js/dom/document-util.js",
+                    "moz-extension://d6599029-7818-4091-9847-f9ea544abd1b/js/dom/text-source-element.js",
+                    "moz-extension://d6599029-7818-4091-9847-f9ea544abd1b/js/dom/text-source-range.js",
+                    "moz-extension://d6599029-7818-4091-9847-f9ea544abd1b/js/input/hotkey-handler.js",
+                    "moz-extension://d6599029-7818-4091-9847-f9ea544abd1b/js/language/text-scanner.js",
+                    "moz-extension://d6599029-7818-4091-9847-f9ea544abd1b/js/script/dynamic-loader.js",
+                    "moz-extension://d6599029-7818-4091-9847-f9ea544abd1b/js/app/content-script-main.js"
                 ],
                 "match_about_blank": true,
                 "matches": [
@@ -76,13 +78,13 @@
         "granted_host_permissions": false,
         "hidden": false,
         "icons": {
-            "16": "moz-extension://9d1f9547-3f00-4825-82ff-054ef8fe57ab/images/icon16.png",
-            "19": "moz-extension://9d1f9547-3f00-4825-82ff-054ef8fe57ab/images/icon19.png",
-            "32": "moz-extension://9d1f9547-3f00-4825-82ff-054ef8fe57ab/images/icon32.png",
-            "38": "moz-extension://9d1f9547-3f00-4825-82ff-054ef8fe57ab/images/icon38.png",
-            "48": "moz-extension://9d1f9547-3f00-4825-82ff-054ef8fe57ab/images/icon48.png",
-            "64": "moz-extension://9d1f9547-3f00-4825-82ff-054ef8fe57ab/images/icon64.png",
-            "128": "moz-extension://9d1f9547-3f00-4825-82ff-054ef8fe57ab/images/icon128.png"
+            "16": "moz-extension://d6599029-7818-4091-9847-f9ea544abd1b/images/icon16.png",
+            "19": "moz-extension://d6599029-7818-4091-9847-f9ea544abd1b/images/icon19.png",
+            "32": "moz-extension://d6599029-7818-4091-9847-f9ea544abd1b/images/icon32.png",
+            "38": "moz-extension://d6599029-7818-4091-9847-f9ea544abd1b/images/icon38.png",
+            "48": "moz-extension://d6599029-7818-4091-9847-f9ea544abd1b/images/icon48.png",
+            "64": "moz-extension://d6599029-7818-4091-9847-f9ea544abd1b/images/icon64.png",
+            "128": "moz-extension://d6599029-7818-4091-9847-f9ea544abd1b/images/icon128.png"
         },
         "incognito": "spanning",
         "minimum_chrome_version": "57.0.0.0",
@@ -92,10 +94,10 @@
             "webNavigation"
         ],
         "options_ui": {
-            "browser_style": true,
+            "browser_style": false,
             "chrome_style": null,
             "open_in_tab": true,
-            "page": "moz-extension://9d1f9547-3f00-4825-82ff-054ef8fe57ab/settings.html"
+            "page": "moz-extension://d6599029-7818-4091-9847-f9ea544abd1b/settings.html"
         },
         "permissions": [
             "<all_urls>",
@@ -109,6 +111,24 @@
         "web_accessible_resources": [
             "popup.html"
         ],
+        "browser_action": {
+            "browser_style": false,
+            "default_area": null,
+            "default_icon": {
+                "16": "moz-extension://d6599029-7818-4091-9847-f9ea544abd1b/images/icon16.png",
+                "19": "moz-extension://d6599029-7818-4091-9847-f9ea544abd1b/images/icon19.png",
+                "32": "moz-extension://d6599029-7818-4091-9847-f9ea544abd1b/images/icon32.png",
+                "38": "moz-extension://d6599029-7818-4091-9847-f9ea544abd1b/images/icon38.png",
+                "48": "moz-extension://d6599029-7818-4091-9847-f9ea544abd1b/images/icon48.png",
+                "64": "moz-extension://d6599029-7818-4091-9847-f9ea544abd1b/images/icon64.png",
+                "128": "moz-extension://d6599029-7818-4091-9847-f9ea544abd1b/images/icon128.png"
+            },
+            "default_popup": "moz-extension://d6599029-7818-4091-9847-f9ea544abd1b/action-popup.html",
+            "default_title": "Yomichan",
+            "theme_icons": null
+        },
+        "chrome_settings_overrides": null,
+        "devtools_page": null,
         "commands": {
             "toggleTextScanning": {
                 "description": "Toggle text scanning on/off",
@@ -149,28 +169,11 @@
                 "suggested_key": null
             }
         },
-        "chrome_settings_overrides": null,
-        "devtools_page": null,
-        "browser_action": {
-            "browser_style": false,
-            "default_area": null,
-            "default_icon": {
-                "16": "moz-extension://9d1f9547-3f00-4825-82ff-054ef8fe57ab/images/icon16.png",
-                "19": "moz-extension://9d1f9547-3f00-4825-82ff-054ef8fe57ab/images/icon19.png",
-                "32": "moz-extension://9d1f9547-3f00-4825-82ff-054ef8fe57ab/images/icon32.png",
-                "38": "moz-extension://9d1f9547-3f00-4825-82ff-054ef8fe57ab/images/icon38.png",
-                "48": "moz-extension://9d1f9547-3f00-4825-82ff-054ef8fe57ab/images/icon48.png",
-                "64": "moz-extension://9d1f9547-3f00-4825-82ff-054ef8fe57ab/images/icon64.png",
-                "128": "moz-extension://9d1f9547-3f00-4825-82ff-054ef8fe57ab/images/icon128.png"
-            },
-            "default_popup": "moz-extension://9d1f9547-3f00-4825-82ff-054ef8fe57ab/action-popup.html",
-            "default_title": "Yomichan",
-            "theme_icons": null
-        },
-        "omnibox": null,
         "page_action": null,
-        "sidebar_action": null,
+        "omnibox": null,
         "chrome_url_overrides": null,
+        "sidebar_action": null,
+        "declarative_net_request": null,
         "default_locale": null,
         "l10n_resources": null,
         "protocol_handlers": null,
@@ -185,7 +188,7 @@
             "os": "linux"
         }
     },
-    "userAgent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:107.0) Gecko/20100101 Firefox/107.0",
+    "userAgent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/116.0",
     "permissions": {
         "origins": [
             "<all_urls>"
@@ -264,6 +267,11 @@
                         "volume": 100,
                         "autoPlay": false,
                         "sources": [
+                            {
+                                "type": "custom-json",
+                                "url": "http://localhost:5050/?term={term}&reading={reading}",
+                                "voice": ""
+                            },
                             {
                                 "type": "custom-json",
                                 "url": "http://localhost:8770/?expression={term}&reading={reading}",
@@ -384,13 +392,6 @@
                             "definitionsCollapsible": "not-collapsible"
                         },
                         {
-                            "name": "Kanjium Pitch Accents",
-                            "priority": 0,
-                            "enabled": true,
-                            "allowSecondarySearches": false,
-                            "definitionsCollapsible": "not-collapsible"
-                        },
-                        {
                             "name": "新和英",
                             "priority": 0,
                             "enabled": true,
@@ -398,9 +399,9 @@
                             "definitionsCollapsible": "not-collapsible"
                         },
                         {
-                            "name": "旺文社国語辞典 第十一版 画像無し",
+                            "name": "日本語文法辞典(全集)",
                             "priority": 0,
-                            "enabled": true,
+                            "enabled": false,
                             "allowSecondarySearches": false,
                             "definitionsCollapsible": "not-collapsible"
                         }
