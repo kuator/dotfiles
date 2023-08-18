@@ -45,7 +45,7 @@ if [ -d $ANKI ]; then
     fi
     cp -r $DOTFILES/anki/addons21/*  $XDG_DATA_HOME/Anki2/addons21
     git clone https://github.com/Ajatt-Tools/PitchAccent.git --recurse-submodules -j8 $XDG_DATA_HOME/Anki2/addons21/1225470483
-    git clone https://github.com/Ajatt-Tools/Furigana.git --recurse-submodules -j8 $XDG_DATA_HOME/Anki2/addons21/1344485230
+    git clone https://github.com/Ajatt-Tools/Japanese.git --recurse-submodules -j8 $XDG_DATA_HOME/Anki2/addons21/1344485230
     # need ssh
     # git clone https://github.com/Ajatt-Tools/PasteImagesAsWebP --recurse-submodules -j8 ~/.local/share/Anki2/addons21/1151815987
   fi
