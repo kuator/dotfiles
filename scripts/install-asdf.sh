@@ -7,8 +7,8 @@ export ASDF_DIR="$OPT/asdf"
 if [ ! -d "$ASDF_DIR" ]; then
   # https://asdf-vm.com/guide/getting-started.html#_3-install-asdf
 
-  git clone https://github.com/asdf-vm/asdf.git "$ASDF_DIR"
-
+  # git clone https://github.com/asdf-vm/asdf.git "$ASDF_DIR"
+  cd $OPT
   wget https://github.com/asdf-vm/asdf/archive/refs/tags/v0.10.0.zip 
   unzip v0.10.0.zip 
   mv asdf-0.10.0 asdf 
