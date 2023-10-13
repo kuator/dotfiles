@@ -102,3 +102,6 @@ export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
 
 #zettelkasten
 export ZK_NOTEBOOK_DIR="~/zettelkasten"
+
+export POETRY_CACHE_DIR=$XDG_CACHE_HOME/pypoetry
+export POETRY_VIRTUALENVS_PATH=$XDG_CACHE_HOME/virtualenvs

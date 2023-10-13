@@ -1,6 +1,6 @@
 [user]
-  email = kuatabylkasymov@gmail.com
-  name = evakuator
+	email = 
+	name = evakuator
 [core]
   editor = nvr --remote-wait-silent
 [diff]
