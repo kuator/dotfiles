@@ -183,6 +183,10 @@ if [ -x "$(command -v workon)" ]; then
   alias workon=". =workon"
 fi
 
+if [ -x "$(command -v venv_create_or_activate)" ]; then
+  alias venv_create_or_activate=". =venv_create_or_activate"
+fi
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 # export SDKMAN_DIR="$HOME/.sdkman"
 # [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
