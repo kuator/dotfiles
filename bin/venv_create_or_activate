@@ -1,0 +1,15 @@
+#!/usr/bin/bash
+
+if [ ! -f pyrightconfig.json ]; then
+  poetry install && \
+  jq \
+    --null-input \
+    --arg venv "$(basename $(poetry env info -p))" \
+    --arg venvPath "$(dirname $(poetry env info -p))" \
+    '{ "venv": $venv, "venvPath": $venvPath }' \
+    > pyrightconfig.json
+else
+  if [ -f pyproject.toml ]; then
+    . $(poetry env info --path)/bin/activate
+  fi
+fi
