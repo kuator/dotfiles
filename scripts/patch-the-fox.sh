@@ -8,11 +8,6 @@ cd "$tempdir/extract"
 set +e
 unzip /usr/lib/firefox/browser/omni.ja
 
-# if [ "$?" -ne 0 ]; then
-#   echo >&2 "Unexpected exit code from unzip"
-#   exit 1
-# fi
-
 cat << EOF > './chrome/browser/content/browser/blanktab.html'
 <!DOCTYPE html>
 <meta charset="utf-8"/>

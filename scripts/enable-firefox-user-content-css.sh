@@ -22,6 +22,14 @@ EOF
 mkdir -p chrome && cd chrome
 
 cat  <<'EOF' > userContent.css
+@-moz-document regexp("about.*") {
+  html {
+    height: 100vh;
+    background-color: #1C1B22;
+  }
+}
+
+
 @-moz-document regexp("^moz-extension://.*search.html.*$") {
   .content { 
     background-color: #777; 
