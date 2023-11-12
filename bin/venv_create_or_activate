@@ -10,6 +10,14 @@ if [ ! -f pyrightconfig.json ]; then
     > pyrightconfig.json
 else
   if [ -f pyproject.toml ]; then
-    . $(poetry env info --path)/bin/activate
+
+    # . $(poetry env info --path)/bin/activate
+
+    venvPath=$(cat pyrightconfig.json | jq -r ".venvPath")
+    venv=$(cat pyrightconfig.json | jq -r ".venv")
+    venvPath="$venvPath/$venv"
+
+    . $venvPath/bin/activate
+
   fi
 fi
