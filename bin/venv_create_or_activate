@@ -8,16 +8,16 @@ if [ ! -f pyrightconfig.json ]; then
     --arg venvPath "$(dirname $(poetry env info -p))" \
     '{ "venv": $venv, "venvPath": $venvPath }' \
     > pyrightconfig.json
-else
-  if [ -f pyproject.toml ]; then
+fi
 
-    # . $(poetry env info --path)/bin/activate
+if [ -f pyrightconfig.json ]; then
 
-    venvPath=$(cat pyrightconfig.json | jq -r ".venvPath")
-    venv=$(cat pyrightconfig.json | jq -r ".venv")
-    venvPath="$venvPath/$venv"
+  # . $(poetry env info --path)/bin/activate
 
-    . $venvPath/bin/activate
+  venvPath=$(cat pyrightconfig.json | jq -r ".venvPath")
+  venv=$(cat pyrightconfig.json | jq -r ".venv")
+  venvPath="$venvPath/$venv"
 
-  fi
+  . $venvPath/bin/activate
+
 fi
