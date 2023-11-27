@@ -18,7 +18,6 @@ kuat.sql
 plug.vim
 prod_test.sql
 *alembic*
-migrations
 tmp.sql
 tmp.sh
 tmp.py
@@ -26,3 +25,4 @@ tmp.json
 tmp.xml
 .classpath
 .project
+dump.sql

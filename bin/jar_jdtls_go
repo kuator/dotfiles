@@ -1,0 +1,45 @@
+cat  <<EOF > .classpath
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" path=""/>
+	<classpathentry kind="lib" path="algs4.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
+EOF
+
+
+cat  <<EOF > .project
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>week1</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+	</natures>
+	<filteredResources>
+		<filter>
+			<id>1701101245598</id>
+			<name></name>
+			<type>30</type>
+			<matcher>
+				<id>org.eclipse.core.resources.regexFilterMatcher</id>
+				<arguments>node_modules|\.git|__CREATED_BY_JAVA_LANGUAGE_SERVER__</arguments>
+			</matcher>
+		</filter>
+	</filteredResources>
+</projectDescription>
+EOF
