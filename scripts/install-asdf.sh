@@ -22,13 +22,13 @@ if [ ! -d "$ASDF_DIR" ]; then
   # # Setup global golang version
   # asdf global golang 1.17.7
 
-  ## Install rust plugin
-  # asdf plugin-add rust https://github.com/asdf-community/asdf-rust.git
-  asdf plugin-add rust https://github.com/code-lever/asdf-rust.git
-  # Install global version rust
-  asdf install rust 1.63.0
-  # Setup global rust version
-  asdf global rust 1.63.0
+  # ## Install rust plugin
+  # # asdf plugin-add rust https://github.com/asdf-community/asdf-rust.git
+  # asdf plugin-add rust https://github.com/code-lever/asdf-rust.git
+  # # Install global version rust
+  # asdf install rust 1.63.0
+  # # Setup global rust version
+  # asdf global rust 1.63.0
 
   # ## Install deno plugin
   # asdf plugin-add deno https://github.com/asdf-community/asdf-deno.git
@@ -46,7 +46,9 @@ if [ ! -d "$ASDF_DIR" ]; then
   asdf global direnv latest
 
   # asdf plugin add coursier
-  asdf plugin-add poetry https://github.com/asdf-community/asdf-poetry.git
 
-  # asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
+  # java
+  # https://gist.github.com/ofhouse/b6cca8006329107fa0770a8dd87f45cf
+
+  asdf plugin-add poetry https://github.com/asdf-community/asdf-poetry.git
 fi

@@ -12,7 +12,7 @@ add_ppa() {
   done
 }
 
-add_ppa neovim-ppa/unstable
+# add_ppa neovim-ppa/unstable
 
 # https://github.com/MrGlockenspiel/activate-linux
 
@@ -31,7 +31,7 @@ declare -a packages=(
   ssh-askpass
   # for telescope
   ripgrep fd-find
-  neovim
+  # neovim
   fonts-noto-cjk
   # anki paste images as webp
   webp

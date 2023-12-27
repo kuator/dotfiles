@@ -1,5 +1,14 @@
 #!/bin/bash
 
+LOCAL_YOMICHAN_AUDIO_FILE=~/Downloads/local-yomichan-audio-collection-2023-06-11-opus.tar.xz
+
+if [ -f "$LOCAL_YOMICHAN_AUDIO_FILE" ]; then
+    echo "$LOCAL_YOMICHAN_AUDIO_FILE exists."
+else 
+    echo "$LOCAL_YOMICHAN_AUDIO_FILE does not exist."
+    exit 1
+fi
+
 export DOTFILES="$HOME/dotfiles"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -26,6 +35,7 @@ SCRIPTS=$SCRIPTS . $SCRIPTS/install-firefox.sh
 . $SCRIPTS/change-xauthority-location.sh
 . $SCRIPTS/disable-sudo-admin-successful.sh
 . $SCRIPTS/xdg-bash.sh
-# . $SCRIPTS/move-xsession-errors.sh
+# run at your own risk
+# . $SCRIPTS/patch-lightdm.sh
 
 OPT=$OPT . $SCRIPTS/install-python-lsp.sh
