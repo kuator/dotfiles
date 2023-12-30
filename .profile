@@ -85,6 +85,7 @@ export PATH="$PATH:$XDG_DATA_HOME/coursier/bin"
 # <<< coursier install directory <<<
 
 export NVIM_APPNAME="nvim"
+
 export VIMINIT="if has('nvim') | so ${XDG_CONFIG_HOME:-$HOME/.config}/$NVIM_APPNAME/init.lua | else | set nocp | so ${XDG_CONFIG_HOME:-$HOME/.config}/vim/vimrc | endif"
 
 # RUBY
@@ -101,7 +102,7 @@ export CLASSPATH=.
 export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker 
 
 #zettelkasten
-export ZK_NOTEBOOK_DIR="~/zettelkasten"
+export ZK_NOTEBOOK_DIR="${HOME}/zettelkasten"
 
 export POETRY_CACHE_DIR=$XDG_CACHE_HOME/pypoetry
 export POETRY_VIRTUALENVS_PATH=$XDG_CACHE_HOME/virtualenvs
