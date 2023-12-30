@@ -1,0 +1,9 @@
+#!/bin/bash
+
+/usr/bin/intellij-idea-community
+
+cleanup() {
+  rm -rf .java
+}
+
+trap cleanup EXIT

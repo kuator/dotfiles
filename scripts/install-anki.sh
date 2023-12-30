@@ -1,10 +1,14 @@
 #!/bin/bash
 
+# !!!!!!!!!!!!!!!! VERY IMPORTANT LINK TO READ
+# https://stackoverflow.com/a/76896149
+# !!!!!!!!!!!!!!!! VERY IMPORTANT LINK TO READ
+
+OPT=$HOME/opt
+
 ANKI=$OPT/anki
 PREFIX="/usr"
-# version=2.1.49
 anki_version="anki-$version-linux"
-# anki_archive="$anki_version.tar.bz2"
 
 version=2.1.65
 anki_version="anki-$version-linux-qt5"
@@ -12,13 +16,6 @@ anki_archive_zst="$anki_version.tar.zst "
 anki_archive_tar="$anki_version.tar"
 cd $OPT
 
-# if [ ! -d $ANKI ]; then
-#   if [ ! -f $anki_archive ]; then
-#     wget https://github.com/ankitects/anki/releases/download/$version/$anki_archive
-#   fi
-#   tar xaf $anki_archive && mv $anki_version $ANKI
-#   echo 'anki downloaded'
-# fi
 
 if [ ! -d $ANKI ]; then
   if [ ! -f $anki_archive_zst ]; then

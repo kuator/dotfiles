@@ -98,6 +98,9 @@ export RUFF_CACHE_DIR="$XDG_CACHE_HOME/ruff"
 # JAVA CLASSPATH
 export CLASSPATH=.
 
+# JAVA FONTS XDG
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+
 # Docker
 export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker 
 
@@ -106,3 +109,6 @@ export ZK_NOTEBOOK_DIR="${HOME}/zettelkasten"
 
 export POETRY_CACHE_DIR=$XDG_CACHE_HOME/pypoetry
 export POETRY_VIRTUALENVS_PATH=$XDG_CACHE_HOME/virtualenvs
+
+# less
+export LESSHISTFILE="$XDG_STATE_HOME"/less/history

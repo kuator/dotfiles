@@ -29,13 +29,16 @@ export ASDF_DIR="$OPT/asdf"
 OPT=$OPT . $SCRIPTS/install-anki.sh
 
 dconf load /org/gnome/terminal/legacy/profiles:/ < $DOTFILES/gnome-terminal-profiles.dconf
+gsettings set org.gnome.Terminal.Legacy.Settings default-show-menubar false
 
 . $SCRIPTS/disable-snap-ubuntu-22.04.sh
 SCRIPTS=$SCRIPTS . $SCRIPTS/install-firefox.sh
+# https://askubuntu.com/a/961459
 . $SCRIPTS/change-xauthority-location.sh
 . $SCRIPTS/disable-sudo-admin-successful.sh
 . $SCRIPTS/xdg-bash.sh
-# run at your own risk
-# . $SCRIPTS/patch-lightdm.sh
 
-OPT=$OPT . $SCRIPTS/install-python-lsp.sh
+#run at your own risk
+. $SCRIPTS/patch-lightdm.sh
+
+# OPT=$OPT . $SCRIPTS/install-python-lsp.sh

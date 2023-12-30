@@ -37,3 +37,5 @@ sudo bash -c "cp /usr/lib/firefox/browser/omni.ja /usr/lib/firefox/browser/omni.
 find ~/.cache/mozilla/firefox -type d -name startupCache | xargs rm -rf
 cd /
 rm -r "$tempdir"
+
+. enable-firefox-user-content-css.sh
