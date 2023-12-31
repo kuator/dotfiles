@@ -1,0 +1,17 @@
+{
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    "vscode-neovim.revealCursorScrollLine": true,
+    "window.menuBarVisibility": "toggle",
+    "vscode-neovim.neovimPath": "nvim",
+    "editor.minimap.enabled": false,
+    "editor.scrollbar.horizontal": "hidden",
+    "editor.cursorBlinking": "solid",
+    "editor.scrollbar.vertical": "hidden",
+    "editor.overviewRulerBorder": false,
+    "editor.lineNumbers": "relative",
+    "editor.renderLineHighlight": "none",
+    "editor.fontLigatures": false,
+    "workbench.activityBar.location": "hidden"
+}
