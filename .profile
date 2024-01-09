@@ -1,3 +1,8 @@
+# Very interesting stackexchange question
+# https://unix.stackexchange.com/questions/552459/why-does-lightdm-source-my-profile-even-though-my-login-shell-is-zsh
+# Very interesting stackexchange question
+
+
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
@@ -105,10 +110,12 @@ export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker 
 
 #zettelkasten
-export ZK_NOTEBOOK_DIR="${HOME}/zettelkasten"
+export ZK_NOTEBOOK_DIR="${HOME}/dev/personal/zettelkasten"
+mkdir -p $ZK_NOTEBOOK_DIR
 
 export POETRY_CACHE_DIR=$XDG_CACHE_HOME/pypoetry
 export POETRY_VIRTUALENVS_PATH=$XDG_CACHE_HOME/virtualenvs
 
 # less
 export LESSHISTFILE="$XDG_STATE_HOME"/less/history
+

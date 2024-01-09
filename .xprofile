@@ -2,3 +2,5 @@
 (sleep 3 && xkbcomp $HOME/.config/xkb/my $DISPLAY 2> /dev/null)&
 (sleep 3.1 && xcape -t 1000 -e "Hyper_R=space")&
 (sleep 3.2 && xset r rate 220 40)&
+
+export KUAT=KUAT

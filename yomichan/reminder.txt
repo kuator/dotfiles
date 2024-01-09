@@ -1,0 +1,2 @@
+1. remove [sound] in handlebars with <audio controls="" src="{{getMedia "audio"}}"></audio>
+2. make sure to turn on anki integration !!!!!!!!!!!!!!!!!!!!!!!!

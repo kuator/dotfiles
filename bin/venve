@@ -8,7 +8,7 @@ mkdir -p $WORKON_HOME
 
 pwd_hash="$(echo -n "$PWD" | shasum | cut -d ' ' -f 1)"
 
-if [ ! -d "$WORKON_HOME"/"$pwd_hash" ]; then
+if [ ! -f pyrightconfig.json ]; then
   if [ -z "$1" ]; then
     if ! command -v asdf &> /dev/null; then
       echo "Install asdf!"
@@ -41,12 +41,14 @@ if [ ! -d "$WORKON_HOME"/"$pwd_hash" ]; then
   $(asdf where python $version)/bin/python -m venv "$WORKON_HOME"/"$pwd_hash"
 fi
 
-for file in $WORKON_HOME/*; do 
-  if [ -d "$file" ]; then 
-    folder=$(basename "$file")
-    if [[ "$folder" == "$pwd_hash" ]]; then
-      . "$WORKON_HOME"/"$pwd_hash"/bin/activate
-      echo "$WORKON_HOME"/"$pwd_hash"/bin/activate
-    fi 
-  fi
-done
+if [ -f pyrightconfig.json ]; then
+
+  venvPath=$(cat pyrightconfig.json | jq -r ".venvPath")
+  venv=$(cat pyrightconfig.json | jq -r ".venv")
+  venvPath="$venvPath/$venv"
+
+  echo $venvPath/bin/activate
+
+  . $venvPath/bin/activate
+
+fi

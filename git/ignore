@@ -26,3 +26,4 @@ tmp.xml
 .classpath
 .project
 dump.sql
+.ropeproject

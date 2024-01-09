@@ -1,0 +1,30 @@
+#!/usr/bin/bash
+
+# It is necessary to put the following alias in `(.z|.ba|.fi)shrc` due to the nature of sourcing virtual environments.
+# alias workon=". =workon"
+
+if [ -f pyproject.toml ]; then
+  if [ ! -f pyrightconfig.json ]; then
+    poetry install && \
+    jq \
+      --null-input \
+      --arg venv "$(basename $(poetry env info -p))" \
+      --arg venvPath "$(dirname $(poetry env info -p))" \
+      '{ "venv": $venv, "venvPath": $venvPath }' \
+      > pyrightconfig.json
+  fi
+fi
+
+if [ -f pyrightconfig.json ]; then
+
+  # . $(poetry env info --path)/bin/activate
+
+  venvPath=$(cat pyrightconfig.json | jq -r ".venvPath")
+  venv=$(cat pyrightconfig.json | jq -r ".venv")
+  venvPath="$venvPath/$venv"
+
+  echo $venvPath/bin/activate
+
+  . $venvPath/bin/activate
+
+fi

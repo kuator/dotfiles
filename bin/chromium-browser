@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# https://github.com/microsoft/vscode/issues/84808#issuecomment-772554323
+
+CHROMIUM_NON_COMPLIENCY_MITIGATION="$HOME/.local/share/chromium-fakehome"
+HOME=$CHROMIUM_NON_COMPLIENCY_MITIGATION
+
+if [ ! -d $CHROMIUM_NON_COMPLIENCY_MITIGATION ]; then
+  mkdir -p $CHROMIUM_NON_COMPLIENCY_MITIGATION
+fi
+
+/usr/bin/chromium-browser 

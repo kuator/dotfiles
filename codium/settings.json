@@ -13,5 +13,7 @@
     "editor.lineNumbers": "relative",
     "editor.renderLineHighlight": "none",
     "editor.fontLigatures": false,
-    "workbench.activityBar.location": "hidden"
+    "workbench.activityBar.location": "hidden",
+    "redhat.telemetry.enabled": false,
+    "git.openRepositoryInParentFolders": "never"
 }

@@ -8,9 +8,9 @@ OPT=$HOME/opt
 
 ANKI=$OPT/anki
 PREFIX="/usr"
-anki_version="anki-$version-linux"
+# anki_version="anki-$version-linux"
 
-version=2.1.65
+version=23.12.1
 anki_version="anki-$version-linux-qt5"
 anki_archive_zst="$anki_version.tar.zst "
 anki_archive_tar="$anki_version.tar"
@@ -33,17 +33,20 @@ if [ -d $ANKI ]; then
     echo 'anki is not installed'
     cd $ANKI
     sudo PREFIX="/usr" ./install.sh
-    mkdir -p $XDG_DATA_HOME/Anki2/addons21/
     if [ ! -d $XDG_CONFIG_HOME/mpv ]; then
       ln -sv $DOTFILES/mpv $XDG_CONFIG_HOME/mpv
     fi
     if [ ! -d $XDG_CONFIG_HOME/mpv/scripts/mpvacious ]; then
       git clone https://github.com/Ajatt-Tools/mpvacious $XDG_CONFIG_HOME/mpv/scripts/mpvacious
     fi
-    cp -r $DOTFILES/anki/addons21/*  $XDG_DATA_HOME/Anki2/addons21
-    git clone https://github.com/Ajatt-Tools/PitchAccent.git --recurse-submodules -j8 $XDG_DATA_HOME/Anki2/addons21/1225470483
-    git clone https://github.com/Ajatt-Tools/Japanese.git --recurse-submodules -j8 $XDG_DATA_HOME/Anki2/addons21/1344485230
-    # need ssh
-    # git clone https://github.com/Ajatt-Tools/PasteImagesAsWebP --recurse-submodules -j8 ~/.local/share/Anki2/addons21/1151815987
+
+    if [ ! -d $XDG_DATA_HOME/Anki2/addons21 ]; then
+      mkdir -p $XDG_DATA_HOME/Anki2/addons21/
+      cp -r $DOTFILES/anki/addons21/*  $XDG_DATA_HOME/Anki2/addons21
+      git clone https://github.com/Ajatt-Tools/PitchAccent.git --recurse-submodules -j8 $XDG_DATA_HOME/Anki2/addons21/1225470483
+      git clone https://github.com/Ajatt-Tools/Japanese.git --recurse-submodules -j8 $XDG_DATA_HOME/Anki2/addons21/1344485230
+      # need ssh
+      # git clone https://github.com/Ajatt-Tools/PasteImagesAsWebP --recurse-submodules -j8 ~/.local/share/Anki2/addons21/1151815987
+    fi
   fi
 fi
