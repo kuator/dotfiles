@@ -32,16 +32,15 @@ export NPM_CONFIG_CACHE=$XDG_CACHE_HOME/npm
 
 export SUDO_ASKPASS=/usr/bin/ssh-askpass
 
-# export RUSTUP_HOME=/opt/rust/rustup
-# export CARGO_HOME=/opt/rust/cargo
-# . "/opt/rust/cargo/env"
-
-# ASDF
-# --------------------------------------------
 # RUST
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 # https://github.com/rememberYou/dotfiles/blob/master/sh/.config/sh/xdg#L23
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export PATH=$PATH:${CARGO_HOME:-~/.cargo}/bin
+. $CARGO_HOME/env
+
+# ASDF
+# --------------------------------------------
 
 # DENO
 # https://deno.land/manual/getting_started/setup_your_environment
@@ -64,6 +63,25 @@ if [ -f $OPT/asdf/asdf.sh ]; then
   . $OPT/asdf/asdf.sh
 fi
 # ----------------------------------------------
+
+asdf_update_dotnet_home() {
+  dotnet_path="$(asdf which dotnet)"
+  if [[ -n "${dotnet_path}" ]]; then
+    export DOTNET_ROOT
+    DOTNET_ROOT="$(dirname "$(realpath "${dotnet_path}")")"
+    export MSBuildSDKsPath
+    DOTNET_VERSION="$(dotnet --version)"
+    export MSBuildSDKsPath="$DOTNET_ROOT/sdk/$DOTNET_VERSION/Sdks"
+    export DOTNET_CLI_TELEMETRY_OPTOUT=1
+    export DOTNET_CLI_HOME="${XDG_DATA_HOME}/dotnet-$DOTNET_VERSION";
+    export PATH="$PATH:$DOTNET_CLI_HOME/.dotnet/tools"
+  fi
+}
+
+asdf_update_dotnet_home
+
+# Nuget
+export NUGET_PACKAGES="$XDG_CACHE_HOME"/NuGetPackages
 
 # ssh
 # https://superuser.com/a/874924
@@ -91,6 +109,7 @@ export PATH="$PATH:$XDG_DATA_HOME/coursier/bin"
 
 export NVIM_APPNAME="nvim"
 
+# https://jorengarenar.github.io/blog/vim-xdg
 export VIMINIT="if has('nvim') | so ${XDG_CONFIG_HOME:-$HOME/.config}/$NVIM_APPNAME/init.lua | else | set nocp | so ${XDG_CONFIG_HOME:-$HOME/.config}/vim/vimrc | endif"
 
 # RUBY
@@ -111,6 +130,7 @@ export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
 
 #zettelkasten
 export ZK_NOTEBOOK_DIR="${HOME}/dev/personal/zettelkasten"
+# export ZK_NOTEBOOK_DIR=~/dev/personal/zettelkasten
 mkdir -p $ZK_NOTEBOOK_DIR
 
 export POETRY_CACHE_DIR=$XDG_CACHE_HOME/pypoetry
@@ -119,3 +139,7 @@ export POETRY_VIRTUALENVS_PATH=$XDG_CACHE_HOME/virtualenvs
 # less
 export LESSHISTFILE="$XDG_STATE_HOME"/less/history
 
+# omnisharp
+export OMNISHARPHOME="$XDG_CONFIG_HOME/omnisharp"
+
+mkdir -p /tmp/tmp

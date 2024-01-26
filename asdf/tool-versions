@@ -4,6 +4,7 @@ direnv 2.33.0
 golang 1.20.1
 rust 1.68.2
 deno 1.22.0
-coursier 2.1.0-M6
+coursier 2.1.8
 kotlin 1.8.20
 poetry 1.6.0
+dotnet 8.0.101

@@ -43,6 +43,7 @@ call plug#begin($XDG_CACHE_HOME."/vim/plugged")
   
   Plug 'hrsh7th/vim-vsnip'
   Plug 'hrsh7th/vim-vsnip-integ'
+  Plug 'OmniSharp/omnisharp-vim'
 
 call plug#end()
 

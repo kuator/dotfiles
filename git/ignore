@@ -27,3 +27,4 @@ tmp.xml
 .project
 dump.sql
 .ropeproject
+.envrc

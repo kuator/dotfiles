@@ -1,5 +1,5 @@
 ### Added by Zinit's installer
-ZINIT_DIR="$HOME/.local/share/zinit"
+ZINIT_DIR="$XDG_DATA_HOME/zinit"
 ZINIT_HOME="$ZINIT_DIR/zinit.git"
 if [[ ! -f $ZINIT_HOME/zinit.zsh ]]; then
     print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
@@ -27,6 +27,11 @@ zinit load zsh-users/zsh-autosuggestions
 zinit ice wait lucid
 zinit light tarrasch/zsh-bd
 
+# zsh-users/zsh-completions
+zinit light zsh-users/zsh-completions
+
+# zsh-users/zsh-completions
+zinit light chr-fritz/docker-completion.zshplugin
 
 zinit ice wait'0b' lucid id-as"junegunn/fzf_completions" pick"/dev/null" \
   multisrc"shell/{completion,key-bindings}.zsh"
@@ -39,6 +44,14 @@ zinit light junegunn/fzf
 # BurntSushi/ripgrep
 zinit ice as"command" from"gh-r" mv"ripgrep* -> rg" pick"rg/rg"
 zinit light BurntSushi/ripgrep
+
+# LAZYGIT
+zinit ice lucid wait="0" as="program" from="gh-r" bpick="*Linux_x86_64*" pick="lazygit"
+zinit light jesseduffield/lazygit
+
+# LAZYDOCKER
+zinit ice lucid wait="0" as="program" from="gh-r" bpick="*Linux_x86_64*" pick="lazydocker"
+zinit light jesseduffield/lazydocker
 
 # fdfind
 zinit ice as"command" from"gh-r" mv"fd* -> fd" pick"fd/fd"
@@ -58,6 +71,7 @@ zinit ice wait"0a" as"command" from"gh-r" lucid \
   atpull"%atclone" src"init.zsh" nocompile'!'
 zinit light ajeetdsouza/zoxide
 
+
 # zinit ice wait'0' lucid
 # zinit snippet 'https://github.com/git/git/contrib/completion/git-prompt.sh'
 
@@ -74,6 +88,11 @@ zinit ice lucid wait'1' from"gh-r" as"program" mv"direnv* -> direnv" \
 # it also works with turbo mode:
 zinit ice wait lucid
 zinit load redxtech/zsh-asdf-direnv
+
+# docker zsh completion
+# https://github.com/kg8m/dotfiles/blob/a748a5b7ca05247aea17fff16af464e73c7919cc/.config/zsh/completion.zsh#L17
+zinit ice lucid wait"0c" blockf atclone"zinit creinstall \${PWD}" atpull"%atclone"
+zinit light greymd/docker-zsh-completion
 
 zinit ice wait lucid as"completion"
 zinit snippet https://github.com/asdf-vm/asdf/blob/master/completions/_asdf
@@ -98,6 +117,7 @@ PS1+="${NEWLINE}%{$fg[green]%}$%b%{$reset_color%} "
 
 # zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' menu select
+zstyle ':completion:*' use-cache true
 
 
 # https://superuser.com/questions/415650/does-a-fuzzy-matching-mode-exist-for-the-zsh-shell
@@ -188,3 +208,6 @@ if [ -x "$(command -v venve)" ]; then
 fi
 
 alias zkcd="cd $ZK_NOTEBOOK_DIR"
+alias cs="coursier"
+
+source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
