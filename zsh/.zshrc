@@ -14,21 +14,31 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 ### End of Zinit's installer chunk
 
+export skip_global_compinit=1
 
 # Autosuggestions & fast-syntax-highlighting
 zinit ice wait lucid atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay"
 zinit light zdharma-continuum/fast-syntax-highlighting
-
-# zsh-autosuggestions
-zinit ice wait lucid atload"!_zsh_autosuggest_start"
-zinit load zsh-users/zsh-autosuggestions
 
 # zsh-bd - https://github.com/Tarrasch/zsh-bd
 zinit ice wait lucid
 zinit light tarrasch/zsh-bd
 
 # zsh-users/zsh-completions
-zinit light zsh-users/zsh-completions
+# zinit light zsh-users/zsh-completions
+zinit wait lucid light-mode for \
+  as'completion' \
+  atdelete'zinit cuninstall completions' \
+  atload"zicompinit; zicdreplay" \
+  atpull'zinit creinstall -q "$PWD"' \
+  blockf \
+  id-as'auto' \
+  @zsh-users/zsh-completions
+
+# zsh-autosuggestions
+zinit ice wait lucid atload"!_zsh_autosuggest_start"
+zinit load zsh-users/zsh-autosuggestions
+
 
 # zsh-users/zsh-completions
 zinit light chr-fritz/docker-completion.zshplugin
@@ -190,7 +200,11 @@ setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 
 countdown
 
-compinit -d $XDG_CACHE_HOME/zsh/zcompdump-${ZSH_VERSION}
+
+# https://gist.github.com/ctechols/ca1035271ad134841284?permalink_comment_id=3401477#gistcomment-3401477
+autoload -Uz compinit; compinit
+zinit cdreplay
+# compinit -d $XDG_CACHE_HOME/zsh/zcompdump-${ZSH_VERSION}
 
 # https://github.com/zdharma-continuum/zinit#quick-start maybe?
 # SSH
