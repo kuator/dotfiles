@@ -37,7 +37,11 @@ export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 # https://github.com/rememberYou/dotfiles/blob/master/sh/.config/sh/xdg#L23
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export PATH=$PATH:${CARGO_HOME:-~/.cargo}/bin
-. $CARGO_HOME/env
+
+if [ -d "$CARGO_HOME" ] ; then
+    . $CARGO_HOME/env
+fi
+
 
 # ASDF
 # --------------------------------------------
@@ -62,23 +66,28 @@ export ASDF_DATA_DIR="$XDG_DATA_HOME/asdf"
 if [ -f $OPT/asdf/asdf.sh ]; then
   . $OPT/asdf/asdf.sh
 fi
+
 # ----------------------------------------------
 
-asdf_update_dotnet_home() {
-  dotnet_path="$(asdf which dotnet)"
-  if [[ -n "${dotnet_path}" ]]; then
-    export DOTNET_ROOT
-    DOTNET_ROOT="$(dirname "$(realpath "${dotnet_path}")")"
-    export MSBuildSDKsPath
-    DOTNET_VERSION="$(dotnet --version)"
-    export MSBuildSDKsPath="$DOTNET_ROOT/sdk/$DOTNET_VERSION/Sdks"
-    export DOTNET_CLI_TELEMETRY_OPTOUT=1
-    export DOTNET_CLI_HOME="${XDG_DATA_HOME}/dotnet-$DOTNET_VERSION";
-    export PATH="$PATH:$DOTNET_CLI_HOME/.dotnet/tools"
-  fi
-}
 
-asdf_update_dotnet_home
+# if [ -f $OPT/asdf/asdf.sh ]; then
+#   asdf_update_dotnet_home() {
+#     dotnet_path="$(asdf which dotnet)"
+#     if [[ -n "${dotnet_path}" ]]; then
+#       export DOTNET_ROOT
+#       DOTNET_ROOT="$(dirname "$(realpath "${dotnet_path}")")"
+#       export MSBuildSDKsPath
+#       DOTNET_VERSION="$(dotnet --version)"
+#       export MSBuildSDKsPath="$DOTNET_ROOT/sdk/$DOTNET_VERSION/Sdks"
+#       export DOTNET_CLI_TELEMETRY_OPTOUT=1
+#       export DOTNET_CLI_HOME="${XDG_DATA_HOME}/dotnet-$DOTNET_VERSION";
+#       export PATH="$PATH:$DOTNET_CLI_HOME/.dotnet/tools"
+#     fi
+#   }
+#   
+#   asdf_update_dotnet_home
+# fi
+
 
 # Nuget
 export NUGET_PACKAGES="$XDG_CACHE_HOME"/NuGetPackages

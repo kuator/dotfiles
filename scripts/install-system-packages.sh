@@ -39,8 +39,8 @@ declare -a packages=(
   mpv ffmpeg
   #anki 2.49
   libxcb-xinerama0 zstd
-  #telegram
-  telegram-desktop
+  # telegram
+  # telegram-desktop
   jq jsbeautifier
   redshift-gtk
   trash-cli
@@ -48,7 +48,7 @@ declare -a packages=(
   universal-ctags cscope
   skkdic skkdic-extra
   bbe
-  vim-gtk
+  # vim-gtk
   # ruby
   # autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm6 libgdbm-dev libdb-dev
 )

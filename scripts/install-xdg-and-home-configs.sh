@@ -24,11 +24,11 @@ export OPT=$HOME/opt
 
 mkdir -p $OPT
 
-if [ ! -d $DOTFILES ]; then
+if [ ! -d "$DOTFILES" ]; then
   git clone https://github.com/kuator/dotfiles.git $DOTFILES
 fi
 
-if [ ! -d $XDG_CONFIG_HOME/nvim ]; then
+if [ ! -d "$XDG_CONFIG_HOME/nvim" ]; then
   git clone https://github.com/kuator/nvim.git $XDG_CONFIG_HOME/nvim
 fi
 

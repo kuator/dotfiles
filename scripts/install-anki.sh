@@ -14,7 +14,8 @@ version=23.12.1
 anki_version="anki-$version-linux-qt5"
 anki_archive_zst="$anki_version.tar.zst "
 anki_archive_tar="$anki_version.tar"
-cd $OPT
+mkdir -p $OPT && cd $OPT
+
 
 
 if [ ! -d $ANKI ]; then
@@ -49,4 +50,13 @@ if [ -d $ANKI ]; then
       # git clone https://github.com/Ajatt-Tools/PasteImagesAsWebP --recurse-submodules -j8 ~/.local/share/Anki2/addons21/1151815987
     fi
   fi
+fi
+
+LOCAL_YOMICHAN_AUDIO_FILE="$HOME/Downloads/local-yomichan-audio-collection-2023-06-11-opus.tar.xz"
+
+if [ -f "$LOCAL_YOMICHAN_AUDIO_FILE" ]; then
+    echo "$LOCAL_YOMICHAN_AUDIO_FILE exists."
+else 
+    echo "$LOCAL_YOMICHAN_AUDIO_FILE does not exist."
+    exit 1
 fi

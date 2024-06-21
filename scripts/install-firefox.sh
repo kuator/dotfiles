@@ -11,7 +11,6 @@ Pin-Priority: 1001
 
   sudo apt update
   sudo apt install -y firefox
-  . $SCRIPTS/patch-the-fox.sh
 else
   echo "firefox installed"
 fi

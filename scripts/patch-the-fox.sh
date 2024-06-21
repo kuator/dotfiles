@@ -38,4 +38,3 @@ find ~/.cache/mozilla/firefox -type d -name startupCache | xargs rm -rf
 cd /
 rm -r "$tempdir"
 
-. enable-firefox-user-content-css.sh

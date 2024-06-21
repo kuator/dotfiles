@@ -85,7 +85,15 @@ zinit light ajeetdsouza/zoxide
 # zinit ice wait'0' lucid
 # zinit snippet 'https://github.com/git/git/contrib/completion/git-prompt.sh'
 
-### asdf-vm
+
+# docker zsh completion
+# https://github.com/kg8m/dotfiles/blob/a748a5b7ca05247aea17fff16af464e73c7919cc/.config/zsh/completion.zsh#L17
+zinit ice lucid wait"0c" blockf atclone"zinit creinstall \${PWD}" atpull"%atclone"
+zinit light greymd/docker-zsh-completion
+
+
+########################### asdf-vm
+
 zinit wait lucid as"null" \
     from"github" src"asdf.sh" as"program" for \
     @asdf-vm/asdf
@@ -99,13 +107,10 @@ zinit ice lucid wait'1' from"gh-r" as"program" mv"direnv* -> direnv" \
 zinit ice wait lucid
 zinit load redxtech/zsh-asdf-direnv
 
-# docker zsh completion
-# https://github.com/kg8m/dotfiles/blob/a748a5b7ca05247aea17fff16af464e73c7919cc/.config/zsh/completion.zsh#L17
-zinit ice lucid wait"0c" blockf atclone"zinit creinstall \${PWD}" atpull"%atclone"
-zinit light greymd/docker-zsh-completion
-
 zinit ice wait lucid as"completion"
 zinit snippet https://github.com/asdf-vm/asdf/blob/master/completions/_asdf
+
+############################# asdf-vm
 
 ########## PROMPT
 # Load version control information
@@ -224,4 +229,3 @@ fi
 alias zkcd="cd $ZK_NOTEBOOK_DIR"
 alias cs="coursier"
 
-source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
