@@ -1,5 +1,7 @@
 cscope.files
 cscope.out
+cscope.out.po
+cscope.out.in
 kuat
 kuat.json
 kuat.py

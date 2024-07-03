@@ -1,4 +1,0 @@
-#!/bin/bash
-export QT_QPA_PLATFORM=xcb
-export QTWEBENGINE_CHROMIUM_FLAGS="--no-sandbox"
-/usr/bin/anki

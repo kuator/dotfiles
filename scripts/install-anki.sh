@@ -1,17 +1,13 @@
 #!/bin/bash
 
-# !!!!!!!!!!!!!!!! VERY IMPORTANT LINK TO READ
-# https://stackoverflow.com/a/76896149
-# !!!!!!!!!!!!!!!! VERY IMPORTANT LINK TO READ
-
 OPT=$HOME/opt
 
 ANKI=$OPT/anki
 PREFIX="/usr"
-# anki_version="anki-$version-linux"
 
-version=23.12.1
-anki_version="anki-$version-linux-qt5"
+# version=23.12.1
+version=24.06.2
+anki_version="anki-$version-linux-qt6"
 anki_archive_zst="$anki_version.tar.zst "
 anki_archive_tar="$anki_version.tar"
 mkdir -p $OPT && cd $OPT
@@ -46,8 +42,6 @@ if [ -d $ANKI ]; then
       cp -r $DOTFILES/anki/addons21/*  $XDG_DATA_HOME/Anki2/addons21
       git clone https://github.com/Ajatt-Tools/PitchAccent.git --recurse-submodules -j8 $XDG_DATA_HOME/Anki2/addons21/1225470483
       git clone https://github.com/Ajatt-Tools/Japanese.git --recurse-submodules -j8 $XDG_DATA_HOME/Anki2/addons21/1344485230
-      # need ssh
-      # git clone https://github.com/Ajatt-Tools/PasteImagesAsWebP --recurse-submodules -j8 ~/.local/share/Anki2/addons21/1151815987
     fi
   fi
 fi

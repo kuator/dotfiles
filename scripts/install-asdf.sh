@@ -13,6 +13,7 @@ if [ -f $OPT/asdf/asdf.sh ]; then
 fi
 
 # asdf
+# https://notes.billmill.org/computer_usage/asdf/make_asdf_follow_the_XDG_spec.html
 # https://rgoswami.me/snippets/prog-lang-man/
 if [ ! -d "$ASDF_DIR" ]; then
   # https://asdf-vm.com/guide/getting-started.html#_3-install-asdf

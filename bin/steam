@@ -1,9 +1,0 @@
-#!/usr/bin/env sh
-
-sed -i 's|/usr/bin/steam|steam|' /usr/share/applications/steam.desktop
-
-HOME=$XDG_DATA_HOME/Steam/$USER
-
-mkdir -p $HOME
-
-exec /usr/bin/steam "$@"

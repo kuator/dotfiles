@@ -94,21 +94,21 @@ zinit light greymd/docker-zsh-completion
 
 ########################### asdf-vm
 
-zinit wait lucid as"null" \
-    from"github" src"asdf.sh" as"program" for \
-    @asdf-vm/asdf
-
-zinit ice lucid wait'1' from"gh-r" as"program" mv"direnv* -> direnv" \
-    atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' \
-    pick"direnv" src="zhook.zsh" for \
-        direnv/direnv
-
-# it also works with turbo mode:
-zinit ice wait lucid
-zinit load redxtech/zsh-asdf-direnv
-
-zinit ice wait lucid as"completion"
-zinit snippet https://github.com/asdf-vm/asdf/blob/master/completions/_asdf
+#### ASDF #### zinit wait lucid as"null" \
+#### ASDF ####     from"github" src"asdf.sh" as"program" for \
+#### ASDF ####     @asdf-vm/asdf
+#### ASDF #### 
+#### ASDF #### zinit ice lucid wait'1' from"gh-r" as"program" mv"direnv* -> direnv" \
+#### ASDF ####     atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' \
+#### ASDF ####     pick"direnv" src="zhook.zsh" for \
+#### ASDF ####         direnv/direnv
+#### ASDF #### 
+#### ASDF #### # it also works with turbo mode:
+#### ASDF #### zinit ice wait lucid
+#### ASDF #### zinit load redxtech/zsh-asdf-direnv
+#### ASDF #### 
+#### ASDF #### zinit ice wait lucid as"completion"
+#### ASDF #### zinit snippet https://github.com/asdf-vm/asdf/blob/master/completions/_asdf
 
 ############################# asdf-vm
 
@@ -227,5 +227,9 @@ if [ -x "$(command -v venve)" ]; then
 fi
 
 alias zkcd="cd $ZK_NOTEBOOK_DIR"
-alias cs="coursier"
+# alias cs="coursier"
+
+
+# https://mise.jdx.dev/getting-started.html#zsh
+eval "$(mise activate zsh)"
 

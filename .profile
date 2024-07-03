@@ -43,50 +43,50 @@ if [ -d "$CARGO_HOME" ] ; then
 fi
 
 
-# ASDF
-# --------------------------------------------
+## ASDF #### # ASDF
+## ASDF #### # --------------------------------------------
+## ASDF #### 
+## ASDF #### # DENO
+## ASDF #### # https://deno.land/manual/getting_started/setup_your_environment
+## ASDF #### export DENO_INSTALL_ROOT=$XDG_DATA_HOME/bin
+## ASDF #### 
+## ASDF #### # GOLANG
+## ASDF #### export GOPATH="$HOME/dev/go/libs"
+## ASDF #### export PATH="$PATH:$GOPATH/bin"
+## ASDF #### export GOPATH="$GOPATH:$HOME/dev/go/code"
+## ASDF #### 
+## ASDF #### # https://asdf-vm.com/guide/getting-started.html#_3-install-asdf
+## ASDF #### export ASDF_CONFIG_DIR="$XDG_CONFIG_HOME/asdf"
+## ASDF #### export ASDF_DIR="$OPT/asdf"
+## ASDF #### export ASDF_CONFIG_FILE="$ASDF_CONFIG_DIR/asdfrc"
+## ASDF #### # export ASDF_DEFAULT_TOOL_VERSIONS_FILENAME="$ASDF_CONFIG_DIR/tool-versions"
+## ASDF #### export ASDF_DEFAULT_TOOL_VERSIONS_FILENAME="$ASDF_CONFIG_DIR/tool-versions"
+## ASDF #### export ASDF_DATA_DIR="$XDG_DATA_HOME/asdf"
+## ASDF #### 
+## ASDF #### if [ -f $OPT/asdf/asdf.sh ]; then
+## ASDF ####   . $OPT/asdf/asdf.sh
+## ASDF #### fi
+## ASDF #### 
+## ASDF #### # ----------------------------------------------
 
-# DENO
-# https://deno.land/manual/getting_started/setup_your_environment
-export DENO_INSTALL_ROOT=$XDG_DATA_HOME/bin
 
-# GOLANG
-export GOPATH="$HOME/dev/go/libs"
-export PATH="$PATH:$GOPATH/bin"
-export GOPATH="$GOPATH:$HOME/dev/go/code"
-
-# https://asdf-vm.com/guide/getting-started.html#_3-install-asdf
-export ASDF_CONFIG_DIR="$XDG_CONFIG_HOME/asdf"
-export ASDF_DIR="$OPT/asdf"
-export ASDF_CONFIG_FILE="$ASDF_CONFIG_DIR/asdfrc"
-# export ASDF_DEFAULT_TOOL_VERSIONS_FILENAME="$ASDF_CONFIG_DIR/tool-versions"
-export ASDF_DEFAULT_TOOL_VERSIONS_FILENAME="$ASDF_CONFIG_DIR/tool-versions"
-export ASDF_DATA_DIR="$XDG_DATA_HOME/asdf"
-
-if [ -f $OPT/asdf/asdf.sh ]; then
-  . $OPT/asdf/asdf.sh
-fi
-
-# ----------------------------------------------
-
-
-# if [ -f $OPT/asdf/asdf.sh ]; then
-#   asdf_update_dotnet_home() {
-#     dotnet_path="$(asdf which dotnet)"
-#     if [[ -n "${dotnet_path}" ]]; then
-#       export DOTNET_ROOT
-#       DOTNET_ROOT="$(dirname "$(realpath "${dotnet_path}")")"
-#       export MSBuildSDKsPath
-#       DOTNET_VERSION="$(dotnet --version)"
-#       export MSBuildSDKsPath="$DOTNET_ROOT/sdk/$DOTNET_VERSION/Sdks"
-#       export DOTNET_CLI_TELEMETRY_OPTOUT=1
-#       export DOTNET_CLI_HOME="${XDG_DATA_HOME}/dotnet-$DOTNET_VERSION";
-#       export PATH="$PATH:$DOTNET_CLI_HOME/.dotnet/tools"
-#     fi
-#   }
-#   
-#   asdf_update_dotnet_home
-# fi
+# dotnet # if [ -f $OPT/asdf/asdf.sh ]; then
+# dotnet #   asdf_update_dotnet_home() {
+# dotnet #     dotnet_path="$(asdf which dotnet)"
+# dotnet #     if [[ -n "${dotnet_path}" ]]; then
+# dotnet #       export DOTNET_ROOT
+# dotnet #       DOTNET_ROOT="$(dirname "$(realpath "${dotnet_path}")")"
+# dotnet #       export MSBuildSDKsPath
+# dotnet #       DOTNET_VERSION="$(dotnet --version)"
+# dotnet #       export MSBuildSDKsPath="$DOTNET_ROOT/sdk/$DOTNET_VERSION/Sdks"
+# dotnet #       export DOTNET_CLI_TELEMETRY_OPTOUT=1
+# dotnet #       export DOTNET_CLI_HOME="${XDG_DATA_HOME}/dotnet-$DOTNET_VERSION";
+# dotnet #       export PATH="$PATH:$DOTNET_CLI_HOME/.dotnet/tools"
+# dotnet #     fi
+# dotnet #   }
+# dotnet #   
+# dotnet #   asdf_update_dotnet_home
+# dotnet # fi
 
 
 # Nuget

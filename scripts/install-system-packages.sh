@@ -48,9 +48,19 @@ declare -a packages=(
   universal-ctags cscope
   skkdic skkdic-extra
   bbe
+  python-is-python3
   # vim-gtk
   # ruby
   # autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm6 libgdbm-dev libdb-dev
+
+  # https://forums.ankiweb.net/t/problems-with-ubuntu-24-04-overcome/44142/5
+  libxcb-xinerama0 libxcb-cursor0 libnss3
+
+  # https://www.baeldung.com/linux/pulseaudio-pipewire-replace#2-pipewire
+  pipewire pipewire-audio-client-libraries pulseaudio-utils
+
+  # gtags-cscope
+  global
 )
 
 apt_install_if_not_installed() {

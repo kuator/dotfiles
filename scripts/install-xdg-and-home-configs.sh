@@ -35,7 +35,7 @@ fi
 . $DOTFILES/.profile
 
 declare -a home_configs=(
-  ".xprofile" ".profile" "bin"
+  ".xprofile" ".profile"
 )
 
 declare -a xdg_configs=(
@@ -52,6 +52,8 @@ done
 for config in "${xdg_configs[@]}"; do
   symlink_config "$DOTFILES/$config" "$XDG_CONFIG_HOME/$config"
 done
+
+symlink_config "$DOTFILES/bin" "$HOME/.local/bin"
 
 if [ ! -f $WGETRC ]; then
   cp /etc/wgetrc $WGETRC
