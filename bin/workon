@@ -3,21 +3,47 @@
 # It is necessary to put the following alias in `(.z|.ba|.fi)shrc` due to the nature of sourcing virtual environments.
 # alias workon=". =workon"
 
-if [ -f pyproject.toml ]; then
-  if [ ! -f pyrightconfig.json ]; then
-    poetry install && \
-    jq \
-      --null-input \
-      --arg venv "$(basename $(poetry env info -p))" \
-      --arg venvPath "$(dirname $(poetry env info -p))" \
-      '{ "venv": $venv, "venvPath": $venvPath }' \
-      > pyrightconfig.json
+export WORKON_HOME=$XDG_DATA_HOME/virtualenvs
+mkdir -p $WORKON_HOME
+
+pwd_hash="$(echo -n "$PWD" | shasum | cut -d ' ' -f 1)"
+
+if [ ! -f pyrightconfig.json ]; then
+  if [ -z "$1" ]; then
+    if ! command -v mise &> /dev/null; then
+      echo "Install mise!"
+      exit 1
+    else
+      PS3="Please enter your choice"$'\n'"> "
+      # options=("Option 1" "Option 2" "Option 3" "Quit")
+      my_array=($(mise list python | awk '{ print $2 }'))
+      
+      my_array+=('Quit')
+      select opt in "${my_array[@]}"
+      do
+        echo $opt
+        if [[ " ${my_array[*]} " =~ " ${opt} " ]]; then
+          if [[ "${opt}" == 'Quit' ]]; then
+            echo "Good Bye!" ; exit 1
+          fi
+          echo "python $opt will be used" ; break;
+        fi
+      done
+    fi
+    if [[ -z "$opt" ]]; then
+      version=$(python -V 2>&1 | grep -Po '(?<=Python )(.+)')
+    else
+      version=$opt
+    fi
   fi
+  echo $version
+
+  jq -n --arg venvPath "$WORKON_HOME" --arg venv $pwd_hash '{ venvPath: $venvPath, venv: $venv }' > $PWD/pyrightconfig.json
+
+  $(mise where python $version)/bin/python -m venv "$WORKON_HOME"/"$pwd_hash"
 fi
 
 if [ -f pyrightconfig.json ]; then
-
-  # . $(poetry env info --path)/bin/activate
 
   venvPath=$(cat pyrightconfig.json | jq -r ".venvPath")
   venv=$(cat pyrightconfig.json | jq -r ".venv")

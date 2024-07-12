@@ -152,3 +152,12 @@ export LESSHISTFILE="$XDG_STATE_HOME"/less/history
 export OMNISHARPHOME="$XDG_CONFIG_HOME/omnisharp"
 
 mkdir -p /tmp/tmp
+
+# wine xdg
+mkdir -p "$XDG_DATA_HOME"/wineprefixes
+export WINEPREFIX="$XDG_DATA_HOME"/wineprefixes/default
+
+
+# steamtinkerlaunch
+export HSR="$XDG_DATA_HOME/Steam"
+export HSS="$HSR/steam"

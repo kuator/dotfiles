@@ -30,3 +30,4 @@ tmp.xml
 dump.sql
 .ropeproject
 .envrc
+.zcompcache

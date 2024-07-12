@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# https://github.com/microsoft/vscode/issues/84808#issuecomment-772554323
+
+VSCODE_NON_COMPLIENCY_MITIGATION="$HOME/.local/share/code-fakehome"
+HOME=$VSCODE_NON_COMPLIENCY_MITIGATION
+
+if [ ! -d $VSCODE_NON_COMPLIENCY_MITIGATION ]; then
+  mkdir -p $VSCODE_NON_COMPLIENCY_MITIGATION
+fi
+
+# echo "$@" 
+
+/usr/bin/code --extensions-dir "$XDG_DATA_HOME/code" "$@"

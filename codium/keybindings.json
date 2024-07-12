@@ -1,43 +1,13 @@
 [
     {
-        "key": "ctrl+w ctrl+k",
-        "command": "-workbench.action.navigateUp",
-        "when": "!editorTextFocus && !terminalFocus"
-    },
-    {
-        "key": "ctrl+w ctrl+j",
-        "command": "-workbench.action.navigateDown",
-        "when": "!editorTextFocus && !terminalFocus"
-    },
-    {
-        "key": "ctrl+w ctrl+l",
-        "command": "-workbench.action.navigateRight",
-        "when": "!editorTextFocus && !terminalFocus"
-    },
-    {
-        "key": "ctrl+w ctrl+h",
-        "command": "-workbench.action.navigateLeft",
-        "when": "!editorTextFocus && !terminalFocus"
-    },
-    {
         "key": "ctrl+w ctrl+q",
         "command": "-workbench.action.closeActiveEditor",
         "when": "!editorTextFocus && !filesExplorerFocus && !searchViewletFocus && !terminalFocus"
     },
-    {
-        "command": "vscode-neovim.compositeEscape1",
-        "key": "k",
-        "when": "neovim.mode == insert",
-        "args": "k"
-    },
-    {
-        "command": "vscode-neovim.compositeEscape1",
-        "key": "j",
-        "when": "neovim.mode == insert",
-        "args": "j"
-    },
     { "key": "ctrl+n", "command": "workbench.action.quickOpenNavigateNext", "when": "inQuickOpen" },
     { "key": "ctrl+p", "command": "workbench.action.quickOpenNavigatePrevious", "when": "inQuickOpen" },
+    { "key": "ctrl+c", "command": "workbench.action.closeQuickOpen", "when": "inQuickOpen" },
+    { "key": "ctrl+j", "command": "workbench.action.closeQuickOpen", "when": "inQuickOpen" },
     {
         "key": "ctrl+j",
         "command": "-workbench.action.togglePanel"
@@ -85,21 +55,9 @@
         "args": "<cr>"
     },
     {
-        "key": "ctrl+b",
-        "command": "workbench.view.explorer"
-    },
-    {
-        "key": "ctrl+b",
-        "command": "-workbench.view.explorer"
-    },
-    {
-        "key": "ctrl+b",
-        "command": "workbench.action.toggleSidebarVisibility",
-        "when": "explorerViewletVisible"
-    },
-    {
-        "key": "ctrl+b",
-        "command": "-workbench.action.toggleSidebarVisibility",
-        "when": "explorerViewletVisible"
+        "command": "vscode-neovim.send-cmdline",
+        "key": "ctrl+c",
+        "when": "neovim.init && neovim.mode == cmdline",
+        "args": "<esc>"
     }
 ]
