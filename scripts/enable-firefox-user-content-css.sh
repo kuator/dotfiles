@@ -46,6 +46,9 @@ cat  <<'EOF' > userContent.css
   .content { 
     background-color: #777; 
   }
+  .search-header-wrapper {
+    background-color: #777;
+  }
 }
 
 @-moz-document regexp("^moz-extension://.*welcome.html.*$") {

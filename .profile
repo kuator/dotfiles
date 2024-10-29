@@ -43,6 +43,10 @@ if [ -d "$CARGO_HOME" ] ; then
 fi
 
 
+# GOLANG
+export GOPATH="$XDG_DATA_HOME/go"
+# GOLANG
+
 ## ASDF #### # ASDF
 ## ASDF #### # --------------------------------------------
 ## ASDF #### 
@@ -70,23 +74,21 @@ fi
 ## ASDF #### # ----------------------------------------------
 
 
-# dotnet # if [ -f $OPT/asdf/asdf.sh ]; then
-# dotnet #   asdf_update_dotnet_home() {
-# dotnet #     dotnet_path="$(asdf which dotnet)"
-# dotnet #     if [[ -n "${dotnet_path}" ]]; then
-# dotnet #       export DOTNET_ROOT
-# dotnet #       DOTNET_ROOT="$(dirname "$(realpath "${dotnet_path}")")"
-# dotnet #       export MSBuildSDKsPath
-# dotnet #       DOTNET_VERSION="$(dotnet --version)"
-# dotnet #       export MSBuildSDKsPath="$DOTNET_ROOT/sdk/$DOTNET_VERSION/Sdks"
-# dotnet #       export DOTNET_CLI_TELEMETRY_OPTOUT=1
-# dotnet #       export DOTNET_CLI_HOME="${XDG_DATA_HOME}/dotnet-$DOTNET_VERSION";
-# dotnet #       export PATH="$PATH:$DOTNET_CLI_HOME/.dotnet/tools"
-# dotnet #     fi
-# dotnet #   }
-# dotnet #   
-# dotnet #   asdf_update_dotnet_home
-# dotnet # fi
+update_dotnet_home() {
+  dotnet_path="$(which dotnet)"
+  if [[ -n "${dotnet_path}" ]]; then
+    export DOTNET_ROOT
+    DOTNET_ROOT="$(dirname "$(realpath "${dotnet_path}")")"
+    export MSBuildSDKsPath
+    DOTNET_VERSION="$(dotnet --version)"
+    export MSBuildSDKsPath="$DOTNET_ROOT/sdk/$DOTNET_VERSION/Sdks"
+    export DOTNET_CLI_TELEMETRY_OPTOUT=1
+    export DOTNET_CLI_HOME="${XDG_DATA_HOME}/dotnet-$DOTNET_VERSION";
+    export PATH="$PATH:$DOTNET_CLI_HOME/.dotnet/tools"
+  fi
+}
+  
+update_dotnet_home
 
 
 # Nuget
@@ -161,3 +163,7 @@ export WINEPREFIX="$XDG_DATA_HOME"/wineprefixes/default
 # steamtinkerlaunch
 export HSR="$XDG_DATA_HOME/Steam"
 export HSS="$HSR/steam"
+
+. "/home/evakuator/.local/share/cargo/env"
+
+. "$HOME/.local/share/cargo/env"

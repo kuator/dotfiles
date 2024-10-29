@@ -31,3 +31,4 @@ dump.sql
 .ropeproject
 .envrc
 .zcompcache
+kuat.sh
