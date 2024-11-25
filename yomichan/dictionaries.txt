@@ -2,13 +2,13 @@
 [Bilingual] JMdict (Animecards compatible).zip
 [Monolingual] 旺文社国語辞典 第十一版 (Recommended).zip
 [Bilingual] 新和英.zip
+jitendex-yomitan-2024-09-16.zip
 [Grammar] Dictionary of Japanese Grammar 日本語文法辞典 (Recommended).zip
-jitendex-yomitan-2024-06-19.zip
 [Monolingual] 実用日本語表現辞典 Extended (Recommended).zip
 [Monolingual] 新明解国語辞典 第八版 (Recommended).zip
 [Monolingual] 明鏡国語辞典 第二版 (Recommended Improved).zip
-Freq.JPDB_2022-05-10T03_27_02.930Z.zip
 [Freq] CC100.zip
+Freq.JPDB_2022-05-10T03_27_02.930Z.zip
 [Freq] Anime & J-drama.zip
 [Freq] Netflix.zip
 [Kanji] KANJIDIC (English) (Recommended).zip
