@@ -33,6 +33,8 @@ export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
 "$scripts_dir/bootstrap/install-packages.sh"
 "$scripts_dir/bootstrap/install-appgate.sh"
 "$scripts_dir/bootstrap/install-bitwarden.sh"
+"$scripts_dir/bootstrap/install-ghostty.sh"
+"$scripts_dir/bootstrap/install-teams-for-linux.sh"
 
 mkdir -p "$XDG_CONFIG_HOME" "$XDG_DATA_HOME/zinit"
 zinit_home="$XDG_DATA_HOME/zinit/zinit.git"
@@ -44,6 +46,7 @@ fi
 "$scripts_dir/bootstrap/install-mise.sh"
 "$scripts_dir/bootstrap/install-textractor.sh"
 "$scripts_dir/bootstrap/install-subtitle-sync.sh"
+"$scripts_dir/bootstrap/install-leetcode-anki.sh"
 "$scripts_dir/bootstrap/install-window-tray.sh"
 
 "$scripts_dir/bootstrap/configure-desktop.sh"

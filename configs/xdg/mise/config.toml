@@ -2,7 +2,7 @@
 node = "20.20.2"
 go = "1.21"
 java = "22"
-deno = "1.45.2"
+deno = "latest"
 rust = "stable"
 uv = "latest"
 ty = "latest"

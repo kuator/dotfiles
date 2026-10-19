@@ -15,6 +15,7 @@ packages=(
     fzf
     gawk
     git
+    git-lfs
     global
     gpg
     jq
@@ -40,6 +41,7 @@ packages=(
     ripgrep
     skkdic
     skkdic-extra
+    software-properties-common
     ssh-askpass
     tk-dev
     trash-cli

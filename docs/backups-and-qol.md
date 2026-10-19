@@ -11,7 +11,7 @@ The August 2026 audit found these approximate sizes:
 
 | Location | Size | Decision |
 | --- | ---: | --- |
-| `~/Documents/books` | 7.7 GiB | Exclude; mostly replaceable books |
+| `~/Downloads/books` | 1.6 GiB | Backed up and stored in private GitHub using Git LFS |
 | `~/Documents/NCALayer` | 265 MiB | Exclude; reinstallable software |
 | Other files in `~/Documents` | 19 MiB | Back up |
 | `~/Pictures` | 377 MiB | Back up |
@@ -21,16 +21,15 @@ The August 2026 audit found these approximate sizes:
 | `~/Videos` | 20 GiB | Exclude; downloaded anime |
 | `~/Downloads` | 11 GiB | Exclude; replaceable downloads |
 
-The `~/Documents/books` repository is not fully backed up by GitHub: local
-`main` is one commit ahead of `origin/main`, and several files are untracked.
-Treat those files as disposable or review them separately before excluding the
-directory permanently.
+The `~/Downloads/books` repository was rebuilt as a fresh Git LFS snapshot and
+verified through a clean clone. Redownloadable Humble Bundle purchases are
+excluded. The repository is recoverable from private GitHub, while the separate
+file backup remains useful against account or LFS availability problems.
 
 ## Recommended backup plan
 
-Use the already installed Deja Dup for the primary backup. Choose an off-site
-destination such as Google Drive, enable encryption and automatic backups, and
-include only:
+If using the already installed Deja Dup, choose an off-site destination such as
+Google Drive, enable encryption and automatic backups, and include only:
 
 - `~/Documents`, excluding `books` and `NCALayer`;
 - `~/Desktop`;
@@ -46,6 +45,10 @@ copy. Losing the password makes an encrypted backup unrecoverable.
 An external SSD can later provide another local copy, but it should supplement
 the off-site copy rather than replace it. A drive stored with the laptop does
 not protect against theft, fire, or damage to both devices.
+
+Do not store the only backup on the laptop's system drive. Such a copy is lost
+with disk failure or an OS reinstall and does not satisfy the migration backup
+requirement.
 
 ## Optional encrypted GitHub copy
 

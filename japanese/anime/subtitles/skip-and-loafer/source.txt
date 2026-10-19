@@ -1,0 +1,16 @@
+Video source: EMBER 1080p WEBRip AAC x265
+English subtitles: extracted from the embedded English ASS track; signs, episode titles, and opening/ending lyrics removed
+Japanese subtitles: Netflix Japanese closed captions, synchronized against the embedded English dialogue track with ALASS 2.0.0
+
+Episode 01: -1.001 s
+Episode 02: -1.058 s
+Episode 03: -1.080 s
+Episode 04: -1.057 s
+Episode 05: -1.084 s
+Episode 06: -1.044 s
+Episode 07: -1.023 s
+Episode 08: -1.110 s
+Episode 09: -1.080 s
+Episode 10: -0.972 s
+Episode 11: -1.102 s
+Episode 12: -1.007 s

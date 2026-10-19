@@ -26,11 +26,12 @@
     "telemetry.enableTelemetry": false,
     "code-runner.enableAppInsights": false,
     "update.mode": "none",
-    "extensions.autoUpdate": false,
+    "extensions.autoUpdate": "off",
     "extensions.ignoreRecommendations": true,
     // "workbench.editor.showTabs": "none",
     "workbench.editor.labelFormat": "long",
     "editor.fontSize": 16,
     "editor.fontFamily": "'UbuntuMono Nerd Font','Droid Sans Mono', 'monospace', monospace",
-    "keyboard.dispatch": "keyCode"
+    "keyboard.dispatch": "keyCode",
+    "workbench.colorTheme": "Visual Studio Dark"
 }

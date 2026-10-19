@@ -148,3 +148,28 @@ alias zkcd="cd $ZK_NOTEBOOK_DIR"
 (( $+commands[zoxide] )) && eval "$(zoxide init zsh)"
 
 (( $+commands[mise] )) && eval "$(mise activate zsh)"
+
+
+
+
+sonny-frame() {
+  local screenshot="$1"
+  local name="${screenshot:t}"
+
+  if [[ ! "$name" =~ '^EP([0-9]{2})_([0-9]{2})-([0-9]{2})-([0-9]{2}\.[0-9]{3})\.(png|jpg)$' ]]; then
+    print -u2 "Invalid screenshot name: $name"
+    return 1
+  fi
+
+  local episode="$match[1]"
+  local timestamp="$match[2]:$match[3]:$match[4]"
+  local series="/home/evakuator/Shared/Sonny Boy [BD][1080p][HEVC 10bit x265][Dual Audio][Tenrai-Sensei]"
+  local -a videos=("$series/Sonny Boy - $episode - "*.mkv(N))
+
+  if (( ${#videos} != 1 )); then
+    print -u2 "Expected one video for episode $episode; found ${#videos}"
+    return 1
+  fi
+
+  mpv --pause --start="$timestamp" "$videos[1]"
+}

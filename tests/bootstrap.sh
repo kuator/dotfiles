@@ -45,6 +45,13 @@ test "$(git config --file "$temp_dir/config/git/config" --get core.pager)" = del
 test "$(git config --file "$temp_dir/config/git/config" --get interactive.diffFilter)" = \
     'delta --color-only'
 test "$(readlink "$temp_dir/config/wgetrc")" = "$repo/configs/xdg/wgetrc"
+test "$(readlink "$temp_dir/config/xdg-terminals.list")" = \
+    "$repo/configs/xdg/xdg-terminals.list"
+test "$(readlink "$temp_dir/config/X-Cinnamon-xdg-terminals.list")" = \
+    "$repo/configs/xdg/X-Cinnamon-xdg-terminals.list"
+grep -Fqx 'com.mitchellh.ghostty.desktop' "$temp_dir/config/xdg-terminals.list"
+grep -Fqx 'com.mitchellh.ghostty.desktop' \
+    "$temp_dir/config/X-Cinnamon-xdg-terminals.list"
 grep -Fqx 'hsts-file = ~/.local/state/wget-hsts' "$temp_dir/config/wgetrc"
 test "$(readlink "$temp_dir/config/ty/ty.toml")" = "$repo/configs/xdg/ty/ty.toml"
 test "$(readlink "$temp_dir/home/.profile")" = "$repo/configs/home/profile"
@@ -118,6 +125,11 @@ grep -Fqx 'exec "$appgate_bin" "$@"' \
 printf 'appgate icon\n' >"$appgate_test/icon.svg"
 cat >"$appgate_test/bin/real-kdocker" <<'EOF'
 #!/usr/bin/env sh
+attempt=0
+while [ ! -s "$APPGATE_CLOSE_TO_TRAY_TEST_LOG" ] && [ "$attempt" -lt 100 ]; do
+    attempt=$((attempt + 1))
+    sleep 0.01
+done
 printf '%s\n' "$*" >"$KDOCKER_TEST_LOG"
 EOF
 cat >"$appgate_test/bin/real-xdotool" <<'EOF'
@@ -426,6 +438,25 @@ chmod +x "$temp_dir/fake-bin/cmake"
 cat >"$temp_dir/fake-bin/curl" <<'EOF'
 #!/usr/bin/env bash
 printf '%s\n' "$*" >>"$CURL_TEST_LOG"
+output=''
+source_url=''
+while [ "$#" -gt 0 ]; do
+    case "$1" in
+    --output)
+        output="$2"
+        shift 2
+        ;;
+    file://*)
+        source_url="$1"
+        shift
+        ;;
+    *) shift ;;
+    esac
+done
+if [ -n "$output" ]; then
+    cp "${source_url#file://}" "$output"
+    exit 0
+fi
 cat <<'INSTALLER'
 mkdir -p "$(dirname "$MISE_INSTALL_PATH")"
 cat >"$MISE_INSTALL_PATH" <<'MISE'
@@ -467,6 +498,7 @@ cat >"$temp_dir/fake-bin/gsettings" <<'EOF'
 if [ "${1:-}" = list-schemas ]; then
     printf '%s\n' \
         org.cinnamon.desktop.input-sources \
+        org.cinnamon.desktop.default-applications.terminal \
         org.cinnamon.desktop.peripherals.keyboard \
         org.freedesktop.ibus.general \
         org.gnome.libgnomekbd.keyboard
@@ -533,6 +565,15 @@ printf '%s\n' 'default performance balance_performance balance_power power' \
 
 prepare_textractor_fixture "$temp_dir/setup-home"
 
+leetcode_deck_test="$temp_dir/leetcode-deck"
+mkdir -p "$leetcode_deck_test/source"
+printf 'fixture collection\n' >"$leetcode_deck_test/source/collection.anki2"
+(
+    cd "$leetcode_deck_test/source"
+    zip -q "$leetcode_deck_test/fixture.apkg" collection.anki2
+)
+leetcode_deck_sha256="$(sha256sum "$leetcode_deck_test/fixture.apkg" | cut -d' ' -f1)"
+
 SYSTEMCTL_LOG="$temp_dir/systemctl.log" \
     HOME="$temp_dir/home" \
     PATH="$temp_dir/fake-bin:$PATH" \
@@ -568,6 +609,8 @@ BOOTSTRAP_LOG="$temp_dir/sudo.log" \
     XKB_TEST_LOG="$temp_dir/xkb.log" \
     DISPLAY=:99 \
     HOME="$temp_dir/setup-home" \
+    LEETCODE_ANKI_DECK_URL="file://$leetcode_deck_test/fixture.apkg" \
+    LEETCODE_ANKI_SHA256="$leetcode_deck_sha256" \
     PATH="$temp_dir/fake-bin:$PATH" \
     XDG_CURRENT_DESKTOP=X-Cinnamon \
     XDG_CONFIG_HOME="$temp_dir/setup-home/.config" \
@@ -578,6 +621,8 @@ BOOTSTRAP_LOG="$temp_dir/sudo.log" \
 
 grep -qx 'apt-get update' "$temp_dir/sudo.log"
 grep -q '^apt-get install -y ' "$temp_dir/sudo.log"
+grep -Eq '^apt-get install -y .*git-lfs' "$temp_dir/sudo.log"
+grep -Eq '^apt-get install -y .*software-properties-common' "$temp_dir/sudo.log"
 grep -Eq '^apt-get install -y .*kdocker' "$temp_dir/sudo.log"
 grep -Eq '^apt-get install -y .*gammastep' "$temp_dir/sudo.log"
 grep -Eq '^apt-get install -y .*xdotool' "$temp_dir/sudo.log"
@@ -618,6 +663,10 @@ grep -Fqx 'set org.cinnamon.desktop.peripherals.keyboard delay 220' \
     "$temp_dir/gsettings.log"
 grep -Fqx 'set org.cinnamon.desktop.peripherals.keyboard repeat-interval 25' \
     "$temp_dir/gsettings.log"
+grep -Fqx 'set org.cinnamon.desktop.default-applications.terminal exec ghostty' \
+    "$temp_dir/gsettings.log"
+grep -Fqx 'set org.cinnamon.desktop.default-applications.terminal exec-arg -e' \
+    "$temp_dir/gsettings.log"
 grep -Fqx 'set org.freedesktop.ibus.general use-system-keyboard-layout true' \
     "$temp_dir/gsettings.log"
 grep -Fqx -- \
@@ -657,12 +706,15 @@ BOOTSTRAP_LOG="$temp_dir/kde-setup-sudo.log" \
     CMAKE_TEST_LOG="$temp_dir/kde-setup-cmake.log" \
     CURL_TEST_LOG="$temp_dir/kde-setup-curl.log" \
     GIT_TEST_LOG="$temp_dir/kde-setup-git.log" \
+    GHOSTTY_INSTALLED_VERSION='1.3.0-1' \
     KWRITECONFIG_LOG="$temp_dir/kde-setup-kwriteconfig.log" \
     MISE_TEST_LOG="$temp_dir/kde-setup-mise.log" \
     MPV_SCRIPTS_DIR="$temp_dir/setup-kde-home/mpv-scripts" \
     OS_RELEASE_FILE="$temp_dir/ubuntu-26.04" \
     DISPLAY= \
     HOME="$temp_dir/setup-kde-home" \
+    LEETCODE_ANKI_DECK_URL="file://$leetcode_deck_test/fixture.apkg" \
+    LEETCODE_ANKI_SHA256="$leetcode_deck_sha256" \
     PATH="$temp_dir/fake-bin:$PATH" \
     XDG_CURRENT_DESKTOP=KDE \
     XDG_CONFIG_HOME="$temp_dir/setup-kde-home/.config" \
@@ -674,6 +726,12 @@ grep -Fqx -- '--file kxkbrc --group Layout --key LayoutList en,ru' \
     "$temp_dir/kde-setup-kwriteconfig.log"
 grep -Eq '^apt-get install -y .*libncurses-dev' \
     "$temp_dir/kde-setup-sudo.log"
+grep -Fqx 'apt-get install -y --allow-downgrades ghostty' \
+    "$temp_dir/kde-setup-sudo.log"
+if grep -Fq 'ghostty-ubuntu-nightly' "$temp_dir/kde-setup-sudo.log"; then
+    echo 'Default Kubuntu setup enabled the optional Ghostty nightly channel' >&2
+    exit 1
+fi
 for package in \
     cmake \
     extra-cmake-modules \
@@ -751,7 +809,9 @@ for expected in \
     '--file kwinrc --group NightColor --key Active true' \
     '--file kwinrc --group NightColor --key Mode DarkLight' \
     '--file kwinrc --group NightColor --key DayTemperature 5500' \
-    '--file kwinrc --group NightColor --key NightTemperature 4500'; do
+    '--file kwinrc --group NightColor --key NightTemperature 4500' \
+    '--file kdeglobals --group General --key TerminalApplication ghostty' \
+    '--file kdeglobals --group General --key TerminalService com.mitchellh.ghostty.desktop'; do
     grep -Fqx -- "$expected" "$temp_dir/kwriteconfig.log"
 done
 
@@ -900,6 +960,378 @@ if APPGATE_TEST_APT_LOG="$appgate_install_test/apt.log" \
 fi
 test "$(wc -l <"$appgate_install_test/apt.log")" -eq 1
 
+teams_install_test="$temp_dir/teams-for-linux-install"
+mkdir -p "$teams_install_test/bin"
+cat >"$teams_install_test/bin/dpkg-query" <<'EOF'
+#!/usr/bin/env bash
+if [ -f "$TEAMS_FOR_LINUX_TEST_STATE" ]; then
+    cat "$TEAMS_FOR_LINUX_TEST_STATE"
+    exit 0
+fi
+exit 1
+EOF
+cat >"$teams_install_test/bin/curl" <<'EOF'
+#!/usr/bin/env bash
+while [ "$#" -gt 0 ]; do
+    if [ "$1" = --output ]; then
+        printf 'fake deb\n' >"$2"
+        exit 0
+    fi
+    shift
+done
+exit 1
+EOF
+cat >"$teams_install_test/bin/sha256sum" <<'EOF'
+#!/usr/bin/env bash
+cat >/dev/null
+EOF
+cat >"$teams_install_test/bin/dpkg-deb" <<'EOF'
+#!/usr/bin/env bash
+case "$3" in
+Package) printf 'teams-for-linux\n' ;;
+Version) printf '2.8.0\n' ;;
+Architecture) printf 'amd64\n' ;;
+*) exit 1 ;;
+esac
+EOF
+cat >"$teams_install_test/bin/sudo" <<'EOF'
+#!/usr/bin/env bash
+exec "$@"
+EOF
+cat >"$teams_install_test/bin/apt-get" <<'EOF'
+#!/usr/bin/env bash
+printf '%s\n' "$*" >>"$TEAMS_FOR_LINUX_TEST_APT_LOG"
+printf '2.8.0\n' >"$TEAMS_FOR_LINUX_TEST_STATE"
+EOF
+chmod +x "$teams_install_test/bin/"*
+
+TEAMS_FOR_LINUX_TEST_APT_LOG="$teams_install_test/apt.log" \
+    TEAMS_FOR_LINUX_TEST_STATE="$teams_install_test/installed-version" \
+    DEB_ARCHITECTURE=amd64 \
+    PATH="$teams_install_test/bin:$PATH" \
+    "$repo/scripts/bootstrap/install-teams-for-linux.sh" >/dev/null
+grep -Eq '^install -y .*/teams-for-linux_2\.8\.0_amd64\.deb$' \
+    "$teams_install_test/apt.log"
+test "$(cat "$teams_install_test/installed-version")" = '2.8.0'
+
+teams_skip_output="$(
+    TEAMS_FOR_LINUX_TEST_APT_LOG="$teams_install_test/apt.log" \
+        TEAMS_FOR_LINUX_TEST_STATE="$teams_install_test/installed-version" \
+        DEB_ARCHITECTURE=amd64 \
+        PATH="$teams_install_test/bin:$PATH" \
+        "$repo/scripts/bootstrap/install-teams-for-linux.sh"
+)"
+test "$teams_skip_output" = 'Teams-for-Linux 2.8.0 already installed.'
+test "$(wc -l <"$teams_install_test/apt.log")" -eq 1
+
+printf '2.9.0\n' >"$teams_install_test/installed-version"
+if TEAMS_FOR_LINUX_TEST_APT_LOG="$teams_install_test/apt.log" \
+    TEAMS_FOR_LINUX_TEST_STATE="$teams_install_test/installed-version" \
+    DEB_ARCHITECTURE=amd64 \
+    PATH="$teams_install_test/bin:$PATH" \
+    "$repo/scripts/bootstrap/install-teams-for-linux.sh" >/dev/null 2>&1; then
+    echo 'Teams-for-Linux installer replaced the deliberate pin' >&2
+    exit 1
+fi
+test "$(wc -l <"$teams_install_test/apt.log")" -eq 1
+
+installed_leetcode_deck="$temp_dir/setup-home/.local/share/leetcode-anki/LeetcodeSuperSet600.apkg"
+cmp "$leetcode_deck_test/fixture.apkg" "$installed_leetcode_deck"
+leetcode_deck_skip_output="$(
+    XDG_DATA_HOME="$temp_dir/setup-home/.local/share" \
+        LEETCODE_ANKI_DECK_URL="file://$leetcode_deck_test/fixture.apkg" \
+        LEETCODE_ANKI_SHA256="$leetcode_deck_sha256" \
+        "$repo/scripts/bootstrap/install-leetcode-anki.sh"
+)"
+test "$leetcode_deck_skip_output" = 'LeetCode Superset deck already installed.'
+if XDG_DATA_HOME="$leetcode_deck_test/bad-data" \
+    LEETCODE_ANKI_DECK_URL="file://$leetcode_deck_test/fixture.apkg" \
+    LEETCODE_ANKI_SHA256="$(printf '0%.0s' {1..64})" \
+    "$repo/scripts/bootstrap/install-leetcode-anki.sh" >/dev/null 2>&1; then
+    echo 'LeetCode deck installer accepted an invalid checksum' >&2
+    exit 1
+fi
+
+ghostty_install_test="$temp_dir/ghostty-install"
+mkdir -p "$ghostty_install_test/bin"
+cat >"$ghostty_install_test/os-24.04" <<'EOF'
+ID=ubuntu
+VERSION_ID=24.04
+EOF
+cat >"$ghostty_install_test/os-26.04" <<'EOF'
+ID=ubuntu
+VERSION_ID=26.04
+EOF
+cat >"$ghostty_install_test/bin/dpkg-query" <<'EOF'
+#!/usr/bin/env bash
+if [ -f "$GHOSTTY_TEST_STATE" ]; then
+    cat "$GHOSTTY_TEST_STATE"
+    exit 0
+fi
+exit 1
+EOF
+cat >"$ghostty_install_test/bin/dpkg" <<'EOF'
+#!/usr/bin/env bash
+if [ "$1" = --compare-versions ]; then
+    [ "$2" = "$4" ] || [ "$2" = 1.3.1-0~ppa1 ]
+    exit
+fi
+exit 1
+EOF
+cat >"$ghostty_install_test/bin/curl" <<'EOF'
+#!/usr/bin/env bash
+while [ "$#" -gt 0 ]; do
+    if [ "$1" = --output ]; then
+        printf 'fake deb\n' >"$2"
+        exit 0
+    fi
+    shift
+done
+exit 1
+EOF
+cat >"$ghostty_install_test/bin/sha256sum" <<'EOF'
+#!/usr/bin/env bash
+cat >/dev/null
+EOF
+cat >"$ghostty_install_test/bin/dpkg-deb" <<'EOF'
+#!/usr/bin/env bash
+case "$3" in
+Package) printf 'ghostty\n' ;;
+Version) printf '1.3.1-0~ppa1\n' ;;
+Architecture) printf 'amd64\n' ;;
+*) exit 1 ;;
+esac
+EOF
+cat >"$ghostty_install_test/bin/sudo" <<'EOF'
+#!/usr/bin/env bash
+exec "$@"
+EOF
+cat >"$ghostty_install_test/bin/add-apt-repository" <<'EOF'
+#!/usr/bin/env bash
+printf '%s\n' "$*" >>"$GHOSTTY_TEST_REPOSITORY_LOG"
+case " $* " in
+*" --remove "*) rm -f "$APT_SOURCES_DIR/ghostty-nightly.sources" ;;
+*)
+    printf 'URIs: https://ppa.launchpadcontent.net/mkasberg/ghostty-ubuntu-nightly/ubuntu\n' \
+        >"$APT_SOURCES_DIR/ghostty-nightly.sources"
+    ;;
+esac
+EOF
+cat >"$ghostty_install_test/bin/apt-get" <<'EOF'
+#!/usr/bin/env bash
+printf '%s\n' "$*" >>"$GHOSTTY_TEST_APT_LOG"
+case "$*" in
+*ghostty_1.3.1-0.ppa1_amd64_24.04.deb*)
+    printf '1.3.1-0~ppa1\n' >"$GHOSTTY_TEST_STATE"
+    ;;
+"install -y ghostty")
+    printf '1.3.2+nightly20260722T0416~ppa2-resolute1\n' \
+        >"$GHOSTTY_TEST_STATE"
+    ;;
+"install -y --allow-downgrades ghostty")
+    printf '1.3.0-1\n' >"$GHOSTTY_TEST_STATE"
+    ;;
+"update")
+    ;;
+*) exit 1 ;;
+esac
+EOF
+chmod +x "$ghostty_install_test/bin/"*
+
+GHOSTTY_TEST_APT_LOG="$ghostty_install_test/apt.log" \
+    GHOSTTY_TEST_STATE="$ghostty_install_test/installed-version" \
+    DEB_ARCHITECTURE=amd64 \
+    OS_RELEASE_FILE="$ghostty_install_test/os-24.04" \
+    PATH="$ghostty_install_test/bin:$PATH" \
+    "$repo/scripts/bootstrap/install-ghostty.sh" >/dev/null
+grep -Eq '^install -y .*/ghostty_1\.3\.1-0\.ppa1_amd64_24\.04\.deb$' \
+    "$ghostty_install_test/apt.log"
+test "$(cat "$ghostty_install_test/installed-version")" = '1.3.1-0~ppa1'
+
+ghostty_skip_output="$(
+    GHOSTTY_TEST_APT_LOG="$ghostty_install_test/apt.log" \
+        GHOSTTY_TEST_STATE="$ghostty_install_test/installed-version" \
+        DEB_ARCHITECTURE=amd64 \
+        OS_RELEASE_FILE="$ghostty_install_test/os-24.04" \
+        PATH="$ghostty_install_test/bin:$PATH" \
+        "$repo/scripts/bootstrap/install-ghostty.sh"
+)"
+test "$ghostty_skip_output" = 'Ghostty 1.3.1-0~ppa1 already installed.'
+test "$(wc -l <"$ghostty_install_test/apt.log")" -eq 1
+
+rm "$ghostty_install_test/installed-version"
+mkdir "$ghostty_install_test/sources"
+GHOSTTY_TEST_APT_LOG="$ghostty_install_test/apt.log" \
+    GHOSTTY_TEST_REPOSITORY_LOG="$ghostty_install_test/repository.log" \
+    GHOSTTY_TEST_STATE="$ghostty_install_test/installed-version" \
+    APT_SOURCES_DIR="$ghostty_install_test/sources" \
+    DEB_ARCHITECTURE=amd64 \
+    OS_RELEASE_FILE="$ghostty_install_test/os-26.04" \
+    PATH="$ghostty_install_test/bin:$PATH" \
+    "$repo/scripts/bootstrap/install-ghostty.sh" >/dev/null
+test ! -e "$ghostty_install_test/repository.log"
+grep -Fqx 'update' "$ghostty_install_test/apt.log"
+grep -Fqx 'install -y --allow-downgrades ghostty' \
+    "$ghostty_install_test/apt.log"
+test "$(cat "$ghostty_install_test/installed-version")" = '1.3.0-1'
+
+GHOSTTY_CHANNEL=nightly \
+    GHOSTTY_TEST_APT_LOG="$ghostty_install_test/apt.log" \
+    GHOSTTY_TEST_REPOSITORY_LOG="$ghostty_install_test/repository.log" \
+    GHOSTTY_TEST_STATE="$ghostty_install_test/installed-version" \
+    APT_SOURCES_DIR="$ghostty_install_test/sources" \
+    DEB_ARCHITECTURE=amd64 \
+    OS_RELEASE_FILE="$ghostty_install_test/os-26.04" \
+    PATH="$ghostty_install_test/bin:$PATH" \
+    "$repo/scripts/bootstrap/install-ghostty.sh" >/dev/null
+grep -Fqx -- \
+    '--yes --no-update ppa:mkasberg/ghostty-ubuntu-nightly' \
+    "$ghostty_install_test/repository.log"
+grep -Fqx 'update' "$ghostty_install_test/apt.log"
+grep -Fqx 'install -y ghostty' "$ghostty_install_test/apt.log"
+case "$(cat "$ghostty_install_test/installed-version")" in
+*+nightly*) ;;
+*) exit 1 ;;
+esac
+
+GHOSTTY_CHANNEL=nightly \
+    GHOSTTY_TEST_APT_LOG="$ghostty_install_test/apt.log" \
+    GHOSTTY_TEST_REPOSITORY_LOG="$ghostty_install_test/repository.log" \
+    GHOSTTY_TEST_STATE="$ghostty_install_test/installed-version" \
+    APT_SOURCES_DIR="$ghostty_install_test/sources" \
+    DEB_ARCHITECTURE=amd64 \
+    OS_RELEASE_FILE="$ghostty_install_test/os-26.04" \
+    PATH="$ghostty_install_test/bin:$PATH" \
+    "$repo/scripts/bootstrap/install-ghostty.sh" >/dev/null
+test "$(wc -l <"$ghostty_install_test/repository.log")" -eq 1
+test "$(grep -Fxc 'update' "$ghostty_install_test/apt.log")" -eq 3
+test "$(grep -Fxc 'install -y ghostty' "$ghostty_install_test/apt.log")" -eq 2
+
+GHOSTTY_CHANNEL=stable \
+    GHOSTTY_TEST_APT_LOG="$ghostty_install_test/apt.log" \
+    GHOSTTY_TEST_REPOSITORY_LOG="$ghostty_install_test/repository.log" \
+    GHOSTTY_TEST_STATE="$ghostty_install_test/installed-version" \
+    APT_SOURCES_DIR="$ghostty_install_test/sources" \
+    DEB_ARCHITECTURE=amd64 \
+    OS_RELEASE_FILE="$ghostty_install_test/os-26.04" \
+    PATH="$ghostty_install_test/bin:$PATH" \
+    "$repo/scripts/bootstrap/install-ghostty.sh" >/dev/null
+grep -Fqx -- \
+    '--yes --no-update --remove ppa:mkasberg/ghostty-ubuntu-nightly' \
+    "$ghostty_install_test/repository.log"
+test ! -e "$ghostty_install_test/sources/ghostty-nightly.sources"
+test "$(cat "$ghostty_install_test/installed-version")" = '1.3.0-1'
+
+if GHOSTTY_CHANNEL=nightly \
+    GHOSTTY_TEST_APT_LOG="$ghostty_install_test/apt.log" \
+    GHOSTTY_TEST_REPOSITORY_LOG="$ghostty_install_test/repository.log" \
+    GHOSTTY_TEST_STATE="$ghostty_install_test/installed-version" \
+    DEB_ARCHITECTURE=amd64 \
+    OS_RELEASE_FILE="$ghostty_install_test/os-24.04" \
+    PATH="$ghostty_install_test/bin:$PATH" \
+    "$repo/scripts/bootstrap/install-ghostty.sh" >/dev/null 2>&1; then
+    echo 'Ghostty nightly unexpectedly succeeded on Ubuntu 24.04' >&2
+    exit 1
+fi
+
+ncalayer_test="$temp_dir/ncalayer-install"
+mkdir -p \
+    "$ncalayer_test/bin" \
+    "$ncalayer_test/home/.config/NCALayer" \
+    "$ncalayer_test/home/.local/share" \
+    "$ncalayer_test/payload/additions/cert" \
+    "$ncalayer_test/payload/additions/jre8_ncalayer/bin"
+printf 'preserve module state\n' \
+    >"$ncalayer_test/home/.config/NCALayer/module-state"
+printf 'fake icon\n' >"$ncalayer_test/payload/additions/ncalayer.png"
+printf 'fake root certificate\n' \
+    >"$ncalayer_test/payload/additions/cert/root_rsa.cer"
+printf 'fake NCA certificate\n' \
+    >"$ncalayer_test/payload/additions/cert/nca_rsa.cer"
+cat >"$ncalayer_test/payload/additions/jre8_ncalayer/bin/java" <<'EOF'
+#!/usr/bin/env bash
+exit 0
+EOF
+cat >"$ncalayer_test/payload/ncalayer.sh" <<'EOF'
+#!/usr/bin/env bash
+if [ "${1:-}" = --version ]; then
+    printf '  Версия    = 1.4 \n'
+    exit 1
+fi
+if [ "${1:-}" != --nogui ]; then
+    exit 1
+fi
+read -r install_parent
+if [ "$install_parent" = I ]; then
+    read -r install_parent
+fi
+install_dir="$install_parent/NCALayer"
+mkdir -p "$install_dir" "$XDG_DATA_HOME/applications"
+cp "$0" "$install_dir/ncalayer.sh"
+chmod +x "$install_dir/ncalayer.sh"
+cp -a additions/jre8_ncalayer "$install_dir/"
+printf '[Desktop Entry]\nExec="%s/ncalayer.sh" --run\n' "$install_dir" \
+    >"$XDG_DATA_HOME/applications/ncalayer.desktop"
+exit 1
+EOF
+chmod +x \
+    "$ncalayer_test/payload/ncalayer.sh" \
+    "$ncalayer_test/payload/additions/jre8_ncalayer/bin/java"
+(cd "$ncalayer_test/payload" && zip -qr "$ncalayer_test/ncalayer.zip" .)
+ncalayer_sha1="$(sha1sum "$ncalayer_test/ncalayer.zip" | awk '{print $1}')"
+ncalayer_sha256="$(sha256sum "$ncalayer_test/ncalayer.zip" | awk '{print $1}')"
+cat >"$ncalayer_test/bin/pgrep" <<'EOF'
+#!/usr/bin/env bash
+exit 1
+EOF
+cat >"$ncalayer_test/bin/sudo" <<'EOF'
+#!/usr/bin/env bash
+exec "$@"
+EOF
+cat >"$ncalayer_test/bin/apt-get" <<'EOF'
+#!/usr/bin/env bash
+printf '%s\n' "$*" >>"$NCALAYER_TEST_APT_LOG"
+EOF
+chmod +x "$ncalayer_test/bin/"*
+
+ncalayer_output="$(
+    HOME="$ncalayer_test/home" \
+        NCALAYER_ARCHIVE="$ncalayer_test/ncalayer.zip" \
+        NCALAYER_PUBLISHED_SHA1="$ncalayer_sha1" \
+        NCALAYER_SHA256="$ncalayer_sha256" \
+        NCALAYER_TEST_APT_LOG="$ncalayer_test/apt.log" \
+        PATH="$ncalayer_test/bin:$PATH" \
+        XDG_CONFIG_HOME="$ncalayer_test/home/.config" \
+        XDG_DATA_HOME="$ncalayer_test/home/.local/share" \
+        "$repo/scripts/optional/desktop/install-ncalayer.sh"
+)"
+printf '%s\n' "$ncalayer_output" | grep -Fqx \
+    "Installed NCALayer 1.4 in $ncalayer_test/home/.local/share/NCALayer."
+grep -Fqx \
+    'install -y libnotify-bin libnss3-tools pcsc-tools xdg-utils xxd' \
+    "$ncalayer_test/apt.log"
+grep -Fqx 'preserve module state' \
+    "$ncalayer_test/home/.config/NCALayer/module-state"
+test -x "$ncalayer_test/home/.local/share/NCALayer/ncalayer.sh"
+test -x "$ncalayer_test/home/.local/share/NCALayer/jre8_ncalayer/bin/java"
+test "$(cat "$ncalayer_test/home/.local/share/NCALayer/.dotfiles-archive-sha256")" = \
+    "$ncalayer_sha256"
+
+ncalayer_skip_output="$(
+    HOME="$ncalayer_test/home" \
+        NCALAYER_ARCHIVE="$ncalayer_test/ncalayer.zip" \
+        NCALAYER_PUBLISHED_SHA1="$ncalayer_sha1" \
+        NCALAYER_SHA256="$ncalayer_sha256" \
+        NCALAYER_TEST_APT_LOG="$ncalayer_test/apt.log" \
+        PATH="$ncalayer_test/bin:$PATH" \
+        XDG_CONFIG_HOME="$ncalayer_test/home/.config" \
+        XDG_DATA_HOME="$ncalayer_test/home/.local/share" \
+        "$repo/scripts/optional/desktop/install-ncalayer.sh"
+)"
+test "$ncalayer_skip_output" = \
+    'NCALayer 1.4 already installed from the pinned archive.'
+test "$(wc -l <"$ncalayer_test/apt.log")" -eq 1
+
 sudo_test="$temp_dir/sudo-provider"
 mkdir -p "$sudo_test/bin"
 cat >"$sudo_test/bin/sudo" <<'EOF'
@@ -946,11 +1378,15 @@ expected_scripts=(
     scripts/bootstrap/install-mise.sh
     scripts/bootstrap/install-packages.sh
     scripts/bootstrap/install-bitwarden.sh
+    scripts/bootstrap/install-ghostty.sh
+    scripts/bootstrap/install-leetcode-anki.sh
+    scripts/bootstrap/install-teams-for-linux.sh
     scripts/bootstrap/install-textractor.sh
     scripts/bootstrap/install-subtitle-sync.sh
     scripts/bootstrap/install-window-tray.sh
     scripts/bootstrap/link-configs.sh
     scripts/optional/desktop/import-gnome-terminal-profile.sh
+    scripts/optional/desktop/install-ncalayer.sh
     scripts/optional/desktop/install-steam.sh
     scripts/optional/desktop/install-ubuntu-mono-nerd-font.sh
     scripts/optional/desktop/lightdm/configure-xauthority.sh
@@ -981,6 +1417,35 @@ grep -Fqx 'APPGATE_SHA256="3320b6f1c3933bd129bc7be5356b5d3516eecb0974b810fc1b9f9
 grep -Fqx '"$scripts_dir/bootstrap/install-appgate.sh"' \
     "$repo/scripts/setup.sh"
 grep -Fqx '"$scripts_dir/bootstrap/install-bitwarden.sh"' \
+    "$repo/scripts/setup.sh"
+grep -Fqx 'GHOSTTY_UBUNTU_2404_VERSION="1.3.1-0~ppa1"' \
+    "$repo/scripts/bootstrap/install-ghostty.sh"
+grep -Fqx 'GHOSTTY_UBUNTU_2404_SHA256="c838f69c6a047eb9d648f9d68502db783102e981d965a3a6ce416e1c07bdbacd"' \
+    "$repo/scripts/bootstrap/install-ghostty.sh"
+grep -Fqx 'GHOSTTY_NIGHTLY_PPA="ppa:mkasberg/ghostty-ubuntu-nightly"' \
+    "$repo/scripts/bootstrap/install-ghostty.sh"
+grep -Fqx 'ghostty_channel="${GHOSTTY_CHANNEL:-stable}"' \
+    "$repo/scripts/bootstrap/install-ghostty.sh"
+grep -Fqx '"$scripts_dir/bootstrap/install-ghostty.sh"' \
+    "$repo/scripts/setup.sh"
+grep -Fqx 'LEETCODE_ANKI_COMMIT="aeabd4dd10c5163ef84f8390c4f8a5c8812a9ceb"' \
+    "$repo/scripts/bootstrap/install-leetcode-anki.sh"
+grep -Fqx 'LEETCODE_ANKI_SHA256="${LEETCODE_ANKI_SHA256:-c3f83153bea080c75230b825d741d8ad00aae6092100a04fbbebf37d60d96e9b}"' \
+    "$repo/scripts/bootstrap/install-leetcode-anki.sh"
+grep -Fqx '"$scripts_dir/bootstrap/install-leetcode-anki.sh"' \
+    "$repo/scripts/setup.sh"
+grep -Fq '.nightMode .card pre' "$repo/configs/anki/leetcode.css"
+grep -Fq 'max-width: 960px' "$repo/configs/anki/leetcode.css"
+grep -Fq 'updateModelStyling' "$repo/scripts/bootstrap/install-leetcode-anki.sh"
+grep -Fqx 'NCALAYER_VERSION="1.4"' \
+    "$repo/scripts/optional/desktop/install-ncalayer.sh"
+grep -Fqx 'NCALAYER_SHA256="${NCALAYER_SHA256:-31f47c126fe56107d76f11c446110dfa09fc397f032a54ef8ee4d7bcaf6461cb}"' \
+    "$repo/scripts/optional/desktop/install-ncalayer.sh"
+grep -Fqx 'TEAMS_FOR_LINUX_VERSION="2.8.0"' \
+    "$repo/scripts/bootstrap/install-teams-for-linux.sh"
+grep -Fqx 'TEAMS_FOR_LINUX_SHA256="c3fafdc32f1d0fff5b40c47c06457e7edfb9c7936a7ce35ed9cf7824dab6c89f"' \
+    "$repo/scripts/bootstrap/install-teams-for-linux.sh"
+grep -Fqx '"$scripts_dir/bootstrap/install-teams-for-linux.sh"' \
     "$repo/scripts/setup.sh"
 grep -Fqx 'TEXTRACTOR_VERSION="260801"' \
     "$repo/scripts/bootstrap/install-textractor.sh"

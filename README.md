@@ -18,7 +18,7 @@ cd "$HOME/dotfiles"
 ./scripts/setup.sh
 ```
 
-This is the only automatic entry point. It rejects other Ubuntu release/desktop combinations before making changes, asks for sudo normally, installs the base APT packages, pinned Appgate and Bitwarden packages, and Zinit, links the tracked configuration, installs Mise-managed tools including Kanata and Bob's Neovim nightly, installs the subtitle synchronization tools used by mpv, configures desktop-specific window-to-tray and color-temperature support, and applies the tracked desktop keyboard settings. It is safe to rerun: an existing destination is moved to `<name>-old`, and setup stops rather than overwriting an existing backup.
+This is the only automatic entry point. It rejects other Ubuntu release/desktop combinations before making changes, asks for sudo normally, installs the base APT packages including Git LFS, installs Appgate, Bitwarden, Ghostty, and Teams-for-Linux, and installs Zinit. It then links the tracked configuration, installs Mise-managed tools including Kanata and Bob's Neovim nightly, installs the subtitle synchronization tools used by mpv, configures desktop-specific window-to-tray and color-temperature support, and applies the tracked desktop keyboard settings. It is safe to rerun: an existing destination is moved to `<name>-old`, and setup stops rather than overwriting an existing backup.
 
 Run every remaining command only after `scripts/setup.sh` succeeds.
 
@@ -90,6 +90,25 @@ Install the shared terminal font:
 ```sh
 ./scripts/optional/desktop/install-ubuntu-mono-nerd-font.sh
 ```
+
+Install the pinned official NCALayer 1.4 archive for Kazakhstan digital
+signatures. Stop NCALayer first if updating an existing installation. The
+installer preserves modules and settings under `~/.config/NCALayer`:
+
+```sh
+./scripts/optional/desktop/install-ncalayer.sh
+```
+
+Ghostty uses the stable channel by default. On Kubuntu 26.04, opt into the
+community nightly package or return to Ubuntu's stable package with:
+
+```sh
+GHOSTTY_CHANNEL=nightly ./scripts/bootstrap/install-ghostty.sh
+GHOSTTY_CHANNEL=stable ./scripts/bootstrap/install-ghostty.sh
+```
+
+The stable command removes the nightly PPA and allows APT to downgrade Ghostty
+to Ubuntu's package. Ubuntu 24.04 has no packaged nightly channel.
 
 #### Ubuntu 24.04 Cinnamon
 
@@ -205,6 +224,25 @@ The second command is a one-time override. After accepting the result, update `u
 
 The updater also maintains a local `VocabFreq` field, displayed as compact JPDB/CC100 labels on answer sides. Import the tracked Yomitan settings so newly mined notes fill it with `{frequencies}`.
 
+### Restore the LeetCode study deck
+
+Bootstrap downloads the reviewed LeetCode Superset package from a pinned
+revision and verifies its SHA-256 checksum. It installs the package under
+`${XDG_DATA_HOME:-$HOME/.local/share}/leetcode-anki` without modifying the
+personal Anki collection. After Anki is running with AnkiConnect enabled,
+import it idempotently with:
+
+```sh
+./scripts/bootstrap/install-leetcode-anki.sh --import
+```
+
+The package contains 574 problem cards despite its upstream `600` name. Each
+card contains the problem statement and a Python answer; most also include an
+approach explanation and explicit complexity analysis. Importing also applies
+the tracked `configs/anki/leetcode.css`, which constrains line length and fixes
+the upstream code blocks in both light and dark mode. The source repository is
+`https://github.com/VarunVankineni/leetcode-anki-apkg`.
+
 To recover a missing book title on cards created from copied EPUB text, preview exact matches first, then apply the reviewed changes:
 
 ```sh
@@ -233,6 +271,7 @@ On Ubuntu 24.04 Cinnamon/X11, also run `setxkbmap -query`. On Kubuntu 26.04, run
 - `configs/system/keyboard` is the single tracked source for the system, Cinnamon, KDE, IBus, and live X11 keyboard layout; `configs/gnome-terminal/profile.dconf` is imported rather than linked.
 - `docs/ergonomic-keyboard.md` records the ergonomic-keyboard requirements, shortlist, and current recommendation.
 - `docs/backups-and-qol.md` records the personal-backup scope, encrypted GitHub option, restore requirements, and quality-of-life software shortlist.
+- `docs/kubuntu-26.04-migration.md` is the pre-wipe and post-install migration checklist.
 - `docs/todo.md` tracks setup that still requires an external account or private recovery material.
 - `japanese/anki/addons.txt` is the named AnkiWeb add-on manifest; the pinned Forvo fork is installed separately.
 - `japanese/yomitan/dictionaries.txt`, `japanese/yomitan/settings.json`, and `japanese/yomitan/sort-dictionaries.js` define the selected dictionaries, exported settings, and active-profile order.
@@ -244,12 +283,15 @@ On Ubuntu 24.04 Cinnamon/X11, also run `setxkbmap -query`. On Kubuntu 26.04, run
 - `scripts/bootstrap/install-packages.sh` installs Ubuntu packages.
 - `scripts/bootstrap/install-appgate.sh` installs the pinned official Appgate 6.5.3 build after verifying its SHA-256 checksum and package metadata.
 - `scripts/bootstrap/install-bitwarden.sh` installs the pinned official Bitwarden desktop package after verifying its SHA-256 checksum.
+- `scripts/bootstrap/install-ghostty.sh` uses the stable channel by default. It installs Ghostty 1.3.1 from a pinned, checksummed community Debian package on Ubuntu 24.04 and Ubuntu's signed archive package on Kubuntu 26.04. On Kubuntu, run `GHOSTTY_CHANNEL=nightly ./scripts/bootstrap/install-ghostty.sh` to enable the community nightly PPA and update to its newest package; run with `GHOSTTY_CHANNEL=stable` to remove that PPA and safely downgrade to Ubuntu's package. Nightly binaries are unavailable for Ubuntu 24.04.
+- `scripts/bootstrap/install-teams-for-linux.sh` installs the deliberately pinned upstream Teams-for-Linux 2.8.0 Debian package after verifying its SHA-256 checksum and package metadata.
 - `scripts/bootstrap/link-configs.sh` backs up and links tracked configuration.
 - `scripts/bootstrap/install-mise.sh` installs Mise-managed CLI tools and Bob's Neovim nightly.
 - `scripts/bootstrap/install-textractor.sh` installs the pinned maintained Textractor build, its Unicode font, and Protontricks for Steam-prefix launching.
 - `scripts/bootstrap/install-subtitle-sync.sh` installs pinned ffsubsync through uv, alass-cli through the Mise-managed Rust toolchain, and autosubsync-mpv under mpv's scripts directory.
+- `scripts/bootstrap/install-leetcode-anki.sh` installs a pinned, checksummed LeetCode Superset package and can import it idempotently through AnkiConnect.
 - `scripts/bootstrap/install-window-tray.sh` uses Ubuntu's KDocker package on Cinnamon/X11 and installs pinned KWin Minimize2Tray on KDE/Wayland.
-- `scripts/bootstrap/configure-desktop.sh` derives desktop keyboard settings from `configs/system/keyboard`.
+- `scripts/bootstrap/configure-desktop.sh` derives desktop keyboard settings from `configs/system/keyboard` and selects Ghostty as the default terminal in Cinnamon and KDE.
 - `configs/system/tmpfiles.d/cpu-energy-preference.conf` keeps CPU boost available with the less aggressive `balance_performance` energy preference. Bootstrap applies it only when every exposed CPU policy advertises support, so unsupported laptop and desktop CPUs keep their defaults.
 - On Cinnamon, Gammastep starts through XDG autostart after the display is ready; its early-starting vendor user units are masked.
 
@@ -260,6 +302,7 @@ Nothing under `scripts/optional/` runs automatically. Several scripts use sudo, 
 | Script | Purpose |
 | --- | --- |
 | `desktop/import-gnome-terminal-profile.sh` | Imports the tracked GNOME Terminal profile. |
+| `desktop/install-ncalayer.sh` | Installs the pinned official NCALayer archive while preserving user modules and settings. |
 | `desktop/install-steam.sh` | Installs Valve's Steam package and fixsteam fake-home launcher. |
 | `desktop/install-ubuntu-mono-nerd-font.sh` | Downloads and installs UbuntuMono Nerd Font. |
 | `desktop/lightdm/configure-xauthority.sh` | Stores LightDM Xauthority data outside the home root. |

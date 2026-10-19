@@ -1,0 +1,410 @@
+[Script Info]
+Title: English (US)
+Original Translation: 
+Original Editing: 
+Original Timing: 
+Synch Point: 
+Script Updated By: 
+Update Details: 
+ScriptType: v4.00+
+Collisions: Normal
+PlayResX: 640
+PlayResY: 360
+WrapStyle: 0
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Roboto Medium,26,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,1.3,0,2,20,20,23,0
+Style: DefaultItalics,Roboto Medium,26,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,-1,0,0,100,100,0,0,1,1.3,0,2,20,20,23,0
+Style: DefaultTop,Roboto Medium,26,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,1.3,0,8,20,20,23,0
+Style: DefaultItalicsTop,Roboto Medium,26,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,-1,0,0,100,100,0,0,1,1.3,0,8,20,20,23,0
+Style: Flashback,Roboto Medium,26,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,1.3,0,2,20,20,23,1
+Style: FlashbackItalics,Roboto Medium,26,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,-1,0,0,100,100,0,0,1,1.3,0,2,20,20,23,1
+Style: FlashbackTop,Roboto Medium,26,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,1.3,0,8,20,20,23,0
+Style: FlashbackItalicsTop,Roboto Medium,26,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,-1,0,0,100,100,0,0,1,1.3,0,8,20,20,23,0
+Style: Signs,Arial,20,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,2,30,30,10,0
+Style: Episode Title,Times New Roman,14,&H00D0D3D4,&H000000FF,&H00FFFFFF,&H00000000,0,0,-1,0,100,100,0,0,1,0,0,6,30,30,10,0
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:04.07,0:00:08.03,DefaultItalics,FUMI,0,0,0,,Wow, love that blazer!
+Dialogue: 0,0:00:08.86,0:00:11.03,Default,FUMI,0,0,0,,You'd look right at home on a TV show.
+Dialogue: 0,0:00:11.03,0:00:11.84,DefaultItalics,MITSUMI,0,0,0,,Yeah?
+Dialogue: 0,0:00:11.84,0:00:12.70,Default,FUMI,0,0,0,,Yup.
+Dialogue: 0,0:00:12.70,0:00:14.79,DefaultItalics,FUMI,0,0,0,,It looks great on ya.
+Dialogue: 0,0:00:14.79,0:00:17.16,DefaultItalics,FUMI,0,0,0,,You're our pride and joy, Mitsumi-chan.
+Dialogue: 0,0:00:17.55,0:00:18.80,Default,MITSUMI,0,0,0,,Pride and joy...
+Dialogue: 0,0:00:18.80,0:00:20.81,DefaultItalics,FUMI,0,0,0,,Anyway, I gotta run.
+Dialogue: 0,0:00:20.81,0:00:23.66,DefaultItalics,FUMI,0,0,0,,Can't be late for the entrance \Nceremony, ya know?
+Dialogue: 0,0:00:23.66,0:00:25.29,DefaultItalics,FUMI,0,0,0,,Later!
+Dialogue: 0,0:00:25.29,0:00:26.88,Default,MITSUMI,0,0,0,,Yeah, bye.
+Dialogue: 0,0:00:28.74,0:00:31.26,DefaultItalics,MITSUMI,0,0,0,,I'm Iwakura Mitsumi, fifteen years old.
+Dialogue: 0,0:00:35.06,0:00:38.44,DefaultItalics,MITSUMI,0,0,0,,And my life as a Tokyo \Nhigh schooler starts today!
+Dialogue: 0,0:02:15.49,0:02:19.17,DefaultItalics,MITSUMI,0,0,0,,I came here from a tiny, remote town \Non the border of Ishikawa Prefecture.
+Dialogue: 0,0:02:19.17,0:02:22.17,Default,FUMI,0,0,0,,Mitsumi-chan!
+Dialogue: 0,0:02:24.07,0:02:27.66,Default,MITSUMI,0,0,0,,I'll be back for summer break!
+Dialogue: 0,0:02:28.66,0:02:30.31,DefaultTop,TACCHAN,0,0,0,,Break a leg!
+Dialogue: 0,0:02:28.66,0:02:31.47,Default,FUMI,0,0,0,,Take care!
+Dialogue: 0,0:02:32.01,0:02:34.86,Default,TACCHAN,0,0,0,,I wish I coulda sent you off like that.
+Dialogue: 0,0:02:34.86,0:02:37.00,Default,MITSUMI,0,0,0,,Haha, I know that feeling.
+Dialogue: 0,0:02:37.00,0:02:41.14,DefaultItalics,MITSUMI,0,0,0,,The nearest train line got shut down \Nmore than a decade ago.
+Dialogue: 0,0:02:41.14,0:02:43.75,DefaultItalics,MITSUMI,0,0,0,,My middle school only had \Neight students in my year.
+Dialogue: 0,0:02:43.75,0:02:46.02,Default,FUMI,0,0,0,,Here, Mitsumi-chan.
+Dialogue: 0,0:02:46.02,0:02:48.68,DefaultItalics,MITSUMI,0,0,0,,Fumi-chan and I have been \Ntogether since kindergarten.
+Dialogue: 0,0:02:48.68,0:02:49.94,Default,MITSUMI,0,0,0,,Cute.
+Dialogue: 0,0:02:49.94,0:02:51.31,Default,FUMI,0,0,0,,I know you like pandas.
+Dialogue: 0,0:02:51.78,0:02:54.73,Default,FUMI,0,0,0,,If you see Liang Liang, send me pics.
+Dialogue: 0,0:02:54.73,0:02:56.18,DefaultItalics,MITSUMI,0,0,0,,She's my best friend.
+Dialogue: 0,0:02:56.76,0:02:58.19,Default,MITSUMI,0,0,0,,You got it.
+Dialogue: 0,0:02:59.00,0:03:01.96,DefaultItalics,MITSUMI,0,0,0,,Growing up with my best friend. \NHow cool is that?
+Dialogue: 0,0:03:49.77,0:03:53.31,Default,MITSUMI,0,0,0,,Heh. Perfect.
+Dialogue: 0,0:03:53.31,0:03:55.07,Default,NAO,0,0,0,,Listen, Mitsu.
+Dialogue: 0,0:03:55.07,0:03:57.49,Default,NAO,0,0,0,,Change trains at the third stop, 'kay?
+Dialogue: 0,0:03:57.49,0:03:59.80,DefaultItalics,MITSUMI,0,0,0,,This is Nao-chan, my dad's sibling.
+Dialogue: 0,0:03:59.80,0:04:02.77,Default,NAO,0,0,0,,If anyone strange talks to you, \Njust ignore them.
+Dialogue: 0,0:04:02.77,0:04:04.73,DefaultItalics,MITSUMI,0,0,0,,She's taking care of me while I'm in Tokyo.
+Dialogue: 0,0:04:04.73,0:04:06.66,Default,MITSUMI,0,0,0,,You worry too much, Nao-chan.
+Dialogue: 0,0:04:06.66,0:04:07.83,Default,NAO,0,0,0,,Can you blame me?
+Dialogue: 0,0:04:07.83,0:04:11.56,Default,NAO,0,0,0,,You only just found out that there's \Nmore than one railway company!
+Dialogue: 0,0:04:11.56,0:04:14.43,Default,NAO,0,0,0,,I wish I could go with you, \Nbut my work starts early today!
+Dialogue: 0,0:04:14.43,0:04:15.31,Default,MITSUMI,0,0,0,,Relax.
+Dialogue: 0,0:04:15.31,0:04:19.95,Default,MITSUMI,0,0,0,,My intuition tells me that today \Nwill be nothing short of perfect.
+Dialogue: 0,0:04:23.45,0:04:24.45,DefaultItalics,MITSUMI,0,0,0,,Plenty of time.
+Dialogue: 0,0:04:25.07,0:04:26.72,DefaultItalics,MITSUMI,0,0,0,,It won't just be today.
+Dialogue: 0,0:04:26.72,0:04:31.05,DefaultItalics,MITSUMI,0,0,0,,There will be zero screwups for the \Nentirety of my time in high school.
+Dialogue: 0,0:04:31.05,0:04:35.33,DefaultItalics,MITSUMI,0,0,0,,Why? Because I have \Na clear road map for my life!
+Dialogue: 0,0:04:36.52,0:04:38.50,DefaultItalics,MITSUMI,0,0,0,,I will obviously go to Tokyo U,
+Dialogue: 0,0:04:38.50,0:04:40.72,DefaultItalics,MITSUMI,0,0,0,,attend law school, \Nand graduate as valedictorian.
+Dialogue: 0,0:04:40.72,0:04:42.16,DefaultItalics,MITSUMI,0,0,0,,I'll join the Ministry of Internal Affairs
+Dialogue: 0,0:04:42.16,0:04:45.58,DefaultItalics,MITSUMI,0,0,0,,and build a career there providing \Nkey solutions to rural depopulation.
+Dialogue: 0,0:04:45.58,0:04:48.42,DefaultItalics,MITSUMI,0,0,0,,After I retire, I'll return to my \Nhometown and become mayor there,
+Dialogue: 0,0:04:48.42,0:04:52.89,DefaultItalics,MITSUMI,0,0,0,,using the knowledge from my career \Nto greatly improve our finances.
+Dialogue: 0,0:04:52.89,0:04:55.96,DefaultItalics,MITSUMI,0,0,0,,And when I die, I'll have my ashes \Nscattered in the Sea of Japan.
+Dialogue: 0,0:04:56.89,0:05:02.49,DefaultItalics,MITSUMI,0,0,0,,In the next three years, I'll develop \Nthe brains I need to fulfill those ambitions!
+Dialogue: 0,0:05:03.08,0:05:06.65,DefaultItalics,MITSUMI,0,0,0,,However, my family doesn't\Nreally get it, which is why...
+Dialogue: 0,0:05:06.65,0:05:08.26,Default,MITSUMIMUM,0,0,0,,Are you having fun at school?
+Dialogue: 0,0:05:08.26,0:05:09.94,Default,MITSUMIDAD,0,0,0,,Made any friends?
+Dialogue: 0,0:05:09.94,0:05:12.09,DefaultItalics,MITSUMI,0,0,0,,They'll probably worry about those things,
+Dialogue: 0,0:05:12.09,0:05:14.96,DefaultItalics,MITSUMI,0,0,0,,so I'll try to put them at ease, too.
+Dialogue: 0,0:05:17.59,0:05:19.24,DefaultItalics,MITSUMI,0,0,0,,Just wait and see, you guys.
+Dialogue: 0,0:05:19.96,0:05:22.09,DefaultItalics,MITSUMI,0,0,0,,Ikajima Town's prodigy, your pride and joy,
+Dialogue: 0,0:05:22.09,0:05:24.57,DefaultItalics,MITSUMI,0,0,0,,will return to you as a total big shot!
+Dialogue: 0,0:05:25.39,0:05:27.01,DefaultItalics,MITSUMI,0,0,0,,Third stop, third stop...
+Dialogue: 0,0:05:30.74,0:05:34.60,Default,EMCEE,0,0,0,,The entrance ceremony for Tsubame \NWest High School will now begin.
+Dialogue: 0,0:05:35.49,0:05:37.45,Default,EMCEE,0,0,0,,Please welcome the new first-years.
+Dialogue: 0,0:05:38.45,0:05:40.23,Default,MUKAI,0,0,0,,Hey, Sousuke?
+Dialogue: 0,0:05:40.23,0:05:41.59,Default,MUKAI,0,0,0,,Where are you?
+Dialogue: 0,0:05:41.59,0:05:43.73,DefaultItalics,SOUSUKE,0,0,0,,Changing trains now.
+Dialogue: 0,0:05:43.73,0:05:45.30,DefaultItalics,MUKAI,0,0,0,,Taking it easy, huh?
+Dialogue: 0,0:05:45.30,0:05:46.97,DefaultItalics,MUKAI,0,0,0,,The entrance ceremony's already started.
+Dialogue: 0,0:05:46.97,0:05:48.24,Default,SOUSUKE,0,0,0,,Oh, really?
+Dialogue: 0,0:05:48.24,0:05:50.14,Default,SOUSUKE,0,0,0,,Maybe I should just go home, then.
+Dialogue: 0,0:05:50.14,0:05:51.73,DefaultItalics,MUKAI,0,0,0,,At least try to get here, dude.
+Dialogue: 0,0:05:51.73,0:05:52.41,Default,SOUSUKE,0,0,0,,But...
+Dialogue: 0,0:05:52.41,0:05:54.08,Default,SOUSUKE,0,0,0,,I probably won't make...
+Dialogue: 0,0:06:01.11,0:06:02.42,Default,SOUSUKE,0,0,0,,She's stuck.
+Dialogue: 0,0:06:02.42,0:06:03.13,Default,MUKAI,0,0,0,,Wha?
+Dialogue: 0,0:06:03.62,0:06:05.76,Default,SOUSUKE,0,0,0,,A girl in our uniform. \NShe's stuck to the wall.
+Dialogue: 0,0:06:06.37,0:06:07.65,DefaultItalics,SOUSUKE,0,0,0,,She crazy, you think?
+Dialogue: 0,0:06:07.65,0:06:09.76,Default,MUKAI,0,0,0,,Beats me. Why don't you ask her?
+Dialogue: 0,0:06:09.76,0:06:11.85,Default,MUKAI,0,0,0,,I gotta go, so I'm hanging up.
+Dialogue: 0,0:06:12.42,0:06:13.87,Default,MTEACHER,0,0,0,,Are you a first-year?
+Dialogue: 0,0:06:13.87,0:06:14.56,Default,MUKAI,0,0,0,,Yes.
+Dialogue: 0,0:06:14.56,0:06:16.88,Default,MTEACHER,0,0,0,,The others have already entered.
+Dialogue: 0,0:06:16.88,0:06:18.72,Default,MUKAI,0,0,0,,Sorry. I was fighting for my life in there.
+Dialogue: 0,0:06:18.72,0:06:19.72,Default,MTEACHER,0,0,0,,Get going!
+Dialogue: 0,0:06:19.72,0:06:20.48,Default,MUKAI,0,0,0,,Yes, sir.
+Dialogue: 0,0:06:20.48,0:06:22.34,Default,MTEACHER,0,0,0,,You still can't reach her?
+Dialogue: 0,0:06:22.34,0:06:23.48,Default,SAKURA,0,0,0,,No...
+Dialogue: 0,0:06:23.48,0:06:26.10,Default,SAKURA,0,0,0,,What do we do?
+Dialogue: 0,0:06:26.10,0:06:28.36,Default,MTEACHER,0,0,0,,What's going on with Class 3?
+Dialogue: 0,0:06:37.37,0:06:40.04,FlashbackTop,MITSUMI,0,0,0,,Huh? Where am I? \NDo I go that way? This way?
+Dialogue: 0,0:06:37.94,0:06:39.24,DefaultItalics,MITSUMI,0,0,0,,I got lost...
+Dialogue: 0,0:06:40.04,0:06:42.29,DefaultItalics,MITSUMI,0,0,0,,Got caught in rush hour...
+Dialogue: 0,0:06:42.73,0:06:44.03,DefaultItalics,MITSUMI,0,0,0,,And got sick from the crowd.
+Dialogue: 0,0:06:46.65,0:06:48.79,DefaultItalics,MITSUMI,0,0,0,,This wasn't the plan.
+Dialogue: 0,0:06:49.24,0:06:50.64,DefaultItalics,MITSUMI,0,0,0,,I wanna die.
+Dialogue: 0,0:06:51.82,0:06:53.10,Default,SOUSUKE,0,0,0,,Hey...
+Dialogue: 0,0:06:53.69,0:06:55.66,Default,SOUSUKE,0,0,0,,Are you okay?
+Dialogue: 0,0:06:59.62,0:07:00.83,DefaultItalics,SOUSUKE,0,0,0,,Yikes!
+Dialogue: 0,0:07:01.40,0:07:03.31,Default,SOUSUKE,0,0,0,,Actually, never mind.
+Dialogue: 0,0:07:04.73,0:07:05.98,Default,SOUSUKE,0,0,0,,Eek!
+Dialogue: 0,0:07:05.98,0:07:07.20,Default,MITSUMI,0,0,0,,H...
+Dialogue: 0,0:07:07.20,0:07:08.49,DefaultItalics,MITSUMI,0,0,0,,H-Huh?
+Dialogue: 0,0:07:11.62,0:07:17.19,DefaultItalics,MITSUMI,0,0,0,,How many years has it been \Nsince I spoke to a stranger my age?
+Dialogue: 0,0:07:17.19,0:07:17.87,Default,MITSUMI,0,0,0,,How...
+Dialogue: 0,0:07:17.87,0:07:21.12,Default,MITSUMI,0,0,0,,How do I get to school from here?!
+Dialogue: 0,0:07:29.93,0:07:31.72,Default,SOUSUKE,0,0,0,,Oh, you're lost?
+Dialogue: 0,0:07:32.13,0:07:33.52,Default,SOUSUKE,0,0,0,,I'm running late, too.
+Dialogue: 0,0:07:34.10,0:07:35.60,Default,SOUSUKE,0,0,0,,Let's go together.
+Dialogue: 0,0:07:37.39,0:07:41.01,Default,PRINCIPAL,0,0,0,,High school, college, and employment...
+Dialogue: 0,0:07:41.01,0:07:44.39,Default,PRINCIPAL,0,0,0,,They're, uh... all about\Nthe people you meet.
+Dialogue: 0,0:07:44.39,0:07:45.15,Default,PRINCIPAL,0,0,0,,Er...
+Dialogue: 0,0:07:45.15,0:07:49.65,Default,PRINCIPAL,0,0,0,,After passing our rigorous \Nentrance exams, uhm...
+Dialogue: 0,0:07:50.12,0:07:52.88,Default,SOUSUKE,0,0,0,,Oh, really? You're from Ishikawa?
+Dialogue: 0,0:07:52.88,0:07:53.92,Default,MITSUMI,0,0,0,,Yes...
+Dialogue: 0,0:07:53.92,0:07:54.95,Default,SOUSUKE,0,0,0,,Which city?
+Dialogue: 0,0:07:54.95,0:07:55.67,Default,MITSUMI,0,0,0,,Yes...
+Dialogue: 0,0:07:55.67,0:07:57.90,Default,SOUSUKE,0,0,0,,I've never been to Ishikawa.
+Dialogue: 0,0:07:57.90,0:07:59.81,DefaultItalics,MITSUMI,0,0,0,,What if I don't make it in time?
+Dialogue: 0,0:07:59.81,0:08:02.43,DefaultItalics,MITSUMI,0,0,0,,I know I'm gonna get \Na call from home today.
+Dialogue: 0,0:08:02.43,0:08:04.54,DefaultItalics,MITSUMI,0,0,0,,They'll ask how the entrance ceremony went.
+Dialogue: 0,0:08:04.54,0:08:07.50,DefaultItalics,MITSUMI,0,0,0,,If I tell the truth, they'll worry about me.
+Dialogue: 0,0:08:08.20,0:08:09.76,DefaultItalics,MITSUMI,0,0,0,,Should I lie?
+Dialogue: 0,0:08:09.76,0:08:11.44,DefaultItalics,MITSUMI,0,0,0,,About all of it?
+Dialogue: 0,0:08:12.79,0:08:15.34,Default,SOUSUKE,0,0,0,,Hey, it's not the end of the world.
+Dialogue: 0,0:08:15.34,0:08:17.30,Default,SOUSUKE,0,0,0,,It's just the entrance ceremony.
+Dialogue: 0,0:08:21.56,0:08:23.81,Default,MITSUMI,0,0,0,,Maybe that's all it is to you!
+Dialogue: 0,0:08:26.36,0:08:27.31,Default,MITSUMI,0,0,0,,W-Wait, no!
+Dialogue: 0,0:08:27.31,0:08:30.19,DefaultItalicsTop,PA,0,0,0,,We will soon be making \Na brief stop at Miyamaeyama.
+Dialogue: 0,0:08:27.86,0:08:30.19,Default,SOUSUKE,0,0,0,,Oh, here's our stop.
+Dialogue: 0,0:08:30.19,0:08:32.38,DefaultItalicsTop,PA,0,0,0,,The doors on the right side will open.
+Dialogue: 0,0:08:35.29,0:08:37.74,Default,SOUSUKE,0,0,0,,It's about a ten-minute walk from here.
+Dialogue: 0,0:08:38.07,0:08:39.62,Default,SOUSUKE,0,0,0,,But you're in a rush, right?
+Dialogue: 0,0:08:40.06,0:08:41.11,Default,SOUSUKE,0,0,0,,Wanna run?
+Dialogue: 0,0:08:42.29,0:08:44.26,DefaultItalics,MITSUMI,0,0,0,,Dad. Mom.
+Dialogue: 0,0:08:44.26,0:08:46.12,DefaultItalics,MITSUMI,0,0,0,,Maharu. Kippei.
+Dialogue: 0,0:08:46.12,0:08:48.77,DefaultItalics,MITSUMI,0,0,0,,Granny. Satonosuke.
+Dialogue: 0,0:08:48.77,0:08:51.26,DefaultItalics,MITSUMI,0,0,0,,Omiso. Oshio.
+Dialogue: 0,0:08:51.26,0:08:53.79,DefaultItalics,MITSUMI,0,0,0,,Everything in Tokyo moves at lightning speed.
+Dialogue: 0,0:08:53.79,0:08:59.44,DefaultItalics,MITSUMI,0,0,0,,I got swallowed by its waves. \NI panicked, made things worse,
+Dialogue: 0,0:08:59.44,0:09:00.64,DefaultItalics,MITSUMI,0,0,0,,and in the end...
+Dialogue: 0,0:09:03.37,0:09:05.52,Default,SOUSUKE,0,0,0,,It's straight down this road. Hang in there.
+Dialogue: 0,0:09:06.44,0:09:10.16,DefaultItalics,MITSUMI,0,0,0,,I lashed out at this kind, helpful guy.
+Dialogue: 0,0:09:11.85,0:09:15.20,DefaultItalics,MITSUMI,0,0,0,,I feel like I've seen my own \Ntrue colors in just half a day.
+Dialogue: 0,0:09:16.52,0:09:17.66,DefaultItalics,MITSUMI,0,0,0,,I'm ashamed of myself.
+Dialogue: 0,0:09:20.31,0:09:22.50,Default,SOUSUKE,0,0,0,,Y-You okay?
+Dialogue: 0,0:09:25.26,0:09:27.25,Default,MITSUMI,0,0,0,,I'm... fine...
+Dialogue: 0,0:09:28.26,0:09:31.69,DefaultItalics,MITSUMI,0,0,0,,But for now, I'm gonna forget all that...
+Dialogue: 0,0:09:32.58,0:09:34.07,DefaultItalics,MITSUMI,0,0,0,,and run for my life!
+Dialogue: 0,0:10:47.93,0:10:48.54,Default,SAKURA,0,0,0,,Oh!
+Dialogue: 0,0:10:48.54,0:10:50.07,Default,SAKURA,0,0,0,,Iwakura-san?!
+Dialogue: 0,0:10:50.07,0:10:51.25,Default,MITSUMI,0,0,0,,...es...
+Dialogue: 0,0:10:51.25,0:10:52.81,Default,MITSUMI,0,0,0,,Shima-kun?
+Dialogue: 0,0:10:52.81,0:10:55.13,Default,SOUSUKE,0,0,0,,Yes. Sorry we're late.
+Dialogue: 0,0:10:55.13,0:10:56.52,Default,MITSUMI,0,0,0,,Sor...
+Dialogue: 0,0:10:56.52,0:10:59.05,Default,SAKURA,0,0,0,,There, there. I'm glad you made it.
+Dialogue: 0,0:10:59.05,0:11:01.13,Default,SAKURA,0,0,0,,Wait, are you okay, Iwakura-san?
+Dialogue: 0,0:11:01.55,0:11:02.77,Default,MITSUMI,0,0,0,,Did I... make...
+Dialogue: 0,0:11:02.77,0:11:03.64,DefaultItalics,SAKURA,0,0,0,,Yikes!
+Dialogue: 0,0:11:03.64,0:11:05.72,Default,SAKURA,0,0,0,,Yes, you're just in time.
+Dialogue: 0,0:11:05.72,0:11:08.85,Default,SAKURA,0,0,0,,Be sure to thank the person \Nwe asked to sub in for you.
+Dialogue: 0,0:11:08.85,0:11:10.33,Default,MITSUMI,0,0,0,,I will. I'm sorry.
+Dialogue: 0,0:11:10.33,0:11:11.48,Default,SOUSUKE,0,0,0,,Hmm?
+Dialogue: 0,0:11:12.00,0:11:15.10,Default,EMCEE,0,0,0,,Representing the incoming class, \NIwakura Mitsumi.
+Dialogue: 0,0:11:15.10,0:11:16.07,Default,MITSUMI,0,0,0,,Yes!
+Dialogue: 0,0:11:21.50,0:11:23.39,DefaultItalics,SOUSUKE,0,0,0,,You're top of the class?
+Dialogue: 0,0:11:29.69,0:11:30.46,Default,MITSUMI,0,0,0,,Urk.
+Dialogue: 0,0:11:31.45,0:11:32.32,DefaultItalics,PRINCIPAL,0,0,0,,"Urk"?
+Dialogue: 0,0:11:34.75,0:11:36.62,DefaultItalics,SAKURA,0,0,0,,Wait, did she forget her script?!
+Dialogue: 0,0:11:47.89,0:11:50.41,Default,MITSUMI,0,0,0,,As the warmth of spring rolls in,
+Dialogue: 0,0:11:50.41,0:11:56.48,Default,MITSUMI,0,0,0,,we 216 students stand here at the entrance \Nceremony for Tsubame West High School.
+Dialogue: 0,0:11:56.86,0:12:02.62,Default,MITSUMI,0,0,0,,On behalf of my class, I would like to \Nthank you all for this wonderful ceremony.
+Dialogue: 0,0:12:00.99,0:12:02.62,DefaultTop,STUDENTA,0,0,0,,She memorized it?
+Dialogue: 0,0:12:02.62,0:12:03.57,DefaultTop,STUDENTB,0,0,0,,Whoa.
+Dialogue: 0,0:12:03.57,0:12:08.06,Default,MITSUMI,0,0,0,,Our hearts are filled with hopes and fears,
+Dialogue: 0,0:12:08.06,0:12:12.42,Default,MITSUMI,0,0,0,,just like the sakura trees in the school \Ncourtyard, with flowers yet to blossom.
+Dialogue: 0,0:12:12.42,0:12:14.81,Default,MITSUMI,0,0,0,,The experience of overcoming \Nthe tough entrance exams
+Dialogue: 0,0:12:14.81,0:12:18.93,Default,MITSUMI,0,0,0,,will give us confidence and strength \Nto overcome the days ahead.
+Dialogue: 0,0:12:18.93,0:12:20.04,Default,SOUSUKE,0,0,0,,Haha...
+Dialogue: 0,0:12:20.71,0:12:24.81,Default,MITSUMI,0,0,0,,None of us could have made it this far alone.
+Dialogue: 0,0:12:24.81,0:12:29.30,Default,MITSUMI,0,0,0,,We must remember the support we \Nreceived from our families and friends,
+Dialogue: 0,0:12:29.30,0:12:31.29,Default,MITSUMI,0,0,0,,try to live up to their expectations,
+Dialogue: 0,0:12:31.29,0:12:35.29,Default,MITSUMI,0,0,0,,and in our time at Tsubame West, \Nthink for ourselves...
+Dialogue: 0,0:12:36.07,0:12:43.40,Default,MITSUMI,0,0,0,,I'm blessed to join a school that values \Nindependence, individuality, and autonomy.
+Dialogue: 0,0:12:43.80,0:12:45.48,Default,MITSUMI,0,0,0,,And, last but not least,
+Dialogue: 0,0:12:45.48,0:12:48.66,Default,MITSUMI,0,0,0,,to the teachers and the older students:
+Dialogue: 0,0:12:48.66,0:12:52.90,Default,MITSUMI,0,0,0,,We hope that you will watch over \Nand guide us new students.
+Dialogue: 0,0:12:52.90,0:12:55.02,Default,MITSUMI,0,0,0,,Thank you.
+Dialogue: 0,0:12:55.02,0:12:57.48,DefaultItalics,PRINCIPAL,0,0,0,,She didn't blink once!
+Dialogue: 0,0:13:14.61,0:13:16.27,Default,SAKURA,0,0,0,,Iwakura-san? Where are you go—
+Dialogue: 0,0:13:16.27,0:13:17.31,Default,SAKURA,0,0,0,,Huh?
+Dialogue: 0,0:13:29.53,0:13:31.19,DefaultItalics,MITSUMI,0,0,0,,The script for today: {int}
+Dialogue: 0,0:13:32.12,0:13:33.15,DefaultItalics,MITSUMI,0,0,0,,One. {/int}
+Dialogue: 0,0:13:35.12,0:13:35.73,DefaultItalics,MITSUMI,0,0,0,,Two. {/int}
+Dialogue: 0,0:13:35.73,0:13:38.33,Default,RANDOM,0,0,0,,That was a great speech!
+Dialogue: 0,0:13:38.33,0:13:39.11,DefaultItalics,MITSUMI,0,0,0,,Three. {/int}
+Dialogue: 0,0:13:39.11,0:13:41.46,Default,RANDOM,0,0,0,,Let's be friends!
+Dialogue: 0,0:13:42.09,0:13:43.77,Default,KOSHINO,0,0,0,,Oh, the puker?
+Dialogue: 0,0:13:43.77,0:13:44.89,Default,JOUGASAKI,0,0,0,,This is concerning.
+Dialogue: 0,0:13:44.89,0:13:46.34,Default,SUDA,0,0,0,,The puker, huh?
+Dialogue: 0,0:13:46.34,0:13:49.74,DefaultItalics,MITSUMI,0,0,0,,Day one, and I'm the puker.
+Dialogue: 0,0:13:49.74,0:13:53.46,DefaultItalics,MITSUMI,0,0,0,,But wait, I can salvage that if I try.
+Dialogue: 0,0:13:53.46,0:13:55.90,Default,MIKA,0,0,0,,Oh, I listen to them, too!
+Dialogue: 0,0:13:55.90,0:13:57.59,Default,MIKA,0,0,0,,Aren't they great?
+Dialogue: 0,0:13:57.59,0:13:59.37,Default,KAWATANI,0,0,0,,Hey, let's trade contact details.
+Dialogue: 0,0:13:59.37,0:14:01.77,Default,MIKA,0,0,0,,Really? I'd love to.
+Dialogue: 0,0:14:02.43,0:14:03.68,Default,KAWATANI,0,0,0,,Did you get it?
+Dialogue: 0,0:14:04.59,0:14:07.38,DefaultTop,MIKA,0,0,0,,Hah, what is this sticker? It's cute!
+Dialogue: 0,0:14:04.59,0:14:08.24,DefaultItalics,MITSUMI,0,0,0,,W-Wow. I should learn from them.
+Dialogue: 0,0:14:08.24,0:14:09.32,Default,MITSUMI,0,0,0,,Hey!
+Dialogue: 0,0:14:11.09,0:14:13.21,Default,MITSUMI,0,0,0,,I-It's nice to meet you.
+Dialogue: 0,0:14:14.68,0:14:16.71,Default,MIKA,0,0,0,,Yeah, same here.
+Dialogue: 0,0:14:17.80,0:14:20.64,DefaultItalics,MITSUMI,0,0,0,,I feel like she just brushed me off.
+Dialogue: 0,0:14:20.64,0:14:24.85,DefaultTop,MIKA,0,0,0,,By the way, did you watch their \NPinsta Live a couple of days ago?
+Dialogue: 0,0:14:21.91,0:14:23.10,Default,SOUSUKE,0,0,0,,Iwakura-san.
+Dialogue: 0,0:14:24.85,0:14:26.76,DefaultTop,MIKA,0,0,0,,I only realized towards the end.
+Dialogue: 0,0:14:26.76,0:14:28.17,Default,SOUSUKE,0,0,0,,Guess we're in the same class.
+Dialogue: 0,0:14:28.69,0:14:29.66,Default,MITSUMI,0,0,0,,Shima-kun?
+Dialogue: 0,0:14:29.66,0:14:32.17,Default,SOUSUKE,0,0,0,,That's right. You feeling any better?
+Dialogue: 0,0:14:32.73,0:14:34.43,Default,MITSUMI,0,0,0,,Much better now that I hurled.
+Dialogue: 0,0:14:34.43,0:14:36.56,Default,SOUSUKE,0,0,0,,Oh, good to hear.
+Dialogue: 0,0:14:36.56,0:14:38.17,DefaultItalics,MITSUMI,0,0,0,,I knew it.
+Dialogue: 0,0:14:38.17,0:14:42.65,Default,SOUSUKE,0,0,0,,I loved your speech. You bossed it up out there.
+Dialogue: 0,0:14:42.65,0:14:45.20,DefaultItalics,MITSUMI,0,0,0,,This guy's a saint!
+Dialogue: 0,0:14:43.37,0:14:45.20,DefaultTop,SOUSUKE,0,0,0,,You weren't even reading notes, were you?
+Dialogue: 0,0:14:45.20,0:14:48.51,DefaultTop,SOUSUKE,0,0,0,,I could never write a speech \Nlike that to save my life.
+Dialogue: 0,0:14:45.83,0:14:49.42,DefaultItalics,MITSUMI,0,0,0,,Oh, I'm suddenly even \Nfinding his face lovely.
+Dialogue: 0,0:14:49.06,0:14:51.36,DefaultTop,SOUSUKE,0,0,0,,I really thought you were amazing.
+Dialogue: 0,0:14:49.42,0:14:51.95,DefaultItalics,MITSUMI,0,0,0,,Is it because he helped me so much today?
+Dialogue: 0,0:14:51.95,0:14:56.58,DefaultItalics,MITSUMI,0,0,0,,Or is Tokyo just filled with \Ndreamy people like him?
+Dialogue: 0,0:14:57.51,0:14:59.33,DefaultItalics,MIKAOTHERS,0,0,0,,Oh, boy, major stud alert!
+Dialogue: 0,0:14:59.33,0:15:00.86,DefaultItalics,KAWATANI,0,0,0,,He doesn't seem too conceited.
+Dialogue: 0,0:15:00.86,0:15:02.09,DefaultItalics,MOTOBAYASHI,0,0,0,,Wonder if he has a girlfriend.
+Dialogue: 0,0:15:02.09,0:15:03.66,DefaultItalics,MINE,0,0,0,,He wasn't in the procession, was he?
+Dialogue: 0,0:15:03.66,0:15:05.95,DefaultItalics,JOUGASAKI,0,0,0,,I'm so glad I'm in this class.
+Dialogue: 0,0:15:05.95,0:15:09.08,Default,SOUSUKE,0,0,0,,Iwakura-san, let's be friends.
+Dialogue: 0,0:15:09.08,0:15:11.34,Default,SOUSUKE,0,0,0,,Oh, give me your ID and stuff.
+Dialogue: 0,0:15:11.34,0:15:13.48,Default,SOUSUKE,0,0,0,,I'll text you.
+Dialogue: 0,0:15:18.24,0:15:19.56,Default,MIKA,0,0,0,,Gimme your ID, too.
+Dialogue: 0,0:15:21.06,0:15:23.62,Default,MIKA,0,0,0,,Oh, I'm Egashira Mika.
+Dialogue: 0,0:15:23.62,0:15:26.57,Default,MIKA,0,0,0,,I sit right behind you, so I wanna \Nget to know you better.
+Dialogue: 0,0:15:28.32,0:15:30.92,DefaultItalics,MITSUMI,0,0,0,,I guess my timing was just off earlier.
+Dialogue: 0,0:15:30.92,0:15:31.79,Default,MITSUMI,0,0,0,,Sure.
+Dialogue: 0,0:15:32.49,0:15:35.49,Default,MIKA,0,0,0,,You're Mitsumi-chan? That's a cute name.
+Dialogue: 0,0:15:35.49,0:15:37.58,Default,SAKURA,0,0,0,,Take your seats, everyone.
+Dialogue: 0,0:15:38.04,0:15:41.92,Default,SAKURA,0,0,0,,Sorry I'm late. I had a lot going on.
+Dialogue: 0,0:15:42.62,0:15:43.83,DefaultItalics,MITSUMI,0,0,0,,Forgive me.
+Dialogue: 0,0:15:44.37,0:15:47.11,Default,SAKURA,0,0,0,,I'm Hanazono Sakura, \Nand I'm in charge of Class 3.
+Dialogue: 0,0:15:47.11,0:15:52.36,Default,SAKURA,0,0,0,,This is my first time as homeroom teacher, \Nso I'm sure I'll need your help,
+Dialogue: 0,0:15:52.36,0:15:55.76,Default,SAKURA,0,0,0,,but I promise you I'll do my best! \NI'm looking forward to working with you all!
+Dialogue: 0,0:15:58.60,0:16:01.22,Default,SAKURA,0,0,0,,Today, I'll give you a simple \Nintro to your textbooks,
+Dialogue: 0,0:16:01.22,0:16:04.85,Default,SAKURA,0,0,0,,and you'll fill out these profile sheets. \NAfter that, you're free to go.
+Dialogue: 0,0:16:04.85,0:16:08.18,Default,SAKURA,0,0,0,,Tomorrow, you'll introduce \Nyourselves to the class.
+Dialogue: 0,0:16:08.76,0:16:10.07,DefaultItalics,MITSUMI,0,0,0,,Now, then.
+Dialogue: 0,0:16:10.69,0:16:12.74,DefaultItalics,MITSUMI,0,0,0,,I wonder what my classmates are like.
+Dialogue: 0,0:16:13.99,0:16:16.54,DefaultItalics,MITSUMI,0,0,0,,I'd like to build some solid \Nrelationships with them.
+Dialogue: 0,0:16:18.49,0:16:20.66,Default,MITSUMI,0,0,0,,And that's about it, yeah.
+Dialogue: 0,0:16:20.66,0:16:24.57,Default,MITSUMI,0,0,0,,No major incidents. \NMy day was a total success.
+Dialogue: 0,0:16:24.57,0:16:26.54,DefaultItalics,FUMI,0,0,0,,Good for ya!
+Dialogue: 0,0:16:26.54,0:16:31.45,DefaultItalics,FUMI,0,0,0,,Meanwhile, I was so nervous, I couldn't \Nrespond to people who talked to me.
+Dialogue: 0,0:16:31.45,0:16:34.30,Default,MITSUMI,0,0,0,,It's just the first day. \NYou'll be fine, Fumi.
+Dialogue: 0,0:16:34.30,0:16:38.30,Default,FUMI,0,0,0,,Ya think? Did ya manage to talk to anyone?
+Dialogue: 0,0:16:38.30,0:16:41.61,Default,MITSUMI,0,0,0,,Get this. I made two friends.
+Dialogue: 0,0:16:41.61,0:16:44.15,DefaultItalics,FUMI,0,0,0,,Oh, wow! What're they like?
+Dialogue: 0,0:16:44.15,0:16:46.35,Default,MITSUMI,0,0,0,,A cute, stylish girl,
+Dialogue: 0,0:16:46.35,0:16:47.96,Default,MITSUMI,0,0,0,,and a really nice guy.
+Dialogue: 0,0:16:47.96,0:16:50.73,DefaultItalics,FUMI,0,0,0,,Whoa! A guy?!
+Dialogue: 0,0:16:50.73,0:16:52.07,DefaultItalics,FUMI,0,0,0,,No way! How?
+Dialogue: 0,0:16:52.07,0:16:54.80,Default,MITSUMI,0,0,0,,He helped me this morning when I was los—
+Dialogue: 0,0:16:54.80,0:16:57.57,Default,MITSUMI,0,0,0,,er, was close to going the wrong way.
+Dialogue: 0,0:16:57.57,0:16:59.11,Default,MITSUMI,0,0,0,,And we wound up in the same class.
+Dialogue: 0,0:16:59.11,0:17:01.51,DefaultItalics,FUMI,0,0,0,,Wow... Is he hot?
+Dialogue: 0,0:17:01.51,0:17:02.28,Default,MITSUMI,0,0,0,,Ho—
+Dialogue: 0,0:17:03.52,0:17:06.45,Default,MITSUMI,0,0,0,,I guess. I've never met \Nanyone like him before.
+Dialogue: 0,0:17:06.45,0:17:07.44,Default,MITSUMI,0,0,0,,Very dapper.
+Dialogue: 0,0:17:07.44,0:17:09.34,DefaultItalics,FUMI,0,0,0,,Whoa, lucky you!
+Dialogue: 0,0:17:09.34,0:17:12.60,DefaultItalics,FUMI,0,0,0,,But, man, I'd be so lonely \Nif you got a boyfriend.
+Dialogue: 0,0:17:12.60,0:17:15.09,Default,MITSUMI,0,0,0,,Come on, quit jumping the gun!
+Dialogue: 0,0:17:16.21,0:17:17.93,Default,FUMI,0,0,0,,I better give it my all from tomorrow, too.
+Dialogue: 0,0:17:17.93,0:17:19.83,Default,MITSUMI,0,0,0,,Yeah, I'm rooting for you.
+Dialogue: 0,0:17:19.83,0:17:21.15,Default,NAO,0,0,0,,I'm home.
+Dialogue: 0,0:17:21.15,0:17:22.75,Default,MITSUMI,0,0,0,,Oh, Nao-chan's back.
+Dialogue: 0,0:17:22.75,0:17:24.04,DefaultItalics,FUMI,0,0,0,,I'll letcha go, then.
+Dialogue: 0,0:17:24.04,0:17:28.21,Default,MITSUMI,0,0,0,,Oh, and take care of my siblings, please?
+Dialogue: 0,0:17:28.21,0:17:31.11,Default,MITSUMI,0,0,0,,I'm sure they're gonna miss having me around.
+Dialogue: 0,0:17:31.72,0:17:32.70,Default,FUMI,0,0,0,,Sure!
+Dialogue: 0,0:17:33.71,0:17:35.22,Default,MITSUMI,0,0,0,,Welcome home, Nao-chan.
+Dialogue: 0,0:17:35.22,0:17:37.12,Default,NAO,0,0,0,,Sorry I'm late!
+Dialogue: 0,0:17:37.12,0:17:38.79,Default,NAO,0,0,0,,How was the entrance ceremony?
+Dialogue: 0,0:17:38.79,0:17:39.99,Default,MITSUMI,0,0,0,,It went well.
+Dialogue: 0,0:17:39.99,0:17:42.20,Default,NAO,0,0,0,,Really? Thank goodness!
+Dialogue: 0,0:17:42.64,0:17:44.12,Default,NAO,0,0,0,,Were you on the phone?
+Dialogue: 0,0:17:44.12,0:17:45.83,Default,MITSUMI,0,0,0,,Yeah, was talking to Fumi.
+Dialogue: 0,0:17:45.83,0:17:47.89,Default,MITSUMI,0,0,0,,She's feeling helpless \Non her own, as expected.
+Dialogue: 0,0:17:47.89,0:17:52.39,Default,MITSUMI,0,0,0,,She always has her head in the clouds, \Nso I worry about her.
+Dialogue: 0,0:17:53.50,0:17:55.09,Default,NAO,0,0,0,,Right.
+Dialogue: 0,0:17:55.45,0:17:57.51,Default,NAO,0,0,0,,Come, let's eat while we chat.
+Dialogue: 0,0:17:57.51,0:18:00.18,Default,NAO,0,0,0,,I bought dinner from \Na fancy deli to celebrate.
+Dialogue: 0,0:18:00.18,0:18:01.64,Default,MITSUMI,0,0,0,,Thanks!
+Dialogue: 0,0:18:01.64,0:18:04.79,Default,MITSUMI,0,0,0,,A deli? Wow, these sides are stylin'.
+Dialogue: 0,0:18:04.79,0:18:07.03,Default,NAO,0,0,0,,This place makes the yummiest stuff.
+Dialogue: 0,0:18:07.03,0:18:10.26,DefaultItalics,NAO,0,0,0,,Do kids even say "stylin'" these days?
+Dialogue: 0,0:18:10.26,0:18:11.36,Default,MITSUMI,0,0,0,,Yum!
+Dialogue: 0,0:18:11.85,0:18:14.11,Default,FUMI,0,0,0,,Good evening!
+Dialogue: 0,0:18:14.11,0:18:16.20,Default,FUMI,0,0,0,,Satonosuke!
+Dialogue: 0,0:18:16.20,0:18:18.36,Default,MITSUMIMUM,0,0,0,,Hey there, Fumi-chan.
+Dialogue: 0,0:18:18.36,0:18:21.14,Default,FUMI,0,0,0,,Brought you some radishes from Mom.
+Dialogue: 0,0:18:21.61,0:18:24.49,Default,MITSUMIMUM,0,0,0,,These are so fresh! Thank you!
+Dialogue: 0,0:18:24.49,0:18:26.57,Default,MITSUMIMUM,0,0,0,,Oh, do your folks need any asparagus?
+Dialogue: 0,0:18:26.57,0:18:28.71,Default,MITSUMIMUM,0,0,0,,I'll fetch some in two \Nshakes of a lamb's tail.
+Dialogue: 0,0:18:28.71,0:18:30.41,Default,MAHARU,0,0,0,,Fumi-chan, Fumi-chan!
+Dialogue: 0,0:18:30.41,0:18:31.91,Default,MAHARU,0,0,0,,Didya phone Sis?
+Dialogue: 0,0:18:31.91,0:18:33.04,Default,FUMI,0,0,0,,I just did, yeah.
+Dialogue: 0,0:18:33.04,0:18:34.13,Default,KIPPEI,0,0,0,,She say anything?
+Dialogue: 0,0:18:34.13,0:18:35.58,Default,FUMI,0,0,0,,Like what?
+Dialogue: 0,0:18:35.58,0:18:38.63,Default,MAHARU,0,0,0,,Like, she tells us her day went perfect,
+Dialogue: 0,0:18:38.63,0:18:43.20,Default,MAHARU,0,0,0,,but we were thinking she probably \Ngot lost at the station or something.
+Dialogue: 0,0:18:43.20,0:18:45.58,Default,FUMI,0,0,0,,I was worried about the same thing.
+Dialogue: 0,0:18:47.14,0:18:50.95,Default,MITSUMIMUM,0,0,0,,She's got a screw loose when it comes \Nto anything 'sides her studies.
+Dialogue: 0,0:18:50.95,0:18:51.70,Default,MITSUMIMUM,0,0,0,,Here.
+Dialogue: 0,0:18:51.70,0:18:54.92,Default,FUMI,0,0,0,,Wow, that's a lot. Thank you.
+Dialogue: 0,0:18:55.52,0:18:56.90,Default,FUMI,0,0,0,,It'll be fine.
+Dialogue: 0,0:18:56.90,0:19:00.18,Default,FUMI,0,0,0,,She was happily saying \Nshe made some new pals.
+Dialogue: 0,0:19:00.18,0:19:02.26,Default,FUMI,0,0,0,,And I'll phone her regularly \Nto check up on her.
+Dialogue: 0,0:19:02.26,0:19:03.29,Default,MITSUMIMUM,0,0,0,,Thank you, dear.
+Dialogue: 0,0:19:03.29,0:19:06.02,Default,FUMI,0,0,0,,I'll be off, then. Have a good night.
+Dialogue: 0,0:19:09.61,0:19:12.49,Default,MITSUMIMUM,0,0,0,,I'd feel a lot better \Nif Fumi-chan were there with her.
+Dialogue: 0,0:19:12.49,0:19:13.94,Default,MAHARU,0,0,0,,Right?
+Dialogue: 0,0:19:15.21,0:19:16.98,Default,CHRIS,0,0,0,,How was your entrance ceremony?
+Dialogue: 0,0:19:16.98,0:19:19.00,Default,BOYA,0,0,0,,My class is looking pretty good.
+Dialogue: 0,0:19:19.00,0:19:19.95,Default,GIRLA,0,0,0,,Lucky you.
+Dialogue: 0,0:19:19.95,0:19:22.84,Default,RIRIKA,0,0,0,,Mine had this awkward mood from day one.
+Dialogue: 0,0:19:22.84,0:19:25.11,Default,CHRIS,0,0,0,,Hey, don't take my shrimp! I only had four...
+Dialogue: 0,0:19:25.11,0:19:26.16,Default,RIRIKA,0,0,0,,Don't be a cheapskate.
+Dialogue: 0,0:19:26.16,0:19:27.52,Default,BOYA,0,0,0,,Your uniform is real cute.
+Dialogue: 0,0:19:27.52,0:19:28.84,Default,RIRIKA,0,0,0,,How about you, Sousuke?
+Dialogue: 0,0:19:28.84,0:19:29.45,Default,SOUSUKE,0,0,0,,Hmm?
+Dialogue: 0,0:19:29.45,0:19:32.65,Default,CHRIS,0,0,0,,Yeah. How's your little elite school?
+Dialogue: 0,0:19:32.65,0:19:34.74,Default,SOUSUKE,0,0,0,,I overslept, for one thing.
+Dialogue: 0,0:19:35.27,0:19:36.53,Default,CHRIS,0,0,0,,That was quick!
+Dialogue: 0,0:19:36.53,0:19:37.59,Default,RIRIKA,0,0,0,,You didn't make it?
+Dialogue: 0,0:19:37.59,0:19:39.65,Default,SOUSUKE,0,0,0,,No, I did. I ran from the station.
+Dialogue: 0,0:19:40.42,0:19:42.11,Default,RIRIKA,0,0,0,,Who, you?
+Dialogue: 0,0:19:42.59,0:19:43.61,Default,SOUSUKE,0,0,0,,Yeah.
+Dialogue: 0,0:19:44.17,0:19:47.62,Default,SOUSUKE,0,0,0,,I thought there wouldn't be a chance in hell,
+Dialogue: 0,0:19:48.60,0:19:51.22,Default,SOUSUKE,0,0,0,,but the principal's speech \Napparently went forever,
+Dialogue: 0,0:19:51.22,0:19:53.29,Default,SOUSUKE,0,0,0,,so we ended up making it.
+Dialogue: 0,0:19:56.28,0:19:58.74,Default,SOUSUKE,0,0,0,,That was kinda fun, honestly.
+Dialogue: 0,0:19:59.67,0:20:00.82,Default,CHRIS,0,0,0,,Was it with a girl?
+Dialogue: 0,0:20:00.82,0:20:03.38,Default,SOUSUKE,0,0,0,,Oh, I should get going.
+Dialogue: 0,0:20:04.66,0:20:05.57,Default,SOUSUKE,0,0,0,,Lemme out.
+Dialogue: 0,0:20:05.57,0:20:06.27,Default,CHRIS,0,0,0,,Huh?!
+Dialogue: 0,0:20:06.27,0:20:07.59,Default,RIRIKA,0,0,0,,Wait, you're leaving already?
+Dialogue: 0,0:20:07.59,0:20:08.47,Default,CHRIS,0,0,0,,Are you serious?
+Dialogue: 0,0:20:08.47,0:20:10.48,Default,CHRIS,0,0,0,,Was it really a girl? That was fast!
+Dialogue: 0,0:20:10.90,0:20:12.91,Default,RIRIKA,0,0,0,,Hey, don't run away.
+Dialogue: 0,0:20:12.91,0:20:15.98,Default,SOUSUKE,0,0,0,,Nah, just thought I'd go home early.
+Dialogue: 0,0:20:16.98,0:20:19.08,Default,SOUSUKE,0,0,0,,Wouldn't want to be late tomorrow, you know?
+Dialogue: 0,0:20:19.08,0:20:20.13,Default,SOUSUKE,0,0,0,,Later.
+Dialogue: 0,0:20:25.08,0:20:26.57,Default,RIRIKA,0,0,0,,The heck was that?
+Dialogue: 0,0:20:26.57,0:20:27.41,Default,CHRIS,0,0,0,,Don't ask me.
+Dialogue: 0,0:20:28.06,0:20:31.48,Default,CHRIS,0,0,0,,Something must've made him \Nreally happy today.
+Dialogue: 0,0:20:38.68,0:20:39.56,DefaultItalics,SOUSUKE,0,0,0,,Yeah.
+Dialogue: 0,0:20:40.73,0:20:44.09,DefaultItalics,SOUSUKE,0,0,0,,I might as well enjoy my high school life.
+Dialogue: 0,0:20:49.41,0:20:51.65,DefaultItalics,MITSUMI,0,0,0,,The night lights are so bright here.
+Dialogue: 0,0:20:54.15,0:20:58.44,DefaultItalics,MITSUMI,0,0,0,,Today's mistakes don't count. \NIt was only my first day, after all.
+Dialogue: 0,0:20:59.69,0:21:04.09,DefaultItalics,MITSUMI,0,0,0,,Also, I did study for the post-entrance exam \Nand did a bunch of my spring homework.
+Dialogue: 0,0:21:04.09,0:21:05.07,DefaultItalics,MITSUMI,0,0,0,,All good.
+Dialogue: 0,0:21:06.02,0:21:08.41,DefaultItalics,MITSUMI,0,0,0,,I'll be fine from tomorrow.
+Dialogue: 0,0:21:08.41,0:21:09.78,DefaultItalics,MITSUMI,0,0,0,,I know it.
+Dialogue: 0,0:21:17.94,0:21:20.18,DefaultItalics,MITSUMI,0,0,0,,Self-introductions, huh?
+Dialogue: 0,0:21:21.43,0:21:23.39,DefaultItalics,MITSUMI,0,0,0,,Won't be a problem, obviously.
+Dialogue: 0,0:21:26.78,0:21:29.26,DefaultItalics,MITSUMI,0,0,0,,But maybe I should figure out \Nwhat I'm gonna say.
+Dialogue: 0,0:21:29.74,0:21:31.76,DefaultItalics,MITSUMI,0,0,0,,First impressions are key.
+Dialogue: 0,0:21:32.44,0:21:35.14,DefaultItalics,MITSUMI,0,0,0,,I'll prepare multiple options \Nbased on the class's mood.
+Dialogue: 0,0:21:53.57,0:21:55.62,Default,NAO,0,0,0,,Oh, good morning, Mitsu...
+Dialogue: 0,0:22:02.23,0:22:04.19,DefaultItalics,MITSUMI,0,0,0,,First impressions are...
+Dialogue: 0,0:22:04.19,0:22:05.24,Default,NAO,0,0,0,,Yikes!
+

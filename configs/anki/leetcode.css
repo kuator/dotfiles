@@ -1,0 +1,97 @@
+.card {
+    box-sizing: border-box;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 1.5rem 1.75rem 3rem;
+    font-family: Inter, "Noto Sans", system-ui, sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    text-align: left;
+}
+
+.card p,
+.card ul,
+.card ol {
+    max-width: 78ch;
+}
+
+.card h1,
+.card h2,
+.card h3,
+.card b,
+.card strong {
+    line-height: 1.3;
+}
+
+.card li + li {
+    margin-top: 0.25rem;
+}
+
+.card hr {
+    margin: 1.75rem 0;
+    border: 0;
+    border-top: 1px solid color-mix(in srgb, currentColor 30%, transparent);
+}
+
+.card code,
+.card pre {
+    font-family: "UbuntuMono Nerd Font", "Ubuntu Mono", ui-monospace, monospace;
+}
+
+.card :not(pre) > code {
+    padding: 0.08em 0.3em;
+    border-radius: 0.25rem;
+    background: color-mix(in srgb, currentColor 10%, transparent);
+}
+
+.card pre {
+    box-sizing: border-box;
+    max-width: 100%;
+    margin: 1rem 0;
+    padding: 1rem 1.15rem !important;
+    border: 1px solid #d0d7de;
+    border-radius: 0.45rem !important;
+    background: #f6f8fa !important;
+    color: #1f2328 !important;
+    font-size: 0.92em !important;
+    line-height: 1.5;
+    overflow-x: auto;
+    tab-size: 4;
+    white-space: pre;
+}
+
+.nightMode .card pre,
+.card.nightMode pre {
+    border-color: #3d444d;
+    background: #151b23 !important;
+    color: #e6edf3 !important;
+}
+
+.nightMode .card pre span[style*="darkviolet"],
+.card.nightMode pre span[style*="darkviolet"],
+.nightMode .card pre span[style*="purple"],
+.card.nightMode pre span[style*="purple"] {
+    color: #d2a8ff !important;
+}
+
+.nightMode .card pre span[style*="darkcyan"],
+.card.nightMode pre span[style*="darkcyan"] {
+    color: #56d4dd !important;
+}
+
+.nightMode .card pre span[style*="darkblue"],
+.card.nightMode pre span[style*="darkblue"] {
+    color: #79c0ff !important;
+}
+
+@media (max-width: 600px) {
+    .card {
+        padding: 1rem 0.75rem 2rem;
+        font-size: 16px;
+    }
+
+    .card pre {
+        padding: 0.8rem !important;
+        font-size: 0.85em !important;
+    }
+}

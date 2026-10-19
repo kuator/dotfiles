@@ -54,6 +54,11 @@ configure_cinnamon() {
 			gsettings set org.cinnamon.desktop.peripherals.keyboard delay 220
 			gsettings set org.cinnamon.desktop.peripherals.keyboard repeat-interval 25
 		fi
+
+		if gsettings list-schemas | grep -qx org.cinnamon.desktop.default-applications.terminal; then
+			gsettings set org.cinnamon.desktop.default-applications.terminal exec ghostty
+			gsettings set org.cinnamon.desktop.default-applications.terminal exec-arg -e
+		fi
 	fi
 
 	# The vendor user units may start before Cinnamon exports its display
@@ -85,6 +90,8 @@ configure_kde() {
 	"$writer" --file kwinrc --group NightColor --key Mode DarkLight
 	"$writer" --file kwinrc --group NightColor --key DayTemperature 5500
 	"$writer" --file kwinrc --group NightColor --key NightTemperature 4500
+	"$writer" --file kdeglobals --group General --key TerminalApplication ghostty
+	"$writer" --file kdeglobals --group General --key TerminalService com.mitchellh.ghostty.desktop
 }
 
 case "${XDG_CURRENT_DESKTOP:-}" in
